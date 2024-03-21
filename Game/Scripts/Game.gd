@@ -2,7 +2,7 @@
 extends Control
 
 
-onready var shop = get_node("Shop") # Variabel penyimpan class Shop
+@onready var shop = get_node("Shop") # Variabel penyimpan class Shop
 var timerStartDayStart = false # Variabel penyimpan status 'TimerStartDay'
 var timerTransactionStart = false # Variabel penyimpan status 'TimerTransaction'
 var panelShopSettingsOpened = true # Variabel penyimpan status 'PanelShopSettings'
@@ -15,6 +15,9 @@ func _ready():
 func _process(delta):
 	$UI/LabelMoney.text = "Rp" + str(shop.getMoney()) # Menampilkan uang yang dimiliki pemain saat ini
 	$UI/PanelShopSettings/LabelFoodPrice.text = "Rp" + str(shop.getFoodPrice()) # Menampilkan harga makanan saat ini
+	$UI/PanelShopSettings/LabelLevelProduct.text = "Level " + str(shop.getLevelProduct()) # Menampilkan level kualitas makanan
+	$UI/PanelShopSettings/LabelLevelPromotion.text = "Level " + str(shop.getLevelPromotion()) # Menampilkan level promosi
+	$UI/PanelShopSettings/LabelLevelPlacement.text = "Level " + str(shop.getLevelPlacement()) # Menampilkan level distribusi
 	$TimerTransaction.wait_time = 2 # Atur frekuensi transaksi yang terjadi
 
 # Fungsi tombol 'ButtonStartDay' ketika di klik akan memulai timer 'TimerStartDay' dan 'TimerTransaction'
@@ -28,6 +31,11 @@ func _on_ButtonStartDay_pressed():
 		$TimerTransaction.start()
 		$UI/ButtonStartDay.disabled = true
 		$UI/ButtonShopSettings.disabled = true
+		
+		# Jika panel 'PanelShopSettings' masih terbuka, panel akan ditutup
+		if panelShopSettingsOpened == true:
+			$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
+			panelShopSettingsOpened = false
 
 # Fungsi timer timeout 'TimerStartDay' ketika waktu selesai akan memberhentikan progres hari tersebut
 func _on_TimerStartDay_timeout():
@@ -45,8 +53,7 @@ func _on_TimerStartDay_timeout():
 # ketika 'ButtonStartDay' di klik dan 'TimerStartDay' berjalan
 func _on_TimerTransaction_timeout():
 	# Ketika timer selesai, akan menambahkan uang pemain
-	shop.setMoney(shop.getMoney()+1)
-
+	shop.setMoney(shop.getMoney() + shop.getFoodPrice())
 
 # Fungsi pengatur panel PanelShopSettings
 func _on_ButtonShopSettings_pressed():
@@ -58,3 +65,30 @@ func _on_ButtonShopSettings_pressed():
 	else:
 		$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
 		panelShopSettingsOpened = false
+
+# Fungsi penaik harga makanan
+func _on_ButtonFoodPricePlus_pressed():
+	# Jika tombol di klik, naikkan harga makanan sebesar 500
+	shop.setFoodPrice(shop.getFoodPrice() + 500)
+
+# Fungsi penurun harga makanan
+func _on_ButtonFoodPriceMin_pressed():
+	# Jika tombol di klik dan harga makanan tidak 0, naikkan harga makanan sebesar 500
+	# (harga makanan tidak akan bernilai negatif)
+	if shop.getFoodPrice() != 0:
+		shop.setFoodPrice(shop.getFoodPrice() - 500)
+
+# Fungsi meningkatkan level kualitas makanan
+func _on_buttonLevelProductUpgrade_pressed():
+	# Jika tombol di klik, naikkan level kualitas makanan sebesar 1
+	shop.setLevelProduct(shop.getLevelProduct() + 1)
+
+# Fungsi meningkatkan level promosi
+func _on_buttonLevelPromotionUpgrade_pressed():
+	# Jika tombol di klik, naikkan level promosi sebesar 1
+	shop.setLevelPromotion(shop.getLevelPromotion() + 1)
+
+# Fungsi meningkatkan level distribusi
+func _on_buttonLevelPlacementUpgrade_pressed():
+	# Jika tombol di klik, naikkan level distribusi sebesar 1
+	shop.setLevelPlacement(shop.getLevelPlacement() + 1)

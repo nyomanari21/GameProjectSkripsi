@@ -8,4 +8,4 @@ func _ready():
 
 # Fungsi tombol 'ButtonPlay' untuk pindah ke scene utama permainan
 func _on_ButtonPlay_pressed():
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
