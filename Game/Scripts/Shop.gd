@@ -2,11 +2,12 @@
 extends Control
 
 
-var money:int = 0: get = getMoney, set = setMoney # Variabel penyimpan uang toko pemain
+var money:int = 10000: get = getMoney, set = setMoney # Variabel penyimpan uang toko pemain
 var foodPrice:int = 0: get = getFoodPrice, set = setFoodPrice # Variabel penyimpan harga makanan
 var levelProduct:int = 1: get = getLevelProduct, set = setLevelProduct # Variabel penyimpan level kualitas produk makanan
 var levelPromotion:int = 1: get = getLevelPromotion, set = setLevelPromotion # Variabel penyimpan level promosi
 var levelPlacement:int = 1: get = getLevelPlacement, set = setLevelPlacement # Variabel penyimpan level distribusi
+var foodStock:int = 0: get = getFoodStock, set = setFoodStock # Variabel penyimpan stok makanan
 
 
 # Setter dan Getter uang toko
@@ -43,3 +44,10 @@ func setLevelPlacement(newLevelPlacement):
 
 func getLevelPlacement():
 	return levelPlacement
+
+# Setter dan Getter stok makanan
+func setFoodStock(newFoodStock):
+	foodStock = newFoodStock
+
+func getFoodStock():
+	return foodStock

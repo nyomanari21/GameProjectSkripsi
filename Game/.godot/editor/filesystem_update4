@@ -1,5 +1,5 @@
 res://default_env.tres
-res://Scenes/MainMenu.tscn
 res://Scenes/Game.tscn
-res://Scripts/Shop.gd
 res://Scripts/Game.gd
+res://Scripts/Shop.gd
+res://Scenes/MainMenu.tscn

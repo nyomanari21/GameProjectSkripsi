@@ -105,9 +105,9 @@ vertical_alignment = 1
 
 [node name="ButtonFoodPricePlus" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 136.0
+offset_left = 168.0
 offset_top = 80.0
-offset_right = 160.0
+offset_right = 192.0
 offset_bottom = 105.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
@@ -115,9 +115,9 @@ text = "+"
 
 [node name="ButtonFoodPriceMin" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 168.0
+offset_left = 136.0
 offset_top = 80.0
-offset_right = 192.0
+offset_right = 160.0
 offset_bottom = 105.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
@@ -219,6 +219,68 @@ theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "Tingkatkan"
 
+[node name="LabelFoodStockTitle" type="Label" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0001
+offset_top = 392.0
+offset_right = 155.0
+offset_bottom = 415.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 20
+text = "Stok Makanan:"
+
+[node name="LabelFoodStock" type="Label" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 392.0
+offset_right = 267.0
+offset_bottom = 415.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 18
+text = "(foodStock)"
+vertical_alignment = 1
+
+[node name="LabelFoodStockIncrease" type="Label" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0001
+offset_top = 432.0
+offset_right = 195.0
+offset_bottom = 455.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 18
+text = "(foodStockIncrease)"
+vertical_alignment = 1
+
+[node name="ButtonFoodStockPlus" type="Button" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 432.0
+offset_right = 192.0
+offset_bottom = 457.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+text = "+"
+
+[node name="ButtonFoodStockMinus" type="Button" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 432.0
+offset_right = 160.0
+offset_bottom = 457.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+text = "-"
+
+[node name="ButtonFoodStockPurchase" type="Button" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 432.0
+offset_right = 240.0
+offset_bottom = 457.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+text = "Beli"
+
 [node name="Shop" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 744.0
@@ -239,5 +301,8 @@ wait_time = 10.0
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelProductUpgrade" to="." method="_on_buttonLevelProductUpgrade_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelPromotionUpgrade" to="." method="_on_buttonLevelPromotionUpgrade_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelPlacementUpgrade" to="." method="_on_buttonLevelPlacementUpgrade_pressed"]
+[connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodStockPlus" to="." method="_on_buttonFoodStockPlus_pressed"]
+[connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodStockMinus" to="." method="_on_buttonFoodStockMinus_pressed"]
+[connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodStockPurchase" to="." method="_on_buttonFoodStockPurchase_pressed"]
 [connection signal="timeout" from="TimerStartDay" to="." method="_on_TimerStartDay_timeout"]
 [connection signal="timeout" from="TimerTransaction" to="." method="_on_TimerTransaction_timeout"]
