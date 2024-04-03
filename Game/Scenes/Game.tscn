@@ -55,15 +55,16 @@ theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "(money)"
 
-[node name="ButtonShopSettings" type="Button" parent="UI"]
+[node name="LabelSeason" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 192.0
-offset_right = 124.0
-offset_bottom = 226.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 88.0
 theme_override_fonts/font = ExtResource("3")
-theme_override_font_sizes/font_size = 20
-text = "Atur Toko"
+theme_override_font_sizes/font_size = 36
+text = "(season)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PanelShopSettings" type="Panel" parent="UI"]
 layout_mode = 1
@@ -251,6 +252,16 @@ theme_override_font_sizes/font_size = 18
 text = "(foodStockIncrease)"
 vertical_alignment = 1
 
+[node name="LabelFoodStockTotalPrice" type="Label" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0001
+offset_top = 464.0
+offset_right = 211.0
+offset_bottom = 487.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 18
+text = "(labelFoodStockTotalPrice)"
+
 [node name="ButtonFoodStockPlus" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 168.0
@@ -295,7 +306,6 @@ wait_time = 10.0
 [node name="TimerTransaction" type="Timer" parent="."]
 
 [connection signal="pressed" from="UI/ButtonStartDay" to="." method="_on_ButtonStartDay_pressed"]
-[connection signal="pressed" from="UI/ButtonShopSettings" to="." method="_on_ButtonShopSettings_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPricePlus" to="." method="_on_ButtonFoodPricePlus_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPriceMin" to="." method="_on_ButtonFoodPriceMin_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelProductUpgrade" to="." method="_on_buttonLevelProductUpgrade_pressed"]

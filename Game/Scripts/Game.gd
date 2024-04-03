@@ -7,6 +7,9 @@ var timerStartDayStart = false # Variabel penyimpan status 'TimerStartDay'
 var timerTransactionStart = false # Variabel penyimpan status 'TimerTransaction'
 var panelShopSettingsOpened = true # Variabel penyimpan status 'PanelShopSettings'
 var foodStockIncrease = 0 # Variabel penyimpan jumlah penambahan stok makanan
+var foodStockTotalPrice = 0 # Variabel penyimpan total harga stok makanan
+var season = "Kemarau" # Variabel penyimpan musim dalam permainan (kemarau dan penghujan)
+var seasonCycle = 2 # Variabel penyimpan siklus musim
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,14 +17,30 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$UI/LabelSeason.text = "Musim " + season
 	$UI/LabelMoney.text = "Rp" + str(shop.getMoney()) # Menampilkan uang yang dimiliki pemain saat ini
 	$UI/PanelShopSettings/LabelFoodPrice.text = "Rp" + str(shop.getFoodPrice()) # Menampilkan harga makanan saat ini
 	$UI/PanelShopSettings/LabelLevelProduct.text = "Level " + str(shop.getLevelProduct()) # Menampilkan level kualitas makanan
 	$UI/PanelShopSettings/LabelLevelPromotion.text = "Level " + str(shop.getLevelPromotion()) # Menampilkan level promosi
 	$UI/PanelShopSettings/LabelLevelPlacement.text = "Level " + str(shop.getLevelPlacement()) # Menampilkan level distribusi
 	$UI/PanelShopSettings/LabelFoodStock.text = str(shop.getFoodStock()) # Menampilkan stok makanan
-	$UI/PanelShopSettings/LabelFoodStockIncrease.text = "Tambah " + str(foodStockIncrease)
+	$UI/PanelShopSettings/LabelFoodStockIncrease.text = "Tambah " + str(foodStockIncrease) # Menampilkan 
+	$UI/PanelShopSettings/LabelFoodStockTotalPrice.text = "Rp" + str(foodStockTotalPrice)
 	$TimerTransaction.wait_time = 2 # Atur frekuensi transaksi yang terjadi
+	
+	# Nonaktifkan tombol 'ButtonStartDay' jika stok makanan masih kosong atau harga makanan masih 0
+	# atau hari sudah mulai
+	if shop.getFoodStock() == 0 || shop.getFoodPrice() == 0 || timerStartDayStart == true:
+		$UI/ButtonStartDay.disabled = true
+	else:
+		$UI/ButtonStartDay.disabled = false
+	
+	# Nonaktifkan tombol 'ButtonFoodStockPurchase' jika tidak ada stok yang dibeli
+	# dan uang pemain tidak cukup
+	if foodStockIncrease == 0 || shop.getMoney() < foodStockTotalPrice:
+		$UI/PanelShopSettings/ButtonFoodStockPurchase.disabled = true
+	else:
+		$UI/PanelShopSettings/ButtonFoodStockPurchase.disabled = false
 
 # Fungsi tombol 'ButtonStartDay' ketika di klik akan memulai timer 'TimerStartDay' dan 'TimerTransaction'
 func _on_ButtonStartDay_pressed():
@@ -33,12 +52,9 @@ func _on_ButtonStartDay_pressed():
 		$TimerStartDay.start()
 		$TimerTransaction.start()
 		$UI/ButtonStartDay.disabled = true
-		$UI/ButtonShopSettings.disabled = true
 		
-		# Jika panel 'PanelShopSettings' masih terbuka, panel akan ditutup
-		if panelShopSettingsOpened == true:
-			$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
-			panelShopSettingsOpened = false
+		# Tutup panel 'PanelShopSettings'
+		$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
 
 # Fungsi timer timeout 'TimerStartDay' ketika waktu selesai akan memberhentikan progres hari tersebut
 func _on_TimerStartDay_timeout():
@@ -50,24 +66,27 @@ func _on_TimerStartDay_timeout():
 		$TimerStartDay.stop()
 		$TimerTransaction.stop()
 		$UI/ButtonStartDay.disabled = false
-		$UI/ButtonShopSettings.disabled = false
+		$UI/PanelShopSettings/AnimationPlayer.play("Popup")
+		
+		# Update siklus musim
+		seasonCycle -= 1
+		
+		# Ganti musim jika siklus sudah habis
+		if seasonCycle == 0:
+			seasonCycle = 2
+			if season == "Kemarau":
+				season = "Penghujan"
+			else:
+				season = "Kemarau"
 
 # Fungsi timer timeout 'TimerTransaction' untuk mengatur frekuensi banyaknya transaksi yang terjadi
 # ketika 'ButtonStartDay' di klik dan 'TimerStartDay' berjalan
 func _on_TimerTransaction_timeout():
-	# Ketika timer selesai, akan menambahkan uang pemain
-	shop.setMoney(shop.getMoney() + shop.getFoodPrice())
-
-# Fungsi pengatur panel PanelShopSettings
-func _on_ButtonShopSettings_pressed():
-	# Jika panel belum terbuka, ketika di klik akan membuka panel
-	if panelShopSettingsOpened == false:
-		$UI/PanelShopSettings/AnimationPlayer.play("Popup")
-		panelShopSettingsOpened = true
-	# Jika panel sudah terbuka, ketika di klik akan menutup panel
-	else:
-		$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
-		panelShopSettingsOpened = false
+	# Ketika timer selesai, akan menambahkan uang pemain jika stok makanan masih tersedia
+	# dan mengurangi stok makanan
+	if shop.getFoodStock() > 0:
+		shop.setMoney(shop.getMoney() + shop.getFoodPrice())
+		shop.setFoodStock(shop.getFoodStock() - 1)
 
 # Fungsi penaik harga makanan
 func _on_ButtonFoodPricePlus_pressed():
@@ -99,19 +118,30 @@ func _on_buttonLevelPlacementUpgrade_pressed():
 # Fungsi penaik jumlah stok makanan yang ingin ditambah
 func _on_buttonFoodStockPlus_pressed():
 	# Jika tombol di klik, naikkan penambah stok makanan sebesar 1
+	# dan update total harga pembelian stok makanan
 	foodStockIncrease += 1
+	foodStockTotalPrice = shop.getFoodStockPrice() * foodStockIncrease
 
 # Fungsi penurun jumlah stok makanan yang ingin ditambah
 func _on_buttonFoodStockMinus_pressed():
 	# Jika tombol di klik dan penambah stok makanan tidak 0, naikkan penambah stok makanan sebesar 1
-	# (penambah stok makanan tidak akan bernilai negatif)
+	# (penambah stok makanan tidak akan bernilai negatif) dan update total harga pembelian stok makanan
 	if foodStockIncrease != 0:
 		foodStockIncrease -= 1
+		foodStockTotalPrice = shop.getFoodStockPrice() * foodStockIncrease
+	
+	# Nonaktifkan tombol buttonFoodStockPurchase ketika uang pemain tidak cukup
+	if shop.getMoney() < foodStockTotalPrice:
+		$UI/PanelShopSettings/ButtonFoodStockPurchase.disabled = true
+	else:
+		$UI/PanelShopSettings/ButtonFoodStockPurchase.disabled = false
 
 # Fungsi membeli stok makanan
 func _on_buttonFoodStockPurchase_pressed():
-	# Jika penambah stok makanan tidak 0, tambah stok makanan
-	# lalu reset penambah stok makanan menjadi 0
-	if foodStockIncrease != 0:
+	# Jika penambah stok makanan tidak 0, tambah stok makanan, kurangi uang pemain
+	# lalu reset penambah stok makanan dan total harga pembelian stok makanan menjadi 0
+	if foodStockIncrease != 0 && shop.getMoney() >= foodStockTotalPrice:
 		shop.setFoodStock(shop.getFoodStock() + foodStockIncrease)
+		shop.setMoney(shop.getMoney() - foodStockTotalPrice)
 		foodStockIncrease = 0
+		foodStockTotalPrice = 0
