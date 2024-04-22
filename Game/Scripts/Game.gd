@@ -42,6 +42,11 @@ func _process(delta):
 	else:
 		$UI/PanelShopSettings/ButtonFoodStockPurchase.disabled = false
 
+# Fungsi perhitungan biaya peningkatan level pada toko
+func _setNewlevelUpgradePrice(level, price):
+	var newPrice = price + (1000 * level)
+	shop.setLevelProductUpgradePrice(newPrice)
+
 # Fungsi tombol 'ButtonStartDay' ketika di klik akan memulai timer 'TimerStartDay' dan 'TimerTransaction'
 func _on_ButtonStartDay_pressed():
 	# Jika tombol di klik, jalankan timer 'TimerStartDay' dan 'TimerTransaction'
@@ -102,18 +107,36 @@ func _on_ButtonFoodPriceMin_pressed():
 
 # Fungsi meningkatkan level kualitas makanan
 func _on_buttonLevelProductUpgrade_pressed():
-	# Jika tombol di klik, naikkan level kualitas makanan sebesar 1
-	shop.setLevelProduct(shop.getLevelProduct() + 1)
+	# Jika tombol di klik dan uang pemain mencukupi
+	if shop.getMoney() >= shop.getLevelProductUpgradePrice():
+		# Kurangi uang pemain
+		shop.setMoney(shop.getMoney() - shop.getLevelProductUpgradePrice())
+		
+		# naikkan level kualitas makanan sebesar 1
+		shop.setLevelProduct(shop.getLevelProduct() + 1)
+		_setNewlevelUpgradePrice(shop.getLevelProduct(), shop.getLevelProductUpgradePrice())
 
 # Fungsi meningkatkan level promosi
 func _on_buttonLevelPromotionUpgrade_pressed():
-	# Jika tombol di klik, naikkan level promosi sebesar 1
-	shop.setLevelPromotion(shop.getLevelPromotion() + 1)
+	# Jika tombol di klik dan uang pemain mencukupi
+	if shop.getMoney() >= shop.getLevelPromotionUpgradePrice():
+		# Kurangi uang pemain
+		shop.setMoney(shop.getMoney() - shop.getLevelPromotionUpgradePrice())
+		
+		# naikkan level promosi sebesar 1
+		shop.setLevelPromotion(shop.getLevelPromotion() + 1)
+		_setNewlevelUpgradePrice(shop.getLevelPromotion(), shop.getLevelPromotionUpgradePrice())
 
 # Fungsi meningkatkan level distribusi
 func _on_buttonLevelPlacementUpgrade_pressed():
-	# Jika tombol di klik, naikkan level distribusi sebesar 1
-	shop.setLevelPlacement(shop.getLevelPlacement() + 1)
+	# Jika tombol di klik dan uang pemain mencukupi
+	if shop.getMoney() >= shop.getLevelPlacementUpgradePrice():
+		# Kurangi uang pemain
+		shop.setMoney(shop.getMoney() - shop.getLevelPlacementUpgradePrice())
+		
+		# naikkan level promosi sebesar 1
+		shop.setLevelPlacement(shop.getLevelPlacement() + 1)
+		_setNewlevelUpgradePrice(shop.getLevelPlacement(), shop.getLevelPlacementUpgradePrice())
 
 # Fungsi penaik jumlah stok makanan yang ingin ditambah
 func _on_buttonFoodStockPlus_pressed():
