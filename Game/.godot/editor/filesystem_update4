@@ -2,4 +2,3 @@ res://default_env.tres
 res://Scenes/MainMenu.tscn
 res://Scripts/Game.gd
 res://Scenes/Game.tscn
-res://Scripts/Shop.gd

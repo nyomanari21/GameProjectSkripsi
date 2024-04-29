@@ -5,6 +5,8 @@ extends Control
 @onready var shop = get_node("Shop") # Variabel penyimpan class Shop
 var timerStartDayStart = false # Variabel penyimpan status 'TimerStartDay'
 var timerTransactionStart = false # Variabel penyimpan status 'TimerTransaction'
+var timerTransactionBaseTime = 2 # Variabel penyimpan frekuensi dasar transaksi
+var timerTransactionNewTime = 0 # Variabel penyimpan frekuensi baru transaksi
 var panelShopSettingsOpened = true # Variabel penyimpan status 'PanelShopSettings'
 var foodStockIncrease = 0 # Variabel penyimpan jumlah penambahan stok makanan
 var foodStockTotalPrice = 0 # Variabel penyimpan total harga stok makanan
@@ -26,7 +28,16 @@ func _process(delta):
 	$UI/PanelShopSettings/LabelFoodStock.text = str(shop.getFoodStock()) # Menampilkan stok makanan
 	$UI/PanelShopSettings/LabelFoodStockIncrease.text = "Tambah " + str(foodStockIncrease) # Menampilkan 
 	$UI/PanelShopSettings/LabelFoodStockTotalPrice.text = "Rp" + str(foodStockTotalPrice)
-	$TimerTransaction.wait_time = 2 # Atur frekuensi transaksi yang terjadi
+	
+	# Proses pengaturan frekuensi terjadinya transaksi
+	timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.1 * shop.getLevelPromotion()) - (0.1 * shop.getLevelPlacement())
+	timerTransactionNewTime = timerTransactionNewTime + (((shop.getFoodPrice() - shop.getFoodStockPrice()) / 50) * 0.1)
+	
+	# Jika memasuki musim kemarau, frekuensi terjadinya transaksi dikali 0.8 (dipercepat)
+	if season == "Kemarau":
+		$TimerTransaction.wait_time = timerTransactionNewTime * 0.8 # Atur frekuensi transaksi yang terjadi
+	else:
+		$TimerTransaction.wait_time = timerTransactionNewTime # Atur frekuensi transaksi yang terjadi
 	
 	# Nonaktifkan tombol 'ButtonStartDay' jika stok makanan masih kosong atau harga makanan masih 0
 	# atau hari sudah mulai
@@ -60,6 +71,7 @@ func _on_ButtonStartDay_pressed():
 		
 		# Tutup panel 'PanelShopSettings'
 		$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
+		print($TimerTransaction.wait_time)
 
 # Fungsi timer timeout 'TimerStartDay' ketika waktu selesai akan memberhentikan progres hari tersebut
 func _on_TimerStartDay_timeout():
