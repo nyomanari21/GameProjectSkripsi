@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ybp3bxlv5ojc"]
+[gd_scene load_steps=7 format=3 uid="uid://ybp3bxlv5ojc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bs2xbou5u58sj" path="res://Assets/Images/Main menu 5 - Extended.jpg" id="2_ceudg"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="3"]
 
 [sub_resource type="Animation" id="9"]
@@ -35,6 +36,18 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
+[node name="CenterContainerBackground" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundBase" type="Sprite2D" parent="UI/CenterContainerBackground"]
+texture = ExtResource("2_ceudg")
+centered = false
+
 [node name="ButtonStartDay" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 16.0
@@ -51,6 +64,8 @@ offset_left = 144.0
 offset_top = 136.0
 offset_right = 223.0
 offset_bottom = 160.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "(money)"
@@ -60,6 +75,8 @@ layout_mode = 0
 offset_top = 24.0
 offset_right = 1152.0
 offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 36
 text = "(season)"
@@ -77,6 +94,7 @@ offset_left = -23129.6
 offset_top = -972.8
 offset_right = -31580.8
 offset_bottom = -9606.4
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(304, 568)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PanelShopSettings"]
