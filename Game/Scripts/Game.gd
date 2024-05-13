@@ -15,7 +15,7 @@ var seasonCycle = 2 # Variabel penyimpan siklus musim
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$UI/PanelShopSettings/AnimationPlayer.play("Popup")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,16 +28,6 @@ func _process(delta):
 	$UI/PanelShopSettings/LabelFoodStock.text = str(shop.getFoodStock()) # Menampilkan stok makanan
 	$UI/PanelShopSettings/LabelFoodStockIncrease.text = "Tambah " + str(foodStockIncrease) # Menampilkan 
 	$UI/PanelShopSettings/LabelFoodStockTotalPrice.text = "Rp" + str(foodStockTotalPrice)
-	
-	# Proses pengaturan frekuensi terjadinya transaksi
-	timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.1 * shop.getLevelPromotion()) - (0.1 * shop.getLevelPlacement())
-	timerTransactionNewTime = timerTransactionNewTime + (((shop.getFoodPrice() - shop.getFoodStockPrice()) / 50) * 0.1)
-	
-	# Jika memasuki musim kemarau, frekuensi terjadinya transaksi dikali 0.8 (dipercepat)
-	if season == "Kemarau":
-		$TimerTransaction.wait_time = timerTransactionNewTime * 0.8 # Atur frekuensi transaksi yang terjadi
-	else:
-		$TimerTransaction.wait_time = timerTransactionNewTime # Atur frekuensi transaksi yang terjadi
 	
 	# Nonaktifkan tombol 'ButtonStartDay' jika stok makanan masih kosong atau harga makanan masih 0
 	# atau hari sudah mulai
@@ -71,7 +61,16 @@ func _on_ButtonStartDay_pressed():
 		
 		# Tutup panel 'PanelShopSettings'
 		$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
-		print($TimerTransaction.wait_time)
+			
+		# Proses pengaturan frekuensi terjadinya transaksi
+		timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.1 * shop.getLevelPromotion()) - (0.1 * shop.getLevelPlacement())
+		timerTransactionNewTime = timerTransactionNewTime + (((shop.getFoodPrice() - shop.getFoodStockPrice()) / 50) * 0.1)
+		
+		# Jika memasuki musim kemarau, frekuensi terjadinya transaksi dikali 0.8 (dipercepat 20%)
+		if season == "Kemarau":
+			$TimerTransaction.wait_time = timerTransactionNewTime * 0.8 # Atur frekuensi transaksi yang terjadi
+		else:
+			$TimerTransaction.wait_time = timerTransactionNewTime # Atur frekuensi transaksi yang terjadi
 
 # Fungsi timer timeout 'TimerStartDay' ketika waktu selesai akan memberhentikan progres hari tersebut
 func _on_TimerStartDay_timeout():
@@ -92,9 +91,15 @@ func _on_TimerStartDay_timeout():
 		if seasonCycle == 0:
 			seasonCycle = 2
 			if season == "Kemarau":
+				# Ganti ke musim hujan, lalu ganti background
 				season = "Penghujan"
+				$UI/CenterContainerBackground/BackgroundBase.visible = false
+				$UI/CenterContainerBackground/BackgroundRain.play()
 			else:
+				# Ganti ke musim kemarau, lalu ganti background
 				season = "Kemarau"
+				$UI/CenterContainerBackground/BackgroundBase.visible = true
+				$UI/CenterContainerBackground/BackgroundRain.stop()
 
 # Fungsi timer timeout 'TimerTransaction' untuk mengatur frekuensi banyaknya transaksi yang terjadi
 # ketika 'ButtonStartDay' di klik dan 'TimerStartDay' berjalan
@@ -104,6 +109,10 @@ func _on_TimerTransaction_timeout():
 	if shop.getFoodStock() > 0:
 		shop.setMoney(shop.getMoney() + shop.getFoodPrice())
 		shop.setFoodStock(shop.getFoodStock() - 1)
+
+# Fungsi loop video 'BackgroundRain'
+func _on_BackgroundRain_finished():
+	$UI/CenterContainerBackground/BackgroundRain.play()
 
 # Fungsi penaik harga makanan
 func _on_ButtonFoodPricePlus_pressed():

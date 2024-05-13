@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ybp3bxlv5ojc"]
+[gd_scene load_steps=8 format=3 uid="uid://ybp3bxlv5ojc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bs2xbou5u58sj" path="res://Assets/Images/Main menu 5 - Extended.jpg" id="2_ceudg"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="3"]
+[ext_resource type="VideoStream" path="res://Assets/Videos/Game background - Rain gloomy.ogv" id="3_nnq1c"]
 
 [sub_resource type="Animation" id="9"]
 resource_name = "Popup"
@@ -41,12 +42,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackgroundBase" type="Sprite2D" parent="UI/CenterContainerBackground"]
 texture = ExtResource("2_ceudg")
 centered = false
+
+[node name="BackgroundRain" type="VideoStreamPlayer" parent="UI/CenterContainerBackground"]
+layout_mode = 2
+stream = ExtResource("3_nnq1c")
 
 [node name="ButtonStartDay" type="Button" parent="UI"]
 layout_mode = 0
@@ -94,7 +100,6 @@ offset_left = -23129.6
 offset_top = -972.8
 offset_right = -31580.8
 offset_bottom = -9606.4
-scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(304, 568)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PanelShopSettings"]
@@ -108,6 +113,8 @@ offset_left = 16.0001
 offset_top = 40.0
 offset_right = 170.0
 offset_bottom = 63.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "Harga Makanan"
@@ -119,6 +126,8 @@ offset_left = 16.0
 offset_top = 80.0
 offset_right = 120.0
 offset_bottom = 105.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(foodPrice)"
@@ -150,6 +159,8 @@ offset_left = 16.0001
 offset_top = 128.0
 offset_right = 189.0
 offset_bottom = 151.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "Kualitas Makanan"
@@ -161,6 +172,8 @@ offset_left = 16.0
 offset_top = 168.0
 offset_right = 144.0
 offset_bottom = 191.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(levelProduct)"
@@ -182,6 +195,8 @@ offset_left = 16.0001
 offset_top = 216.0
 offset_right = 95.0001
 offset_bottom = 239.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "Promosi"
@@ -193,6 +208,8 @@ offset_left = 16.0001
 offset_top = 256.0
 offset_right = 162.0
 offset_bottom = 279.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(levelPromotion)"
@@ -214,6 +231,8 @@ offset_left = 16.0001
 offset_top = 304.0
 offset_right = 107.0
 offset_bottom = 327.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "Distribusi"
@@ -225,6 +244,8 @@ offset_left = 16.0001
 offset_top = 344.0
 offset_right = 162.0
 offset_bottom = 367.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(levelPlacement)"
@@ -246,6 +267,8 @@ offset_left = 16.0001
 offset_top = 392.0
 offset_right = 155.0
 offset_bottom = 415.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "Stok Makanan:"
@@ -256,6 +279,8 @@ offset_left = 162.0
 offset_top = 392.0
 offset_right = 267.0
 offset_bottom = 415.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(foodStock)"
@@ -267,6 +292,8 @@ offset_left = 16.0001
 offset_top = 432.0
 offset_right = 195.0
 offset_bottom = 455.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(foodStockIncrease)"
@@ -278,6 +305,8 @@ offset_left = 16.0001
 offset_top = 464.0
 offset_right = 211.0
 offset_bottom = 487.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(labelFoodStockTotalPrice)"
@@ -325,6 +354,7 @@ wait_time = 10.0
 
 [node name="TimerTransaction" type="Timer" parent="."]
 
+[connection signal="finished" from="UI/CenterContainerBackground/BackgroundRain" to="." method="_on_BackgroundRain_finished"]
 [connection signal="pressed" from="UI/ButtonStartDay" to="." method="_on_ButtonStartDay_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPricePlus" to="." method="_on_ButtonFoodPricePlus_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPriceMin" to="." method="_on_ButtonFoodPriceMin_pressed"]

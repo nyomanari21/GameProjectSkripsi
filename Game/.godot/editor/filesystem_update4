@@ -1,3 +1,4 @@
 res://default_env.tres
 res://Scenes/Game.tscn
+res://Scripts/Game.gd
 res://Scenes/MainMenu.tscn
