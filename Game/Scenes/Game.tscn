@@ -1,10 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://ybp3bxlv5ojc"]
+[gd_scene load_steps=13 format=3 uid="uid://ybp3bxlv5ojc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bs2xbou5u58sj" path="res://Assets/Images/Main menu 5 - Extended.jpg" id="2_ceudg"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="3"]
 [ext_resource type="VideoStream" path="res://Assets/Videos/Game background - Rain gloomy.ogv" id="3_nnq1c"]
+[ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="6_1sqjh"]
+[ext_resource type="AudioStream" uid="uid://ciiyle6fumpt3" path="res://Assets/Sfx/Money Spend Sfx.mp3" id="7_6c33s"]
+[ext_resource type="AudioStream" uid="uid://cct7k7ka1r4yd" path="res://Assets/Sfx/Money Register Sfx.mp3" id="8_j5hnx"]
+
+[sub_resource type="Animation" id="Animation_qot5y"]
+resource_name = "FlyIn"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelMoneyChanged:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(104, 104), Vector2(104, 74)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x05ka"]
+_data = {
+"FlyIn": SubResource("Animation_qot5y")
+}
 
 [sub_resource type="Animation" id="9"]
 resource_name = "Popup"
@@ -89,6 +113,25 @@ text = "(season)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LabelMoneyChanged" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 86.5
+offset_right = 271.0
+offset_bottom = 109.5
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 20
+text = "(moneyChanged)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayerLabelMoneyChanged" type="AnimationPlayer" parent="UI"]
+libraries = {
+"": SubResource("AnimationLibrary_x05ka")
+}
+
 [node name="PanelShopSettings" type="Panel" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
@@ -102,7 +145,7 @@ offset_right = -31580.8
 offset_bottom = -9606.4
 pivot_offset = Vector2(304, 568)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PanelShopSettings"]
+[node name="AnimationPlayerPanelShopSettings" type="AnimationPlayer" parent="UI/PanelShopSettings"]
 libraries = {
 "": SubResource("AnimationLibrary_rauv1")
 }
@@ -354,8 +397,18 @@ wait_time = 10.0
 
 [node name="TimerTransaction" type="Timer" parent="."]
 
+[node name="ButtonPopSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1sqjh")
+
+[node name="MoneySpendSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6c33s")
+
+[node name="MoneyRegisterSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_j5hnx")
+
 [connection signal="finished" from="UI/CenterContainerBackground/BackgroundRain" to="." method="_on_BackgroundRain_finished"]
 [connection signal="pressed" from="UI/ButtonStartDay" to="." method="_on_ButtonStartDay_pressed"]
+[connection signal="animation_finished" from="UI/AnimationPlayerLabelMoneyChanged" to="." method="_on_AnimationPlayerLabelMoneyChanged_animation_finished"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPricePlus" to="." method="_on_ButtonFoodPricePlus_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPriceMin" to="." method="_on_ButtonFoodPriceMin_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelProductUpgrade" to="." method="_on_buttonLevelProductUpgrade_pressed"]

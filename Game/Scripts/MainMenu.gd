@@ -8,4 +8,7 @@ func _ready():
 
 # Fungsi tombol 'ButtonPlay' untuk pindah ke scene utama permainan
 func _on_ButtonPlay_pressed():
+	$ButtonPopSfx.play()
+
+func _on_button_pop_sfx_finished():
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")

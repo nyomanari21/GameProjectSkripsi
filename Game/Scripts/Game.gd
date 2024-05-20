@@ -15,7 +15,8 @@ var seasonCycle = 2 # Variabel penyimpan siklus musim
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$UI/PanelShopSettings/AnimationPlayer.play("Popup")
+	$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play("Popup")
+	$UI/LabelMoneyChanged.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -50,6 +51,7 @@ func _setNewlevelUpgradePrice(level, price):
 
 # Fungsi tombol 'ButtonStartDay' ketika di klik akan memulai timer 'TimerStartDay' dan 'TimerTransaction'
 func _on_ButtonStartDay_pressed():
+	$ButtonPopSfx.play()
 	# Jika tombol di klik, jalankan timer 'TimerStartDay' dan 'TimerTransaction'
 	# lalu nonaktifkan tombol 'ButtonStartDay' dan 'ButtonShopSettings'
 	if timerStartDayStart == false and timerTransactionStart == false:
@@ -60,7 +62,7 @@ func _on_ButtonStartDay_pressed():
 		$UI/ButtonStartDay.disabled = true
 		
 		# Tutup panel 'PanelShopSettings'
-		$UI/PanelShopSettings/AnimationPlayer.play_backwards("Popup")
+		$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play_backwards("Popup")
 			
 		# Proses pengaturan frekuensi terjadinya transaksi
 		timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.1 * shop.getLevelPromotion()) - (0.1 * shop.getLevelPlacement())
@@ -82,7 +84,7 @@ func _on_TimerStartDay_timeout():
 		$TimerStartDay.stop()
 		$TimerTransaction.stop()
 		$UI/ButtonStartDay.disabled = false
-		$UI/PanelShopSettings/AnimationPlayer.play("Popup")
+		$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play("Popup")
 		
 		# Update siklus musim
 		seasonCycle -= 1
@@ -107,8 +109,15 @@ func _on_TimerTransaction_timeout():
 	# Ketika timer selesai, akan menambahkan uang pemain jika stok makanan masih tersedia
 	# dan mengurangi stok makanan
 	if shop.getFoodStock() > 0:
+		$MoneyRegisterSfx.play()
 		shop.setMoney(shop.getMoney() + shop.getFoodPrice())
 		shop.setFoodStock(shop.getFoodStock() - 1)
+		
+		# Munculkan animasi jumlah uang yang bertambah
+		$UI/LabelMoneyChanged.text = "+" + str(shop.getFoodPrice())
+		$UI/LabelMoneyChanged.add_theme_color_override("font_color", Color(0, 1, 0, 1.0))
+		$UI/LabelMoneyChanged.visible = true
+		$UI/AnimationPlayerLabelMoneyChanged.play("FlyIn")
 
 # Fungsi loop video 'BackgroundRain'
 func _on_BackgroundRain_finished():
@@ -116,11 +125,13 @@ func _on_BackgroundRain_finished():
 
 # Fungsi penaik harga makanan
 func _on_ButtonFoodPricePlus_pressed():
+	$ButtonPopSfx.play()
 	# Jika tombol di klik, naikkan harga makanan sebesar 500
 	shop.setFoodPrice(shop.getFoodPrice() + 50)
 
 # Fungsi penurun harga makanan
 func _on_ButtonFoodPriceMin_pressed():
+	$ButtonPopSfx.play()
 	# Jika tombol di klik dan harga makanan tidak 0, naikkan harga makanan sebesar 500
 	# (harga makanan tidak akan bernilai negatif)
 	if shop.getFoodPrice() != 0:
@@ -161,6 +172,7 @@ func _on_buttonLevelPlacementUpgrade_pressed():
 
 # Fungsi penaik jumlah stok makanan yang ingin ditambah
 func _on_buttonFoodStockPlus_pressed():
+	$ButtonPopSfx.play()
 	# Jika tombol di klik, naikkan penambah stok makanan sebesar 1
 	# dan update total harga pembelian stok makanan
 	foodStockIncrease += 1
@@ -168,6 +180,7 @@ func _on_buttonFoodStockPlus_pressed():
 
 # Fungsi penurun jumlah stok makanan yang ingin ditambah
 func _on_buttonFoodStockMinus_pressed():
+	$ButtonPopSfx.play()
 	# Jika tombol di klik dan penambah stok makanan tidak 0, naikkan penambah stok makanan sebesar 1
 	# (penambah stok makanan tidak akan bernilai negatif) dan update total harga pembelian stok makanan
 	if foodStockIncrease != 0:
@@ -182,6 +195,7 @@ func _on_buttonFoodStockMinus_pressed():
 
 # Fungsi membeli stok makanan
 func _on_buttonFoodStockPurchase_pressed():
+	$MoneySpendSfx.play()
 	# Jika penambah stok makanan tidak 0, tambah stok makanan, kurangi uang pemain
 	# lalu reset penambah stok makanan dan total harga pembelian stok makanan menjadi 0
 	if foodStockIncrease != 0 && shop.getMoney() >= foodStockTotalPrice:
@@ -189,3 +203,14 @@ func _on_buttonFoodStockPurchase_pressed():
 		shop.setMoney(shop.getMoney() - foodStockTotalPrice)
 		foodStockIncrease = 0
 		foodStockTotalPrice = 0
+		
+		# Munculkan animasi jumlah uang yang dikeluarkan
+		$UI/LabelMoneyChanged.text = "-" + str(foodStockTotalPrice)
+		$UI/LabelMoneyChanged.add_theme_color_override("font_color", Color(1, 0, 0, 1.0))
+		$UI/LabelMoneyChanged.visible = true
+		$UI/AnimationPlayerLabelMoneyChanged.play("FlyIn")
+
+# Fungsi pengatur animasi pada label "LabelMoneyChanged"
+func _on_AnimationPlayerLabelMoneyChanged_animation_finished(anim_name):
+	$UI/LabelMoneyChanged.visible = false
+	$UI/AnimationPlayerLabelMoneyChanged.stop()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bigugoydvgcgo"]
+[gd_scene load_steps=5 format=3 uid="uid://bigugoydvgcgo"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bs2xbou5u58sj" path="res://Assets/Images/Main menu 5 - Extended.jpg" id="2_hmr75"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="2_jyi43"]
+[ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="4_riocw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -60,4 +61,8 @@ theme_override_fonts/font = ExtResource("2_jyi43")
 theme_override_font_sizes/font_size = 20
 text = "Mulai"
 
+[node name="ButtonPopSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_riocw")
+
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
+[connection signal="finished" from="ButtonPopSfx" to="." method="_on_button_pop_sfx_finished"]

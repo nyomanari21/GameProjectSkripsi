@@ -1,6 +1,7 @@
-VideoStreamPlayer
+Label
 AnimationPlayer
+AudioStreamPlayer
+VideoStreamPlayer
 Sprite2D
 CenterContainer
-Label
 Button
