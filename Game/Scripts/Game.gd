@@ -12,6 +12,8 @@ var foodStockIncrease = 0 # Variabel penyimpan jumlah penambahan stok makanan
 var foodStockTotalPrice = 0 # Variabel penyimpan total harga stok makanan
 var season = "Kemarau" # Variabel penyimpan musim dalam permainan (kemarau dan penghujan)
 var seasonCycle = 2 # Variabel penyimpan siklus musim
+var dailyFee = 0 # Variabel penyimpan biaya harian untuk memulai berjualan
+var placeChanged = true # Variabel penanda perubahan tempat berjualan
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,15 +26,44 @@ func _process(delta):
 	$UI/LabelMoney.text = "Rp" + str(shop.getMoney()) # Menampilkan uang yang dimiliki pemain saat ini
 	$UI/PanelShopSettings/LabelFoodPrice.text = "Rp" + str(shop.getFoodPrice()) # Menampilkan harga makanan saat ini
 	$UI/PanelShopSettings/LabelLevelProduct.text = "Level " + str(shop.getLevelProduct()) # Menampilkan level kualitas makanan
-	$UI/PanelShopSettings/LabelLevelPromotion.text = "Level " + str(shop.getLevelPromotion()) # Menampilkan level promosi
-	$UI/PanelShopSettings/LabelLevelPlacement.text = "Level " + str(shop.getLevelPlacement()) # Menampilkan level distribusi
+	$UI/PanelShopSettings/LabelPromotionBudget.text = "Rp" + str(shop.getPromotionBudget()) # Menampilkan biaya promosi
 	$UI/PanelShopSettings/LabelFoodStock.text = str(shop.getFoodStock()) # Menampilkan stok makanan
-	$UI/PanelShopSettings/LabelFoodStockIncrease.text = "Tambah " + str(foodStockIncrease) # Menampilkan 
-	$UI/PanelShopSettings/LabelFoodStockTotalPrice.text = "Rp" + str(foodStockTotalPrice)
+	$UI/PanelShopSettings/LabelFoodStockIncrease.text = "Tambah " + str(foodStockIncrease) # Menampilkan jumlah stok makanan yang ingin ditambah
+	$UI/PanelShopSettings/LabelFoodStockTotalPrice.text = "Rp" + str(foodStockTotalPrice) # Menampilkan biaya untuk membeli stok makanan
+	$UI/PanelShopSettings/LabelDailyFee.text = "Rp" + str(dailyFee) # Menampilkan biaya harian untuk memulai berjualan
+	$UI/PanelShopSettings/LabelLevelProductUpgradePrice.text = "Rp" + str(shop.getLevelProductUpgradePrice())
 	
-	# Nonaktifkan tombol 'ButtonStartDay' jika stok makanan masih kosong atau harga makanan masih 0
-	# atau hari sudah mulai
-	if shop.getFoodStock() == 0 || shop.getFoodPrice() == 0 || timerStartDayStart == true:
+	# Proses penentuan tempat berjualan
+	if placeChanged == true:
+		# Lalu tandai bahwa tempat telah diganti
+		placeChanged = false
+		if shop.getPlace() == 1:
+			$UI/PanelShopSettings/LabelPlace.text = "Taman" # Menampilkan tempat berjualan
+			$UI/CenterContainerBackground/TextureRectBackground.texture = ResourceLoader.load("res://Assets/Images/Coffee stall - Park.png")
+			$UI/CenterContainerBackground/BackgroundRain.stream = ResourceLoader.load("res://Assets/Videos/Coffee stall - Park rain.ogv")
+		elif shop.getPlace() == 2:
+			$UI/PanelShopSettings/LabelPlace.text = "Kampus" # Menampilkan tempat berjualan
+			$UI/CenterContainerBackground/TextureRectBackground.texture = ResourceLoader.load("res://Assets/Images/Coffee stall - Campus.png")
+			$UI/CenterContainerBackground/BackgroundRain.stream = ResourceLoader.load("res://Assets/Videos/Coffee stall - Campus rain.ogv")
+		elif shop.getPlace() == 3:
+			$UI/PanelShopSettings/LabelPlace.text = "Pusat Kota" # Menampilkan tempat berjualan
+			$UI/CenterContainerBackground/TextureRectBackground.texture = ResourceLoader.load("res://Assets/Images/Coffee stall - Downtown.png")
+			$UI/CenterContainerBackground/BackgroundRain.stream = ResourceLoader.load("res://Assets/Videos/Coffee stall - Downtown rain.ogv")
+			
+		# Cek apakah musim kemarau atau penghujan untuk penentuan background
+		if season == "Kemarau":
+			$UI/CenterContainerBackground/TextureRectBackground.visible = true
+			$UI/CenterContainerBackground/BackgroundRain.stop()
+		else:
+			$UI/CenterContainerBackground/TextureRectBackground.visible = false
+			$UI/CenterContainerBackground/BackgroundRain.play()
+	
+	# Proses menghitung biaya harian
+	dailyFee = shop.getPromotionBudget() + ((shop.getPlace() - 1) * 2000)
+	
+	# Nonaktifkan tombol 'ButtonStartDay' jika stok makanan masih kosong, harga makanan masih 0,
+	# uang pemain tidak mencukupi biaya harian, atau hari sudah mulai
+	if shop.getFoodStock() == 0 || shop.getFoodPrice() == 0 || shop.getMoney() < dailyFee || timerStartDayStart == true:
 		$UI/ButtonStartDay.disabled = true
 	else:
 		$UI/ButtonStartDay.disabled = false
@@ -65,11 +96,11 @@ func _on_ButtonStartDay_pressed():
 		$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play_backwards("Popup")
 			
 		# Proses pengaturan frekuensi terjadinya transaksi
-		timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.1 * shop.getLevelPromotion()) - (0.1 * shop.getLevelPlacement())
+		timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.2 * shop.getPlace()) - ((shop.getPromotionBudget() / 1000) * 0.1)
 		timerTransactionNewTime = timerTransactionNewTime + (((shop.getFoodPrice() - shop.getFoodStockPrice()) / 50) * 0.1)
 		
-		# Jika memasuki musim kemarau, frekuensi terjadinya transaksi dikali 0.8 (dipercepat 20%)
-		if season == "Kemarau":
+		# Jika memasuki musim penghujan, frekuensi terjadinya transaksi dikali 0.8 (dipercepat 20%)
+		if season == "Penghujan":
 			$TimerTransaction.wait_time = timerTransactionNewTime * 0.8 # Atur frekuensi transaksi yang terjadi
 		else:
 			$TimerTransaction.wait_time = timerTransactionNewTime # Atur frekuensi transaksi yang terjadi
@@ -85,7 +116,7 @@ func _on_TimerStartDay_timeout():
 		$TimerTransaction.stop()
 		$UI/ButtonStartDay.disabled = false
 		$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play("Popup")
-		
+
 		# Update siklus musim
 		seasonCycle -= 1
 		
@@ -95,12 +126,12 @@ func _on_TimerStartDay_timeout():
 			if season == "Kemarau":
 				# Ganti ke musim hujan, lalu ganti background
 				season = "Penghujan"
-				$UI/CenterContainerBackground/BackgroundBase.visible = false
+				$UI/CenterContainerBackground/TextureRectBackground.visible = false
 				$UI/CenterContainerBackground/BackgroundRain.play()
 			else:
 				# Ganti ke musim kemarau, lalu ganti background
 				season = "Kemarau"
-				$UI/CenterContainerBackground/BackgroundBase.visible = true
+				$UI/CenterContainerBackground/TextureRectBackground.visible = true
 				$UI/CenterContainerBackground/BackgroundRain.stop()
 
 # Fungsi timer timeout 'TimerTransaction' untuk mengatur frekuensi banyaknya transaksi yang terjadi
@@ -126,13 +157,13 @@ func _on_BackgroundRain_finished():
 # Fungsi penaik harga makanan
 func _on_ButtonFoodPricePlus_pressed():
 	$ButtonPopSfx.play()
-	# Jika tombol di klik, naikkan harga makanan sebesar 500
+	# Jika tombol di klik, naikkan harga makanan sebesar 50
 	shop.setFoodPrice(shop.getFoodPrice() + 50)
 
 # Fungsi penurun harga makanan
 func _on_ButtonFoodPriceMin_pressed():
 	$ButtonPopSfx.play()
-	# Jika tombol di klik dan harga makanan tidak 0, naikkan harga makanan sebesar 500
+	# Jika tombol di klik dan harga makanan tidak 0, naikkan harga makanan sebesar 50
 	# (harga makanan tidak akan bernilai negatif)
 	if shop.getFoodPrice() != 0:
 		shop.setFoodPrice(shop.getFoodPrice() - 50)
@@ -148,27 +179,35 @@ func _on_buttonLevelProductUpgrade_pressed():
 		shop.setLevelProduct(shop.getLevelProduct() + 1)
 		_setNewlevelUpgradePrice(shop.getLevelProduct(), shop.getLevelProductUpgradePrice())
 
-# Fungsi meningkatkan level promosi
-func _on_buttonLevelPromotionUpgrade_pressed():
-	# Jika tombol di klik dan uang pemain mencukupi
-	if shop.getMoney() >= shop.getLevelPromotionUpgradePrice():
-		# Kurangi uang pemain
-		shop.setMoney(shop.getMoney() - shop.getLevelPromotionUpgradePrice())
-		
-		# naikkan level promosi sebesar 1
-		shop.setLevelPromotion(shop.getLevelPromotion() + 1)
-		_setNewlevelUpgradePrice(shop.getLevelPromotion(), shop.getLevelPromotionUpgradePrice())
+# Fungsi meningkatkan anggaran promosi
+func _on_buttonPromotionBudgetPlus_pressed():
+	$ButtonPopSfx.play()
+	# Jika tombol di klik dan anggaran promosi tidak lebih dari 10000, naikkan anggaran promosi sebesar 1000
+	if shop.getPromotionBudget() < 10000:
+		shop.setPromotionBudget(shop.getPromotionBudget() + 1000)
 
-# Fungsi meningkatkan level distribusi
-func _on_buttonLevelPlacementUpgrade_pressed():
-	# Jika tombol di klik dan uang pemain mencukupi
-	if shop.getMoney() >= shop.getLevelPlacementUpgradePrice():
-		# Kurangi uang pemain
-		shop.setMoney(shop.getMoney() - shop.getLevelPlacementUpgradePrice())
-		
-		# naikkan level promosi sebesar 1
-		shop.setLevelPlacement(shop.getLevelPlacement() + 1)
-		_setNewlevelUpgradePrice(shop.getLevelPlacement(), shop.getLevelPlacementUpgradePrice())
+# Fungsi menurunkan anggaran promosi
+func _on_buttonPromotionBudgetMin_pressed():
+	$ButtonPopSfx.play()
+	# Jika tombol di klik dan anggaran promosi tidak 0, turunkan anggaran promosi sebesar 1000
+	# (anggaran promosi tidak akan bernilai negatif)
+	if shop.getPromotionBudget() > 0:
+		shop.setPromotionBudget(shop.getPromotionBudget() - 1000)
+
+# Fungsi mengganti tempat berjualan
+func _on_buttonPlaceNext_pressed():
+	$ButtonPopSfx.play()
+	# Jika tombol di klik, ganti tempat berjualan
+	if shop.getPlace() < 3:
+		shop.setPlace(shop.getPlace() + 1)
+		placeChanged = true # Tandai bahwa tempat diganti oleh pemain
+
+func _on_buttonPlacePrev_pressed():
+	$ButtonPopSfx.play()
+	# Jika tombol di klik, ganti tempat berjualan
+	if shop.getPlace() > 1:
+		shop.setPlace(shop.getPlace() - 1)
+		placeChanged = true # Tandai bahwa tempat diganti oleh pemain
 
 # Fungsi penaik jumlah stok makanan yang ingin ditambah
 func _on_buttonFoodStockPlus_pressed():

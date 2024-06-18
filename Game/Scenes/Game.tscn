@@ -1,13 +1,35 @@
-[gd_scene load_steps=13 format=3 uid="uid://ybp3bxlv5ojc"]
+[gd_scene load_steps=16 format=3 uid="uid://ybp3bxlv5ojc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://bs2xbou5u58sj" path="res://Assets/Images/Main menu 5 - Extended.jpg" id="2_ceudg"]
+[ext_resource type="Texture2D" uid="uid://dlr5y5swqkv10" path="res://Assets/Images/Coffee stall - Park.png" id="2_jm70i"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="3"]
 [ext_resource type="VideoStream" path="res://Assets/Videos/Game background - Rain gloomy.ogv" id="3_nnq1c"]
+[ext_resource type="Texture2D" uid="uid://bftlmbhrsy5k0" path="res://Assets/Images/Sun cartoon.png" id="4_p6yxg"]
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="6_1sqjh"]
 [ext_resource type="AudioStream" uid="uid://ciiyle6fumpt3" path="res://Assets/Sfx/Money Spend Sfx.mp3" id="7_6c33s"]
 [ext_resource type="AudioStream" uid="uid://cct7k7ka1r4yd" path="res://Assets/Sfx/Money Register Sfx.mp3" id="8_j5hnx"]
+
+[sub_resource type="Animation" id="Animation_f8f8t"]
+resource_name = "SunMovement"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SunImage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 5, 10),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Vector2(113, 216), Vector2(113, 216), Vector2(1048, 408)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsvo6"]
+_data = {
+"SunMovement": SubResource("Animation_f8f8t")
+}
 
 [sub_resource type="Animation" id="Animation_qot5y"]
 resource_name = "FlyIn"
@@ -70,13 +92,31 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackgroundBase" type="Sprite2D" parent="UI/CenterContainerBackground"]
-texture = ExtResource("2_ceudg")
-centered = false
+[node name="TextureRectBackground" type="TextureRect" parent="UI/CenterContainerBackground"]
+layout_mode = 2
+texture = ExtResource("2_jm70i")
 
 [node name="BackgroundRain" type="VideoStreamPlayer" parent="UI/CenterContainerBackground"]
 layout_mode = 2
 stream = ExtResource("3_nnq1c")
+
+[node name="ContainerSunImage" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SunImage" type="Sprite2D" parent="UI/ContainerSunImage"]
+position = Vector2(113, 216)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_p6yxg")
+
+[node name="AnimationPlayerSunImage" type="AnimationPlayer" parent="UI/ContainerSunImage"]
+libraries = {
+"": SubResource("AnimationLibrary_xsvo6")
+}
 
 [node name="ButtonStartDay" type="Button" parent="UI"]
 layout_mode = 0
@@ -116,9 +156,9 @@ vertical_alignment = 1
 [node name="LabelMoneyChanged" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 104.0
-offset_top = 86.5
+offset_top = 104.0
 offset_right = 271.0
-offset_bottom = 109.5
+offset_bottom = 127.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
@@ -140,7 +180,7 @@ anchor_top = 1.6
 anchor_right = 28.4
 anchor_bottom = 15.8
 offset_left = -23129.6
-offset_top = -972.8
+offset_top = -1020.8
 offset_right = -31580.8
 offset_bottom = -9606.4
 pivot_offset = Vector2(304, 568)
@@ -152,15 +192,15 @@ libraries = {
 
 [node name="LabelFoodPriceTitle" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 40.0
+offset_left = 16.0
+offset_top = 48.0
 offset_right = 170.0
-offset_bottom = 63.0
+offset_bottom = 71.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Harga Makanan"
+text = "Harga Minuman"
 vertical_alignment = 1
 
 [node name="LabelFoodPrice" type="Label" parent="UI/PanelShopSettings"]
@@ -198,23 +238,23 @@ text = "-"
 
 [node name="LabelLevelProductTitle" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 128.0
+offset_left = 16.0
+offset_top = 120.0
 offset_right = 189.0
-offset_bottom = 151.0
+offset_bottom = 143.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Kualitas Makanan"
+text = "Kualitas Minuman"
 vertical_alignment = 1
 
 [node name="LabelLevelProduct" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 168.0
+offset_top = 152.0
 offset_right = 144.0
-offset_bottom = 191.0
+offset_bottom = 175.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
@@ -222,106 +262,140 @@ theme_override_font_sizes/font_size = 18
 text = "(levelProduct)"
 vertical_alignment = 1
 
-[node name="ButtonLevelProductUpgrade" type="Button" parent="UI/PanelShopSettings"]
+[node name="LabelLevelProductUpgradePrice" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 136.0
-offset_top = 168.0
-offset_right = 230.0
-offset_bottom = 193.0
+offset_top = 152.0
+offset_right = 304.0
+offset_bottom = 175.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 18
+text = "(levelProdUpPrice)"
+vertical_alignment = 1
+
+[node name="ButtonLevelProductUpgrade" type="Button" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 184.0
+offset_right = 110.0
+offset_bottom = 209.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "Tingkatkan"
 
-[node name="LabelLevelPromotionTitle" type="Label" parent="UI/PanelShopSettings"]
+[node name="LabelPromotionBudgetTitle" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 216.0
-offset_right = 95.0001
-offset_bottom = 239.0
+offset_left = 16.0
+offset_top = 224.0
+offset_right = 198.0
+offset_bottom = 247.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Promosi"
+text = "Anggaran Promosi"
 vertical_alignment = 1
 
-[node name="LabelLevelPromotion" type="Label" parent="UI/PanelShopSettings"]
+[node name="LabelPromotionBudget" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 16.0001
 offset_top = 256.0
-offset_right = 162.0
+offset_right = 185.0
 offset_bottom = 279.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
-text = "(levelPromotion)"
+text = "(promotionBudget)"
 vertical_alignment = 1
 
-[node name="ButtonLevelPromotionUpgrade" type="Button" parent="UI/PanelShopSettings"]
+[node name="ButtonPromotionBudgetPlus" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 136.0
+offset_left = 170.0
 offset_top = 256.0
-offset_right = 230.0
+offset_right = 194.0
 offset_bottom = 281.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
-text = "Tingkatkan"
+text = "+"
 
-[node name="LabelLevelPlacementTitle" type="Label" parent="UI/PanelShopSettings"]
+[node name="ButtonPromotionBudgetMin" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 304.0
-offset_right = 107.0
-offset_bottom = 327.0
+offset_left = 136.0
+offset_top = 256.0
+offset_right = 160.0
+offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+text = "-"
+
+[node name="LabelPlaceTitle" type="Label" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 296.0
+offset_right = 96.0
+offset_bottom = 319.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Distribusi"
+text = "Tempat:"
 vertical_alignment = 1
 
-[node name="LabelLevelPlacement" type="Label" parent="UI/PanelShopSettings"]
+[node name="LabelPlace" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 344.0
-offset_right = 162.0
-offset_bottom = 367.0
+offset_left = 96.0
+offset_top = 296.0
+offset_right = 160.0
+offset_bottom = 319.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
-text = "(levelPlacement)"
+text = "(Place)"
 vertical_alignment = 1
 
-[node name="ButtonLevelPlacementUpgrade" type="Button" parent="UI/PanelShopSettings"]
+[node name="ButtonPlaceNext" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 344.0
-offset_right = 230.0
-offset_bottom = 369.0
+offset_left = 48.0
+offset_top = 328.0
+offset_right = 72.0
+offset_bottom = 359.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
-text = "Tingkatkan"
+text = ">"
+
+[node name="ButtonPlacePrev" type="Button" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 328.0
+offset_right = 40.0
+offset_bottom = 359.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+text = "<"
 
 [node name="LabelFoodStockTitle" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 392.0
-offset_right = 155.0
-offset_bottom = 415.0
+offset_left = 16.0
+offset_top = 376.0
+offset_right = 158.0
+offset_bottom = 399.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "Stok Makanan:"
+vertical_alignment = 1
 
 [node name="LabelFoodStock" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 162.0
-offset_top = 392.0
+offset_top = 376.0
 offset_right = 267.0
-offset_bottom = 415.0
+offset_bottom = 399.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
@@ -331,10 +405,10 @@ vertical_alignment = 1
 
 [node name="LabelFoodStockIncrease" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 432.0
+offset_left = 16.0
+offset_top = 408.0
 offset_right = 195.0
-offset_bottom = 455.0
+offset_bottom = 431.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
@@ -344,22 +418,23 @@ vertical_alignment = 1
 
 [node name="LabelFoodStockTotalPrice" type="Label" parent="UI/PanelShopSettings"]
 layout_mode = 0
-offset_left = 16.0001
-offset_top = 464.0
-offset_right = 211.0
-offset_bottom = 487.0
+offset_left = 16.0
+offset_top = 440.0
+offset_right = 254.0
+offset_bottom = 463.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 18
 text = "(labelFoodStockTotalPrice)"
+vertical_alignment = 1
 
 [node name="ButtonFoodStockPlus" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 168.0
-offset_top = 432.0
+offset_top = 408.0
 offset_right = 192.0
-offset_bottom = 457.0
+offset_bottom = 433.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "+"
@@ -367,9 +442,9 @@ text = "+"
 [node name="ButtonFoodStockMinus" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 136.0
-offset_top = 432.0
+offset_top = 408.0
 offset_right = 160.0
-offset_bottom = 457.0
+offset_bottom = 433.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "-"
@@ -377,12 +452,38 @@ text = "-"
 [node name="ButtonFoodStockPurchase" type="Button" parent="UI/PanelShopSettings"]
 layout_mode = 0
 offset_left = 200.0
-offset_top = 432.0
+offset_top = 408.0
 offset_right = 240.0
-offset_bottom = 457.0
+offset_bottom = 433.0
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "Beli"
+
+[node name="LabelDailyFeeTitle" type="Label" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 480.0
+offset_right = 141.0
+offset_bottom = 503.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 20
+text = "Biaya Harian"
+vertical_alignment = 1
+
+[node name="LabelDailyFee" type="Label" parent="UI/PanelShopSettings"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 512.0
+offset_right = 104.0
+offset_bottom = 535.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 18
+text = "(dailyFee)"
+vertical_alignment = 1
 
 [node name="Shop" type="Control" parent="."]
 anchors_preset = 0
@@ -412,8 +513,10 @@ stream = ExtResource("8_j5hnx")
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPricePlus" to="." method="_on_ButtonFoodPricePlus_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPriceMin" to="." method="_on_ButtonFoodPriceMin_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelProductUpgrade" to="." method="_on_buttonLevelProductUpgrade_pressed"]
-[connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelPromotionUpgrade" to="." method="_on_buttonLevelPromotionUpgrade_pressed"]
-[connection signal="pressed" from="UI/PanelShopSettings/ButtonLevelPlacementUpgrade" to="." method="_on_buttonLevelPlacementUpgrade_pressed"]
+[connection signal="pressed" from="UI/PanelShopSettings/ButtonPromotionBudgetPlus" to="." method="_on_buttonPromotionBudgetPlus_pressed"]
+[connection signal="pressed" from="UI/PanelShopSettings/ButtonPromotionBudgetMin" to="." method="_on_buttonPromotionBudgetMin_pressed"]
+[connection signal="pressed" from="UI/PanelShopSettings/ButtonPlaceNext" to="." method="_on_buttonPlaceNext_pressed"]
+[connection signal="pressed" from="UI/PanelShopSettings/ButtonPlacePrev" to="." method="_on_buttonPlacePrev_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodStockPlus" to="." method="_on_buttonFoodStockPlus_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodStockMinus" to="." method="_on_buttonFoodStockMinus_pressed"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodStockPurchase" to="." method="_on_buttonFoodStockPurchase_pressed"]

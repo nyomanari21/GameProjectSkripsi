@@ -1,7 +1,11 @@
 Label
+TextureRect
 AnimationPlayer
+Sprite2D
+Control
+AnimatedSprite2D
+Container
+Button
 AudioStreamPlayer
 VideoStreamPlayer
-Sprite2D
 CenterContainer
-Button

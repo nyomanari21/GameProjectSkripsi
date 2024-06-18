@@ -1,21 +1,25 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1716190507
-default_env.tres::Environment::381538730291340146::1716190507::0::1::::<><>::
+::res://::1718681368
+default_env.tres::Environment::381538730291340146::1718351026::0::1::::<><>::
 icon.png::CompressedTexture2D::5774800867811522115::1710918837::1710994068::1::::<><>::
 ::res://Assets/::1716189443
 GROBOLD.ttf::FontFile::599649459974255064::1710918837::1710994068::1::::<><>::
-::res://Assets/Images/::1714985844
+::res://Assets/Images/::1718350914
+Coffee stall - Campus.png::CompressedTexture2D::4496677180390831803::1718350217::1718350369::1::::<><>::
+Coffee stall - Downtown.png::CompressedTexture2D::7471678959819799305::1718350893::1718350914::1::::<><>::
+Coffee stall - Park.png::CompressedTexture2D::7968299726281749745::1718347662::1718350369::1::::<><>::
 Main menu 5 - Extended.jpg::CompressedTexture2D::3706957112778829153::1714985703::1714985732::1::::<><>::
-::res://Assets/Sfx/::1716191341
+Sun cartoon.png::CompressedTexture2D::2777277459792104229::1718091425::1718091777::1::::<><>::
+::res://Assets/Sfx/::1716191343
 Money Register Sfx.mp3::AudioStreamMP3::4954404729927674447::1716191312::1716191343::1::::<><>::
 Money Spend Sfx.mp3::AudioStreamMP3::5352344248319019358::1716191250::1716191343::1::::<><>::
 Pop Sfx.mp3::AudioStreamMP3::5759882131090317424::1716190457::1716190496::1::::<><>::
 ::res://Assets/Videos/::1715604489
 Game background - Rain gloomy.ogv::VideoStreamTheora::-1::1715604422::0::1::::<><>::
-::res://Scenes/::1716190507
-Game.tscn::PackedScene::1687557470770571084::1716190507::0::1::::<><>::res://Scripts/Game.gd<>res://Scripts/Shop.gd<>uid://bs2xbou5u58sj::::res://Assets/Images/Main menu 5 - Extended.jpg<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>res://Assets/Videos/Game background - Rain gloomy.ogv
-MainMenu.tscn::PackedScene::2961543526507293122::1716190507::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://bs2xbou5u58sj::::res://Assets/Images/Main menu 5 - Extended.jpg<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3
-::res://Scripts/::1716190034
-Game.gd::GDScript::-1::1715604502::0::1::::<>Control<>::
+::res://Scenes/::1718351026
+Game.tscn::PackedScene::1687557470770571084::1718351026::0::1::::<><>::res://Scripts/Game.gd<>res://Scripts/Shop.gd<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>res://Assets/Videos/Game background - Rain gloomy.ogv<>uid://bftlmbhrsy5k0::::res://Assets/Images/Sun cartoon.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://ciiyle6fumpt3::::res://Assets/Sfx/Money Spend Sfx.mp3<>uid://cct7k7ka1r4yd::::res://Assets/Sfx/Money Register Sfx.mp3
+MainMenu.tscn::PackedScene::2961543526507293122::1718351025::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://bs2xbou5u58sj::::res://Assets/Images/Main menu 5 - Extended.jpg<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3
+::res://Scripts/::1718350764
+Game.gd::GDScript::-1::1718350764::0::1::::<>Control<>::
 MainMenu.gd::GDScript::-1::1716190034::0::1::::<>Control<>::
-Shop.gd::GDScript::-1::1713768912::0::1::::<>Control<>::
+Shop.gd::GDScript::-1::1717503638::0::1::::<>Control<>::

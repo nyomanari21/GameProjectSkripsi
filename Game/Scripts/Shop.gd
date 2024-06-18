@@ -8,11 +8,9 @@ var foodPrice:int = 0: get = getFoodPrice, set = setFoodPrice # Variabel penyimp
 var levelProduct:int = 1: get = getLevelProduct, set = setLevelProduct # Variabel penyimpan level kualitas produk makanan
 var levelProductUpgradePrice:int = 1000: get = getLevelProductUpgradePrice, set = setLevelProductUpgradePrice # Variabel penyimpan biaya peningkatan level kualitas produk makanan
 
-var levelPromotion:int = 1: get = getLevelPromotion, set = setLevelPromotion # Variabel penyimpan level promosi
-var levelPromotionUpgradePrice:int = 1000: get = getLevelPromotionUpgradePrice, set = setLevelPromotionUpgradePrice # Variabel penyimpan biaya peningkatan level promosi
+var promotionBudget:int = 0: get = getPromotionBudget, set = setPromotionBudget # Variabel penyimpan anggaran promosi
 
-var levelPlacement:int = 1: get = getLevelPlacement, set = setLevelPlacement # Variabel penyimpan level distribusi
-var levelPlacementUpgradePrice:int = 1000: get = getLevelPlacementUpgradePrice, set = setLevelPlacementUpgradePrice # Variabel penyimpan biaya peningkatan level distribusi
+var place:int = 1: get = getPlace, set = setPlace # Variabel penyimpan tempat berjualan
 
 var foodStock:int = 0: get = getFoodStock, set = setFoodStock # Variabel penyimpan stok makanan
 var foodStockPrice:int = 200: get = getFoodStockPrice, set = setFoodStockPrice # Variabel penyimpan modal stok makanan
@@ -46,33 +44,19 @@ func setLevelProductUpgradePrice(newLevelProductUpgradePrice):
 func getLevelProductUpgradePrice():
 	return levelProductUpgradePrice
 
-# Setter dan Getter level promosi
-func setLevelPromotion(newLevelPromotion):
-	levelPromotion = newLevelPromotion
+# Setter dan Getter anggaran promosi
+func setPromotionBudget(newPromotionBudget):
+	promotionBudget = newPromotionBudget
 
-func getLevelPromotion():
-	return levelPromotion
+func getPromotionBudget():
+	return promotionBudget
 
-# Setter dan Getter biaya peningkatan level promosi
-func setLevelPromotionUpgradePrice(newLevelPromotionUpgradePrice):
-	levelPromotionUpgradePrice = newLevelPromotionUpgradePrice
+# Setter dan Getter tempat berjualan
+func setPlace(newPlace):
+	place = newPlace
 
-func getLevelPromotionUpgradePrice():
-	return levelPromotionUpgradePrice
-
-# Setter dan Getter level distribusi
-func setLevelPlacement(newLevelPlacement):
-	levelPlacement = newLevelPlacement
-
-func getLevelPlacement():
-	return levelPlacement
-
-# Setter dan Getter biaya peningkatan level distribusi
-func setLevelPlacementUpgradePrice(newLevelPlacementUpgradePrice):
-	levelPlacementUpgradePrice = newLevelPlacementUpgradePrice
-
-func getLevelPlacementUpgradePrice():
-	return levelPlacementUpgradePrice
+func getPlace():
+	return place
 
 # Setter dan Getter stok makanan
 func setFoodStock(newFoodStock):
