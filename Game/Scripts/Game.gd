@@ -7,13 +7,16 @@ var timerStartDayStart = false # Variabel penyimpan status 'TimerStartDay'
 var timerTransactionStart = false # Variabel penyimpan status 'TimerTransaction'
 var timerTransactionBaseTime = 2 # Variabel penyimpan frekuensi dasar transaksi
 var timerTransactionNewTime = 0 # Variabel penyimpan frekuensi baru transaksi
-var panelShopSettingsOpened = true # Variabel penyimpan status 'PanelShopSettings'
+var panelShopSettingsOpened = true # Variabel penyimpan status 'PanelShopSettings' (opened/closed)
 var foodStockIncrease = 0 # Variabel penyimpan jumlah penambahan stok makanan
 var foodStockTotalPrice = 0 # Variabel penyimpan total harga stok makanan
 var season = "Kemarau" # Variabel penyimpan musim dalam permainan (kemarau dan penghujan)
-var seasonCycle = 2 # Variabel penyimpan siklus musim
+var seasonCycle = 1 # Variabel penyimpan siklus musim
 var dailyFee = 0 # Variabel penyimpan biaya harian untuk memulai berjualan
 var placeChanged = true # Variabel penanda perubahan tempat berjualan
+var panelPauseMenuOpened = false # Variabel penyimpan status 'PanelPauseMenu' (opened/closed)
+var globalAnimationRunning = false # Variabel penyimpan status fungsi '_globalAnimationControl' (running/not running)
+var gameOver = false # Variabel penyimpan status game over
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,7 +50,7 @@ func _process(delta):
 			$UI/CenterContainerBackground/BackgroundRain.stream = ResourceLoader.load("res://Assets/Videos/Coffee stall - Campus rain.ogv")
 		elif shop.getPlace() == 3:
 			$UI/PanelShopSettings/LabelPlace.text = "Pusat Kota" # Menampilkan tempat berjualan
-			$UI/CenterContainerBackground/TextureRectBackground.texture = ResourceLoader.load("res://Assets/Images/Coffee stall - Downtown.png")
+			$UI/CenterContainerBackground/TextureRectBackground.texture = ResourceLoader.load("res://Assets/Images/Coffee stall - Downtown 2.png")
 			$UI/CenterContainerBackground/BackgroundRain.stream = ResourceLoader.load("res://Assets/Videos/Coffee stall - Downtown rain.ogv")
 			
 		# Cek apakah musim kemarau atau penghujan untuk penentuan background
@@ -57,9 +60,20 @@ func _process(delta):
 		else:
 			$UI/CenterContainerBackground/TextureRectBackground.visible = false
 			$UI/CenterContainerBackground/BackgroundRain.play()
+		
+		if shop.getPlace() == 2 and season == "Kemarau":
+			$UI/Sprite2DCoffeeStallCampus.visible = true
+		else:
+			$UI/Sprite2DCoffeeStallCampus.visible = false
+	
+	# Proses menjalankan animasi pada permainan
+	if globalAnimationRunning == false && season == "Kemarau":
+		_globalAnimationStop()
+		globalAnimationRunning = true
+		_globalAnimationPlay(shop.getPlace())
 	
 	# Proses menghitung biaya harian
-	dailyFee = shop.getPromotionBudget() + ((shop.getPlace() - 1) * 2000)
+	dailyFee = shop.getPromotionBudget() + ((shop.getPlace() - 1) * 0)
 	
 	# Nonaktifkan tombol 'ButtonStartDay' jika stok makanan masih kosong, harga makanan masih 0,
 	# uang pemain tidak mencukupi biaya harian, atau hari sudah mulai
@@ -74,6 +88,11 @@ func _process(delta):
 		$UI/PanelShopSettings/ButtonFoodStockPurchase.disabled = true
 	else:
 		$UI/PanelShopSettings/ButtonFoodStockPurchase.disabled = false
+	
+	# Proses pengecekan jika game over
+	if shop.getMoney() < shop.getFoodStockPrice() && shop.getFoodStock() == 0 && gameOver == false:
+		gameOver = true
+		_gameOver()
 
 # Fungsi perhitungan biaya peningkatan level pada toko
 func _setNewlevelUpgradePrice(level, price):
@@ -91,6 +110,12 @@ func _on_ButtonStartDay_pressed():
 		$TimerStartDay.start()
 		$TimerTransaction.start()
 		$UI/ButtonStartDay.disabled = true
+		
+		# Kurangi uang pemain jika ada biaya harian
+		if dailyFee > 0:
+			$MoneySpendSfx.play()
+			shop.setMoney(shop.getMoney() - dailyFee)
+			_moneyChangedAnimation("decreased", dailyFee)
 		
 		# Tutup panel 'PanelShopSettings'
 		$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play_backwards("Popup")
@@ -122,6 +147,7 @@ func _on_TimerStartDay_timeout():
 		
 		# Ganti musim jika siklus sudah habis
 		if seasonCycle == 0:
+			_globalAnimationStop()
 			seasonCycle = 2
 			if season == "Kemarau":
 				# Ganti ke musim hujan, lalu ganti background
@@ -145,10 +171,7 @@ func _on_TimerTransaction_timeout():
 		shop.setFoodStock(shop.getFoodStock() - 1)
 		
 		# Munculkan animasi jumlah uang yang bertambah
-		$UI/LabelMoneyChanged.text = "+" + str(shop.getFoodPrice())
-		$UI/LabelMoneyChanged.add_theme_color_override("font_color", Color(0, 1, 0, 1.0))
-		$UI/LabelMoneyChanged.visible = true
-		$UI/AnimationPlayerLabelMoneyChanged.play("FlyIn")
+		_moneyChangedAnimation("increased", shop.getFoodPrice())
 
 # Fungsi loop video 'BackgroundRain'
 func _on_BackgroundRain_finished():
@@ -175,9 +198,15 @@ func _on_buttonLevelProductUpgrade_pressed():
 		# Kurangi uang pemain
 		shop.setMoney(shop.getMoney() - shop.getLevelProductUpgradePrice())
 		
-		# naikkan level kualitas makanan sebesar 1
+		# Munculkan animasi perubahan uang pemain
+		_moneyChangedAnimation("decreased", shop.getLevelProductUpgradePrice())
+		
+		# Naikkan level kualitas makanan sebesar 1
 		shop.setLevelProduct(shop.getLevelProduct() + 1)
 		_setNewlevelUpgradePrice(shop.getLevelProduct(), shop.getLevelProductUpgradePrice())
+		
+		# Naikkan modal stok makanan sebesar 200
+		shop.setFoodStockPrice(shop.getFoodStockPrice() + 200)
 
 # Fungsi meningkatkan anggaran promosi
 func _on_buttonPromotionBudgetPlus_pressed():
@@ -201,6 +230,7 @@ func _on_buttonPlaceNext_pressed():
 	if shop.getPlace() < 3:
 		shop.setPlace(shop.getPlace() + 1)
 		placeChanged = true # Tandai bahwa tempat diganti oleh pemain
+		globalAnimationRunning = false # Tandai bahwa animasi tidak berjalan
 
 func _on_buttonPlacePrev_pressed():
 	$ButtonPopSfx.play()
@@ -208,6 +238,7 @@ func _on_buttonPlacePrev_pressed():
 	if shop.getPlace() > 1:
 		shop.setPlace(shop.getPlace() - 1)
 		placeChanged = true # Tandai bahwa tempat diganti oleh pemain
+		globalAnimationRunning = false # Tandai bahwa animasi tidak berjalan
 
 # Fungsi penaik jumlah stok makanan yang ingin ditambah
 func _on_buttonFoodStockPlus_pressed():
@@ -234,18 +265,29 @@ func _on_buttonFoodStockMinus_pressed():
 
 # Fungsi membeli stok makanan
 func _on_buttonFoodStockPurchase_pressed():
-	$MoneySpendSfx.play()
 	# Jika penambah stok makanan tidak 0, tambah stok makanan, kurangi uang pemain
 	# lalu reset penambah stok makanan dan total harga pembelian stok makanan menjadi 0
 	if foodStockIncrease != 0 && shop.getMoney() >= foodStockTotalPrice:
+		# Munculkan animasi jumlah uang yang dikeluarkan
+		_moneyChangedAnimation("decreased", foodStockTotalPrice)
+		
 		shop.setFoodStock(shop.getFoodStock() + foodStockIncrease)
 		shop.setMoney(shop.getMoney() - foodStockTotalPrice)
 		foodStockIncrease = 0
 		foodStockTotalPrice = 0
-		
-		# Munculkan animasi jumlah uang yang dikeluarkan
-		$UI/LabelMoneyChanged.text = "-" + str(foodStockTotalPrice)
+
+# Fungsi untuk menjalankan animasi pada label 'LabelMoneyChanged'
+func _moneyChangedAnimation(status, moneyChanged):
+	# Munculkan animasi jumlah uang yang dikeluarkan
+	$MoneySpendSfx.play()
+	if status == "decreased":
+		$UI/LabelMoneyChanged.text = "-" + str(moneyChanged)
 		$UI/LabelMoneyChanged.add_theme_color_override("font_color", Color(1, 0, 0, 1.0))
+		$UI/LabelMoneyChanged.visible = true
+		$UI/AnimationPlayerLabelMoneyChanged.play("FlyIn")
+	elif status == "increased":
+		$UI/LabelMoneyChanged.text = "+" + str(moneyChanged)
+		$UI/LabelMoneyChanged.add_theme_color_override("font_color", Color(0, 1, 0, 1.0))
 		$UI/LabelMoneyChanged.visible = true
 		$UI/AnimationPlayerLabelMoneyChanged.play("FlyIn")
 
@@ -253,3 +295,80 @@ func _on_buttonFoodStockPurchase_pressed():
 func _on_AnimationPlayerLabelMoneyChanged_animation_finished(anim_name):
 	$UI/LabelMoneyChanged.visible = false
 	$UI/AnimationPlayerLabelMoneyChanged.stop()
+
+# Fungsi untuk menjalankan animasi pada game
+func _globalAnimationPlay(place):
+	if place == 1:
+		_parkAnimationControl()
+	elif place == 2:
+		_campusAnimationControl()
+	elif place == 3:
+		_downtownAnimationControl()
+
+# Fungsi untuk memberhentikan animasi pada game
+func _globalAnimationStop():
+	$UI/ControlAnimationDowntown/ControlCar1/Sprite2DCar1.visible = false
+	$UI/ControlAnimationDowntown/ControlCar1/AnimationPlayerCar1.stop()
+	$UI/ControlAnimationDowntown/ControlCar2/Sprite2DCar2.visible = false
+	$UI/ControlAnimationDowntown/ControlCar2/AnimationPlayerCar2.stop()
+	
+	$UI/ControlAnimationCampus/ControlCar3/Sprite2DCar3.visible = false
+	$UI/ControlAnimationCampus/ControlCar3/AnimationPlayerCar3.stop()
+	$UI/ControlAnimationCampus/ControlCar4/Sprite2DCar4.visible = false
+	$UI/ControlAnimationCampus/ControlCar4/AnimationPlayerCar4.stop()
+	
+	$UI/ControlAnimationPark/ControlSwan1/Sprite2DSwan1.visible = false
+	$UI/ControlAnimationPark/ControlSwan1/AnimationPlayerSwan1.stop()
+
+# Fungsi pengatur animasi pada tempat 'Downtown'
+func _downtownAnimationControl():
+	$UI/ControlAnimationDowntown/ControlCar1/Sprite2DCar1.visible = true
+	$UI/ControlAnimationDowntown/ControlCar1/AnimationPlayerCar1.play("moving")
+	$UI/ControlAnimationDowntown/ControlCar2/Sprite2DCar2.visible = true
+	$UI/ControlAnimationDowntown/ControlCar2/AnimationPlayerCar2.play("moving")
+	await get_tree().create_timer(6).timeout
+
+# Fungsi pengatur animasi 'AnimationPlayerCar1' pada 'Downtown'
+func _on_animationPlayerCar1Animation_finished(anim_name):
+	$UI/ControlAnimationDowntown/ControlCar1/AnimationPlayerCar1.play("moving")
+
+# Fungsi pengatur animasi 'AnimationPlayerCar2' pada 'Downtown'
+func _on_animationPlayerCar2Animation_finished(anim_name):
+	$UI/ControlAnimationDowntown/ControlCar2/AnimationPlayerCar2.play("moving")
+
+# Fungsi pengatur animasi pada tempat 'Campus'
+func _campusAnimationControl():
+	$UI/ControlAnimationCampus/ControlCar4/Sprite2DCar4.visible = true
+	$UI/ControlAnimationCampus/ControlCar4/AnimationPlayerCar4.play("moving")
+	$UI/ControlAnimationCampus/ControlCar3/Sprite2DCar3.visible = true
+	$UI/ControlAnimationCampus/ControlCar3/AnimationPlayerCar3.play("moving")
+	await get_tree().create_timer(6).timeout
+
+# Fungsi pengatur animasi 'AnimationPlayerCar3' pada 'Campus'
+func _on_animationPlayerCar3Animation_finished(anim_name):
+	$UI/ControlAnimationCampus/ControlCar3/AnimationPlayerCar3.play("moving")
+
+# Fungsi pengatur animasi 'AnimationPlayerCar4' pada 'Campus'
+func _on_animationPlayerCar4Animation_finished(anim_name):
+	$UI/ControlAnimationCampus/ControlCar4/AnimationPlayerCar4.play("moving")
+
+# Fungsi Pengatur animasi pada tempat 'Park'
+func _parkAnimationControl():
+	$UI/ControlAnimationPark/ControlSwan1/Sprite2DSwan1.visible = true
+	$UI/ControlAnimationPark/ControlSwan1/AnimationPlayerSwan1.play("moving")
+
+# Fungsi pengatur animasi 'AnimationPlayerSwan' pada 'Park'
+func _on_animationPlayerSwan1Animation_finished(anim_name):
+	#await get_tree().create_timer(1).timeout
+	$UI/ControlAnimationPark/ControlSwan1/AnimationPlayerSwan1.play("moving")
+
+# Fungsi jika permainan berakhir
+func _gameOver():
+	$UI/ControlGameOver.visible = true
+	$UI/ControlGameOver/PanelGameOver/AnimationPlayerGameOver.play("popup")
+	$UI/ControlGameOver.top_level = true
+
+# Fungsi pengatur tombol 'ButtonGameOver'
+func _on_buttonGameOver_pressed():
+	# Jika di klik, kembali ke halaman utama
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

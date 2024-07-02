@@ -1,34 +1,174 @@
-[gd_scene load_steps=16 format=3 uid="uid://ybp3bxlv5ojc"]
+[gd_scene load_steps=33 format=3 uid="uid://ybp3bxlv5ojc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://dlr5y5swqkv10" path="res://Assets/Images/Coffee stall - Park.png" id="2_jm70i"]
+[ext_resource type="Texture2D" uid="uid://dlr5y5swqkv10" path="res://Assets/Images/Coffee stall - Park.png" id="2_vymy8"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="3"]
 [ext_resource type="VideoStream" path="res://Assets/Videos/Game background - Rain gloomy.ogv" id="3_nnq1c"]
-[ext_resource type="Texture2D" uid="uid://bftlmbhrsy5k0" path="res://Assets/Images/Sun cartoon.png" id="4_p6yxg"]
+[ext_resource type="Texture2D" uid="uid://b0jkw3r2og58i" path="res://Assets/Images/Swan 1.png" id="5_kkdgp"]
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="6_1sqjh"]
+[ext_resource type="Texture2D" uid="uid://b0n8nwirwyv5e" path="res://Assets/Images/Car 1.png" id="6_l8jhm"]
+[ext_resource type="Texture2D" uid="uid://i01vs2og1u3e" path="res://Assets/Images/Car 4.png" id="7_5nssi"]
 [ext_resource type="AudioStream" uid="uid://ciiyle6fumpt3" path="res://Assets/Sfx/Money Spend Sfx.mp3" id="7_6c33s"]
+[ext_resource type="Texture2D" uid="uid://0pikuot8ylc6" path="res://Assets/Images/Car 2.png" id="7_14pyq"]
+[ext_resource type="Texture2D" uid="uid://cyy6ogb8s3uty" path="res://Assets/Images/Car 3.png" id="8_36d3a"]
 [ext_resource type="AudioStream" uid="uid://cct7k7ka1r4yd" path="res://Assets/Sfx/Money Register Sfx.mp3" id="8_j5hnx"]
+[ext_resource type="Texture2D" uid="uid://trai56hevxs6" path="res://Assets/Images/Coffee Stall.png" id="9_jcj2m"]
+[ext_resource type="PackedScene" uid="uid://byrpushu1ynnl" path="res://Scenes/PauseMenu.tscn" id="13_sgn53"]
 
-[sub_resource type="Animation" id="Animation_f8f8t"]
-resource_name = "SunMovement"
-length = 10.0
+[sub_resource type="Animation" id="Animation_ipabk"]
+resource_name = "popup"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SunImage:position")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.1, 5, 10),
-"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(113, 216), Vector2(113, 216), Vector2(1048, 408)]
+"values": [Vector2(0, 0), Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsvo6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w1j6p"]
 _data = {
-"SunMovement": SubResource("Animation_f8f8t")
+"popup": SubResource("Animation_ipabk")
+}
+
+[sub_resource type="Animation" id="Animation_nt8o8"]
+resource_name = "moving"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DSwan1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 8, 9.1, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(656, 408), Vector2(656, 408), Vector2(226, 408), Vector2(226, 408), Vector2(656, 408)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2DSwan1:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9, 9.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_j08g5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DSwan1:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4k1jo"]
+_data = {
+"RESET": SubResource("Animation_j08g5"),
+"moving": SubResource("Animation_nt8o8")
+}
+
+[sub_resource type="Animation" id="Animation_p471p"]
+resource_name = "moving"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DCar4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1275, 375), Vector2(1275, 375), Vector2(-130, 375)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_te25j"]
+_data = {
+"moving": SubResource("Animation_p471p")
+}
+
+[sub_resource type="Animation" id="Animation_l8qpy"]
+resource_name = "moving"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DCar3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-149, 415), Vector2(-149, 415), Vector2(1310, 415)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06hwp"]
+_data = {
+"moving": SubResource("Animation_l8qpy")
+}
+
+[sub_resource type="Animation" id="Animation_5crdj"]
+resource_name = "moving"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DCar2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1260, 512), Vector2(1260, 512), Vector2(-110, 512)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8yil"]
+_data = {
+"moving": SubResource("Animation_5crdj")
+}
+
+[sub_resource type="Animation" id="Animation_5nsmx"]
+resource_name = "moving"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DCar1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-110, 576), Vector2(-110, 576), Vector2(1270, 576)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odqbr"]
+_data = {
+"moving": SubResource("Animation_5nsmx")
 }
 
 [sub_resource type="Animation" id="Animation_qot5y"]
@@ -54,7 +194,7 @@ _data = {
 
 [sub_resource type="Animation" id="9"]
 resource_name = "Popup"
-length = 0.3
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +202,7 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1, 1)]
@@ -88,19 +228,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 8.0
+offset_top = -4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRectBackground" type="TextureRect" parent="UI/CenterContainerBackground"]
 layout_mode = 2
-texture = ExtResource("2_jm70i")
+texture = ExtResource("2_vymy8")
 
 [node name="BackgroundRain" type="VideoStreamPlayer" parent="UI/CenterContainerBackground"]
 layout_mode = 2
 stream = ExtResource("3_nnq1c")
 
-[node name="ContainerSunImage" type="Control" parent="UI"]
+[node name="ControlGameOver" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,15 +250,167 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SunImage" type="Sprite2D" parent="UI/ContainerSunImage"]
-position = Vector2(113, 216)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_p6yxg")
+[node name="ColorRectGameOver" type="ColorRect" parent="UI/ControlGameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
 
-[node name="AnimationPlayerSunImage" type="AnimationPlayer" parent="UI/ContainerSunImage"]
+[node name="PanelGameOver" type="Panel" parent="UI/ControlGameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -48.0
+offset_right = 130.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(130, 48)
+
+[node name="LabelGameOver" type="Label" parent="UI/ControlGameOver/PanelGameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 16.0
+offset_right = 98.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 20
+text = "Permainan Berakhir"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonGameOver" type="Button" parent="UI/ControlGameOver/PanelGameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_right = 97.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 20
+text = "Ke Halaman Utama"
+
+[node name="AnimationPlayerGameOver" type="AnimationPlayer" parent="UI/ControlGameOver/PanelGameOver"]
 libraries = {
-"": SubResource("AnimationLibrary_xsvo6")
+"": SubResource("AnimationLibrary_w1j6p")
 }
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("13_sgn53")]
+layout_mode = 1
+
+[node name="ControlAnimationPark" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlSwan1" type="Control" parent="UI/ControlAnimationPark"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2DSwan1" type="Sprite2D" parent="UI/ControlAnimationPark/ControlSwan1"]
+position = Vector2(656, 408)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("5_kkdgp")
+
+[node name="AnimationPlayerSwan1" type="AnimationPlayer" parent="UI/ControlAnimationPark/ControlSwan1"]
+libraries = {
+"": SubResource("AnimationLibrary_4k1jo")
+}
+
+[node name="ControlAnimationCampus" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlCar4" type="Control" parent="UI/ControlAnimationCampus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2DCar4" type="Sprite2D" parent="UI/ControlAnimationCampus/ControlCar4"]
+position = Vector2(1275, 375)
+scale = Vector2(0.237654, 0.237654)
+texture = ExtResource("7_5nssi")
+
+[node name="AnimationPlayerCar4" type="AnimationPlayer" parent="UI/ControlAnimationCampus/ControlCar4"]
+libraries = {
+"": SubResource("AnimationLibrary_te25j")
+}
+
+[node name="ControlCar3" type="Control" parent="UI/ControlAnimationCampus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2DCar3" type="Sprite2D" parent="UI/ControlAnimationCampus/ControlCar3"]
+position = Vector2(-149, 415)
+scale = Vector2(0.439667, 0.439667)
+texture = ExtResource("8_36d3a")
+
+[node name="AnimationPlayerCar3" type="AnimationPlayer" parent="UI/ControlAnimationCampus/ControlCar3"]
+libraries = {
+"": SubResource("AnimationLibrary_06hwp")
+}
+
+[node name="ControlAnimationDowntown" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlCar2" type="Control" parent="UI/ControlAnimationDowntown"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2DCar2" type="Sprite2D" parent="UI/ControlAnimationDowntown/ControlCar2"]
+position = Vector2(1260, 512)
+scale = Vector2(0.306, 0.306)
+texture = ExtResource("7_14pyq")
+
+[node name="AnimationPlayerCar2" type="AnimationPlayer" parent="UI/ControlAnimationDowntown/ControlCar2"]
+libraries = {
+"": SubResource("AnimationLibrary_d8yil")
+}
+
+[node name="ControlCar1" type="Control" parent="UI/ControlAnimationDowntown"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2DCar1" type="Sprite2D" parent="UI/ControlAnimationDowntown/ControlCar1"]
+position = Vector2(-110, 576)
+scale = Vector2(0.327667, 0.327667)
+texture = ExtResource("6_l8jhm")
+
+[node name="AnimationPlayerCar1" type="AnimationPlayer" parent="UI/ControlAnimationDowntown/ControlCar1"]
+libraries = {
+"": SubResource("AnimationLibrary_odqbr")
+}
+
+[node name="Sprite2DCoffeeStallCampus" type="Sprite2D" parent="UI"]
+position = Vector2(936, 384)
+scale = Vector2(0.474537, 0.474537)
+texture = ExtResource("9_jcj2m")
 
 [node name="ButtonStartDay" type="Button" parent="UI"]
 layout_mode = 0
@@ -124,6 +418,7 @@ offset_left = 16.0
 offset_top = 128.0
 offset_right = 128.0
 offset_bottom = 164.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
 text = "Mulai Hari"
@@ -141,6 +436,7 @@ theme_override_font_sizes/font_size = 20
 text = "(money)"
 
 [node name="LabelSeason" type="Label" parent="UI"]
+visible = false
 layout_mode = 0
 offset_top = 24.0
 offset_right = 1152.0
@@ -200,7 +496,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Harga Minuman"
+text = "Harga Kopi"
 vertical_alignment = 1
 
 [node name="LabelFoodPrice" type="Label" parent="UI/PanelShopSettings"]
@@ -222,6 +518,7 @@ offset_left = 168.0
 offset_top = 80.0
 offset_right = 192.0
 offset_bottom = 105.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "+"
@@ -232,6 +529,7 @@ offset_left = 136.0
 offset_top = 80.0
 offset_right = 160.0
 offset_bottom = 105.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "-"
@@ -246,7 +544,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Kualitas Minuman"
+text = "Kualitas Kopi"
 vertical_alignment = 1
 
 [node name="LabelLevelProduct" type="Label" parent="UI/PanelShopSettings"]
@@ -281,6 +579,7 @@ offset_left = 16.0
 offset_top = 184.0
 offset_right = 110.0
 offset_bottom = 209.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "Tingkatkan"
@@ -317,6 +616,7 @@ offset_left = 170.0
 offset_top = 256.0
 offset_right = 194.0
 offset_bottom = 281.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "+"
@@ -327,6 +627,7 @@ offset_left = 136.0
 offset_top = 256.0
 offset_right = 160.0
 offset_bottom = 281.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "-"
@@ -363,6 +664,7 @@ offset_left = 48.0
 offset_top = 328.0
 offset_right = 72.0
 offset_bottom = 359.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = ">"
@@ -373,6 +675,7 @@ offset_left = 16.0
 offset_top = 328.0
 offset_right = 40.0
 offset_bottom = 359.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "<"
@@ -387,7 +690,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Stok Makanan:"
+text = "Stok Kopi:"
 vertical_alignment = 1
 
 [node name="LabelFoodStock" type="Label" parent="UI/PanelShopSettings"]
@@ -435,6 +738,7 @@ offset_left = 168.0
 offset_top = 408.0
 offset_right = 192.0
 offset_bottom = 433.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "+"
@@ -445,6 +749,7 @@ offset_left = 136.0
 offset_top = 408.0
 offset_right = 160.0
 offset_bottom = 433.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "-"
@@ -455,6 +760,7 @@ offset_left = 200.0
 offset_top = 408.0
 offset_right = 240.0
 offset_bottom = 433.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 16
 text = "Beli"
@@ -508,6 +814,12 @@ stream = ExtResource("7_6c33s")
 stream = ExtResource("8_j5hnx")
 
 [connection signal="finished" from="UI/CenterContainerBackground/BackgroundRain" to="." method="_on_BackgroundRain_finished"]
+[connection signal="pressed" from="UI/ControlGameOver/PanelGameOver/ButtonGameOver" to="." method="_on_buttonGameOver_pressed"]
+[connection signal="animation_finished" from="UI/ControlAnimationPark/ControlSwan1/AnimationPlayerSwan1" to="." method="_on_animationPlayerSwan1Animation_finished"]
+[connection signal="animation_finished" from="UI/ControlAnimationCampus/ControlCar4/AnimationPlayerCar4" to="." method="_on_animationPlayerCar4Animation_finished"]
+[connection signal="animation_finished" from="UI/ControlAnimationCampus/ControlCar3/AnimationPlayerCar3" to="." method="_on_animationPlayerCar3Animation_finished"]
+[connection signal="animation_finished" from="UI/ControlAnimationDowntown/ControlCar2/AnimationPlayerCar2" to="." method="_on_animationPlayerCar2Animation_finished"]
+[connection signal="animation_finished" from="UI/ControlAnimationDowntown/ControlCar1/AnimationPlayerCar1" to="." method="_on_animationPlayerCar1Animation_finished"]
 [connection signal="pressed" from="UI/ButtonStartDay" to="." method="_on_ButtonStartDay_pressed"]
 [connection signal="animation_finished" from="UI/AnimationPlayerLabelMoneyChanged" to="." method="_on_AnimationPlayerLabelMoneyChanged_animation_finished"]
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodPricePlus" to="." method="_on_ButtonFoodPricePlus_pressed"]

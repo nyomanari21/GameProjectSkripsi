@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fgpbol4o1qqk"
-path="res://.godot/imported/Coffee stall - Campus.png-a59a77ecd2adaccdaf25cf2457654a0f.ctex"
+uid="uid://b0n8nwirwyv5e"
+path="res://.godot/imported/Car 1.png-14280017ceb997277be44956b1130c78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Coffee stall - Campus.png"
-dest_files=["res://.godot/imported/Coffee stall - Campus.png-a59a77ecd2adaccdaf25cf2457654a0f.ctex"]
+source_file="res://Assets/Images/Car 1.png"
+dest_files=["res://.godot/imported/Car 1.png-14280017ceb997277be44956b1130c78.ctex"]
 
 [params]
 

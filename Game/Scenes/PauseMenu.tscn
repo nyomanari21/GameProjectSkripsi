@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://byrpushu1ynnl"]
+
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_qcmi3"]
+[ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="2_f7jbu"]
+
+[sub_resource type="Animation" id="Animation_snwtt"]
+resource_name = "Popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelPauseMenu:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvmqr"]
+_data = {
+"Popup": SubResource("Animation_snwtt")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qcmi3")
+
+[node name="ButtonPauseMenu" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 77.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("2_f7jbu")
+theme_override_font_sizes/font_size = 20
+text = "Menu"
+
+[node name="PanelPauseMenu" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -132.0
+offset_right = 96.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(96, 132)
+
+[node name="AnimationPlayerPanelPauseMenu" type="AnimationPlayer" parent="PanelPauseMenu"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_uvmqr")
+}
+
+[node name="VBoxContainerPauseMenu" type="VBoxContainer" parent="PanelPauseMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ButtonResume" type="Button" parent="PanelPauseMenu/VBoxContainerPauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_f7jbu")
+theme_override_font_sizes/font_size = 20
+text = "Lanjut"
+
+[node name="ButtonToMainMenu" type="Button" parent="PanelPauseMenu/VBoxContainerPauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_f7jbu")
+theme_override_font_sizes/font_size = 20
+text = "Menu Utama"
+
+[node name="ButtonMuteMusic" type="Button" parent="PanelPauseMenu/VBoxContainerPauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_f7jbu")
+theme_override_font_sizes/font_size = 20
+text = "Musik:"
+
+[connection signal="pressed" from="ButtonPauseMenu" to="." method="_on_button_pause_menu_pressed"]
+[connection signal="pressed" from="PanelPauseMenu/VBoxContainerPauseMenu/ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="PanelPauseMenu/VBoxContainerPauseMenu/ButtonToMainMenu" to="." method="_on_button_to_main_menu_pressed"]

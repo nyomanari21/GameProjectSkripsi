@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bigugoydvgcgo"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bs2xbou5u58sj" path="res://Assets/Images/Main menu 5 - Extended.jpg" id="2_hmr75"]
+[ext_resource type="Texture2D" uid="uid://b43g1v5exn8wk" path="res://Assets/Images/Main Menu 1.png" id="2_630kb"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="2_jyi43"]
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="4_riocw"]
 
@@ -24,7 +24,7 @@ grow_vertical = 2
 
 [node name="Background" type="Sprite2D" parent="CenterContainerBackground"]
 show_behind_parent = true
-texture = ExtResource("2_hmr75")
+texture = ExtResource("2_630kb")
 centered = false
 
 [node name="LabelGameTitle" type="Label" parent="."]
@@ -40,7 +40,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("2_jyi43")
 theme_override_font_sizes/font_size = 50
-text = "Bir Pletok Simulator"
+text = "Kopi Simulator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -51,12 +51,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -49.0
-offset_top = -19.5
-offset_right = 49.0
-offset_bottom = 19.5
+offset_left = -51.0
+offset_top = 42.5
+offset_right = 47.0
+offset_bottom = 81.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_jyi43")
 theme_override_font_sizes/font_size = 20
 text = "Mulai"

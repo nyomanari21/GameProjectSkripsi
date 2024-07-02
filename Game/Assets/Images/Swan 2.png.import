@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fgpbol4o1qqk"
-path="res://.godot/imported/Coffee stall - Campus.png-a59a77ecd2adaccdaf25cf2457654a0f.ctex"
+uid="uid://d8xy05avwk26"
+path="res://.godot/imported/Swan 2.png-1ff4b359e9a2acb399ffdcd9f53d2136.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Coffee stall - Campus.png"
-dest_files=["res://.godot/imported/Coffee stall - Campus.png-a59a77ecd2adaccdaf25cf2457654a0f.ctex"]
+source_file="res://Assets/Images/Swan 2.png"
+dest_files=["res://.godot/imported/Swan 2.png-1ff4b359e9a2acb399ffdcd9f53d2136.ctex"]
 
 [params]
 
