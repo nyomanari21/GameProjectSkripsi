@@ -35,6 +35,7 @@ grow_vertical = 2
 script = ExtResource("1_qcmi3")
 
 [node name="ButtonPauseMenu" type="Button" parent="."]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 77.0

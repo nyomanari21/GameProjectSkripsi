@@ -22,6 +22,7 @@ var gameOver = false # Variabel penyimpan status game over
 func _ready():
 	$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play("Popup")
 	$UI/LabelMoneyChanged.visible = false
+	#_playTutorial()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -359,7 +360,6 @@ func _parkAnimationControl():
 
 # Fungsi pengatur animasi 'AnimationPlayerSwan' pada 'Park'
 func _on_animationPlayerSwan1Animation_finished(anim_name):
-	#await get_tree().create_timer(1).timeout
 	$UI/ControlAnimationPark/ControlSwan1/AnimationPlayerSwan1.play("moving")
 
 # Fungsi jika permainan berakhir
@@ -372,3 +372,94 @@ func _gameOver():
 func _on_buttonGameOver_pressed():
 	# Jika di klik, kembali ke halaman utama
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+# Fungsi untuk memulai tutorial
+func _playTutorial():
+	$UI/ControlTutorial.visible = true
+	$UI/ControlTutorial.top_level = true
+	$UI/ControlTutorial/PanelTutorial1/AnimationPlayerTutorial1.play("popup")
+
+# Fungsi button "Tutorial" ketika di klik akan menjalankan tutorial
+func _on_buttonTutorial_pressed():
+	_playTutorial()
+
+func _on_buttonNextTutorial1_pressed():
+	$UI/ControlTutorial/PanelTutorial1/AnimationPlayerTutorial1.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial2/AnimationPlayerTutorial2.play("popup")
+
+func _on_buttonNextTutorial2_pressed():
+	$UI/ControlTutorial/PanelTutorial2/AnimationPlayerTutorial2.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial3/AnimationPlayerTutorial3.play("popup")
+
+func _on_buttonNextTutorial3_pressed():
+	$UI/ControlTutorial/PanelTutorial3/AnimationPlayerTutorial3.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial4/AnimationPlayerTutorial4.play("popup")
+
+func _on_buttonNextTutorial4_pressed():
+	$UI/ControlTutorial/PanelTutorial4/AnimationPlayerTutorial4.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial5/AnimationPlayerTutorial5.play("popup")
+
+func _on_buttonNextTutorial5_pressed():
+	$UI/ControlTutorial/PanelTutorial5/AnimationPlayerTutorial5.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial6/AnimationPlayerTutorial6.play("popup")
+
+func _on_buttonNextTutorial6_pressed():
+	$UI/ControlTutorial/PanelTutorial6/AnimationPlayerTutorial6.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial7/AnimationPlayerTutorial7.play("popup")
+
+func _on_buttonNextTutorial7_pressed():
+	$UI/ControlTutorial/PanelTutorial7/AnimationPlayerTutorial7.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial8/AnimationPlayerTutorial8.play("popup")
+
+func _on_buttonNextTutorial8_pressed():
+	$UI/ControlTutorial/PanelTutorial8/AnimationPlayerTutorial8.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial9/AnimationPlayerTutorial9.play("popup")
+
+func _on_buttonNextTutorial9_pressed():
+	$UI/ControlTutorial/PanelTutorial9/AnimationPlayerTutorial9.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial10/AnimationPlayerTutorial10.play("popup")
+
+func _on_buttonNextTutorial10_pressed():
+	$UI/ControlTutorial/PanelTutorial10/AnimationPlayerTutorial10.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial11/AnimationPlayerTutorial11.play("popup")
+
+func _on_buttonNextTutorial11_pressed():
+	$UI/ControlTutorial/PanelTutorial11/AnimationPlayerTutorial11.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial12/AnimationPlayerTutorial12.play("popup")
+
+func _on_buttonNextTutorial12_pressed():
+	$UI/ControlTutorial/PanelTutorial12/AnimationPlayerTutorial12.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial13/AnimationPlayerTutorial13.play("popup")
+
+func _on_buttonNextTutorial13_pressed():
+	$UI/ControlTutorial/PanelTutorial13/AnimationPlayerTutorial13.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial14/AnimationPlayerTutorial14.play("popup")
+
+func _on_buttonNextTutorial14_pressed():
+	$UI/ControlTutorial/PanelTutorial14/AnimationPlayerTutorial14.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial15/AnimationPlayerTutorial15.play("popup")
+
+func _on_buttonNextTutorial15_pressed():
+	$UI/ControlTutorial/PanelTutorial15/AnimationPlayerTutorial15.play_backwards("popup")
+	await get_tree().create_timer(0.1).timeout
+	$UI/ControlTutorial/PanelTutorial16/AnimationPlayerTutorial16.play("popup")
+
+func _on_buttonEndTutorial16_pressed():
+	$UI/ControlTutorial/PanelTutorial16/AnimationPlayerTutorial16.play_backwards("popup")
+	$UI/ControlTutorial.top_level = false
+	$UI/ControlTutorial.visible = false
+

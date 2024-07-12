@@ -1,10 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1719904785
-default_env.tres::Environment::381538730291340146::1719904785::0::1::::<><>::
+::res://::1720768207
+default_env.tres::Environment::381538730291340146::1720338747::0::1::::<><>::
 icon.png::CompressedTexture2D::5774800867811522115::1710918837::1710994068::1::::<><>::
 ::res://Assets/::1716189443
 GROBOLD.ttf::FontFile::599649459974255064::1710918837::1710994068::1::::<><>::
-::res://Assets/Images/::1719906913
+::res://Assets/Images/::1719906946
 Car 1.png::CompressedTexture2D::4170006730203653396::1718873668::1718873735::1::::<><>::
 Car 2.png::CompressedTexture2D::1786191424145479871::1718873682::1718873735::1::::<><>::
 Car 3.png::CompressedTexture2D::6508826226896295502::1718873695::1718873735::1::::<><>::
@@ -25,15 +25,15 @@ Money Spend Sfx.mp3::AudioStreamMP3::5352344248319019358::1716191250::1716191343
 Pop Sfx.mp3::AudioStreamMP3::5759882131090317424::1716190457::1716190496::1::::<><>::
 ::res://Assets/Videos/::1718683057
 Coffee stall - Campus rain.ogv::VideoStreamTheora::-1::1718682989::0::1::::<><>::
-Coffee stall - Downtown rain.ogv::VideoStreamTheora::-1::1718682990::0::1::::<><>::
+Coffee stall - Downtown rain.ogv::VideoStreamTheora::-1::1719913099::0::1::::<><>::
 Coffee stall - Park rain.ogv::VideoStreamTheora::-1::1718682990::0::1::::<><>::
 Game background - Rain gloomy.ogv::VideoStreamTheora::-1::1715604422::0::1::::<><>::
-::res://Scenes/::1719904785
-Game.tscn::PackedScene::1687557470770571084::1719904785::0::1::::<><>::res://Scripts/Game.gd<>res://Scripts/Shop.gd<>uid://dlr5y5swqkv10::::res://Assets/Images/Coffee stall - Park.png<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>res://Assets/Videos/Game background - Rain gloomy.ogv<>uid://b0jkw3r2og58i::::res://Assets/Images/Swan 1.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://b0n8nwirwyv5e::::res://Assets/Images/Car 1.png<>uid://i01vs2og1u3e::::res://Assets/Images/Car 4.png<>uid://ciiyle6fumpt3::::res://Assets/Sfx/Money Spend Sfx.mp3<>uid://0pikuot8ylc6::::res://Assets/Images/Car 2.png<>uid://cyy6ogb8s3uty::::res://Assets/Images/Car 3.png<>uid://cct7k7ka1r4yd::::res://Assets/Sfx/Money Register Sfx.mp3<>uid://trai56hevxs6::::res://Assets/Images/Coffee Stall.png<>uid://byrpushu1ynnl::::res://Scenes/PauseMenu.tscn
-MainMenu.tscn::PackedScene::2961543526507293122::1719904784::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://bs2xbou5u58sj::::res://Assets/Images/Main menu 5 - Extended.jpg<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3
-PauseMenu.tscn::PackedScene::4106994780772834841::1719904785::0::1::::<><>::res://Scripts/PauseMenu.gd<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf
-::res://Scripts/::1719904069
-Game.gd::GDScript::-1::1719904069::0::1::::<>Control<>::
+::res://Scenes/::1720338747
+Game.tscn::PackedScene::1687557470770571084::1720338746::0::1::::<><>::res://Scripts/Game.gd<>res://Scripts/Shop.gd<>uid://dlr5y5swqkv10::::res://Assets/Images/Coffee stall - Park.png<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>res://Assets/Videos/Game background - Rain gloomy.ogv<>uid://b0jkw3r2og58i::::res://Assets/Images/Swan 1.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://b0n8nwirwyv5e::::res://Assets/Images/Car 1.png<>uid://i01vs2og1u3e::::res://Assets/Images/Car 4.png<>uid://ciiyle6fumpt3::::res://Assets/Sfx/Money Spend Sfx.mp3<>uid://0pikuot8ylc6::::res://Assets/Images/Car 2.png<>uid://cyy6ogb8s3uty::::res://Assets/Images/Car 3.png<>uid://cct7k7ka1r4yd::::res://Assets/Sfx/Money Register Sfx.mp3<>uid://trai56hevxs6::::res://Assets/Images/Coffee Stall.png<>uid://byrpushu1ynnl::::res://Scenes/PauseMenu.tscn
+MainMenu.tscn::PackedScene::2961543526507293122::1720338746::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://b43g1v5exn8wk::::res://Assets/Images/Main Menu 1.png<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3
+PauseMenu.tscn::PackedScene::4106994780772834841::1720338747::0::1::::<><>::res://Scripts/PauseMenu.gd<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf
+::res://Scripts/::1719914464
+Game.gd::GDScript::-1::1719914464::0::1::::<>Control<>::
 MainMenu.gd::GDScript::-1::1716190034::0::1::::<>Control<>::
 PauseMenu.gd::GDScript::-1::1719902160::0::1::::<>Control<>::
-Shop.gd::GDScript::-1::1718875983::0::1::::<>Control<>::
+Shop.gd::GDScript::-1::1719910759::0::1::::<>Control<>::
