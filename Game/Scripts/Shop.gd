@@ -2,7 +2,7 @@
 extends Control
 
 
-var money:int = 1000: get = getMoney, set = setMoney # Variabel penyimpan uang toko pemain
+var money:int = 5000: get = getMoney, set = setMoney # Variabel penyimpan uang toko pemain
 var foodPrice:int = 0: get = getFoodPrice, set = setFoodPrice # Variabel penyimpan harga makanan
 
 var levelProduct:int = 1: get = getLevelProduct, set = setLevelProduct # Variabel penyimpan level kualitas produk makanan

@@ -17,11 +17,13 @@ var placeChanged = true # Variabel penanda perubahan tempat berjualan
 var panelPauseMenuOpened = false # Variabel penyimpan status 'PanelPauseMenu' (opened/closed)
 var globalAnimationRunning = false # Variabel penyimpan status fungsi '_globalAnimationControl' (running/not running)
 var gameOver = false # Variabel penyimpan status game over
+var goalsStatus = [false, false] # Variabel penyimpan status target apakah sudah tercapai atau belum
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$UI/PanelShopSettings/AnimationPlayerPanelShopSettings.play("Popup")
 	$UI/LabelMoneyChanged.visible = false
+	_globalAnimationStop()
 	#_playTutorial()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,8 +66,10 @@ func _process(delta):
 		
 		if shop.getPlace() == 2 and season == "Kemarau":
 			$UI/Sprite2DCoffeeStallCampus.visible = true
+			$UI/Sprite2DBaristaCampus.visible = true
 		else:
 			$UI/Sprite2DCoffeeStallCampus.visible = false
+			$UI/Sprite2DBaristaCampus.visible = false
 	
 	# Proses menjalankan animasi pada permainan
 	if globalAnimationRunning == false && season == "Kemarau":
@@ -74,7 +78,7 @@ func _process(delta):
 		_globalAnimationPlay(shop.getPlace())
 	
 	# Proses menghitung biaya harian
-	dailyFee = shop.getPromotionBudget() + ((shop.getPlace() - 1) * 0)
+	dailyFee = shop.getPromotionBudget() + ((shop.getPlace() - 1) * 2000)
 	
 	# Nonaktifkan tombol 'ButtonStartDay' jika stok makanan masih kosong, harga makanan masih 0,
 	# uang pemain tidak mencukupi biaya harian, atau hari sudah mulai
@@ -155,11 +159,15 @@ func _on_TimerStartDay_timeout():
 				season = "Penghujan"
 				$UI/CenterContainerBackground/TextureRectBackground.visible = false
 				$UI/CenterContainerBackground/BackgroundRain.play()
+				$RainSfx.play()
 			else:
 				# Ganti ke musim kemarau, lalu ganti background
 				season = "Kemarau"
 				$UI/CenterContainerBackground/TextureRectBackground.visible = true
 				$UI/CenterContainerBackground/BackgroundRain.stop()
+		
+		# Cek apakah ada target yang berhasil dicapai oleh pemain
+		_checkGoals()
 
 # Fungsi timer timeout 'TimerTransaction' untuk mengatur frekuensi banyaknya transaksi yang terjadi
 # ketika 'ButtonStartDay' di klik dan 'TimerStartDay' berjalan
@@ -167,7 +175,6 @@ func _on_TimerTransaction_timeout():
 	# Ketika timer selesai, akan menambahkan uang pemain jika stok makanan masih tersedia
 	# dan mengurangi stok makanan
 	if shop.getFoodStock() > 0:
-		$MoneyRegisterSfx.play()
 		shop.setMoney(shop.getMoney() + shop.getFoodPrice())
 		shop.setFoodStock(shop.getFoodStock() - 1)
 		
@@ -177,6 +184,10 @@ func _on_TimerTransaction_timeout():
 # Fungsi loop video 'BackgroundRain'
 func _on_BackgroundRain_finished():
 	$UI/CenterContainerBackground/BackgroundRain.play()
+
+# Fungsi loop audio 'RainSfx'
+func _on_rainSfx_finished():
+	$RainSfx.play()
 
 # Fungsi penaik harga makanan
 func _on_ButtonFoodPricePlus_pressed():
@@ -278,15 +289,16 @@ func _on_buttonFoodStockPurchase_pressed():
 		foodStockTotalPrice = 0
 
 # Fungsi untuk menjalankan animasi pada label 'LabelMoneyChanged'
-func _moneyChangedAnimation(status, moneyChanged):
+func _moneyChangedAnimation(status:String, moneyChanged:int):
 	# Munculkan animasi jumlah uang yang dikeluarkan
-	$MoneySpendSfx.play()
 	if status == "decreased":
+		$MoneySpendSfx.play()
 		$UI/LabelMoneyChanged.text = "-" + str(moneyChanged)
 		$UI/LabelMoneyChanged.add_theme_color_override("font_color", Color(1, 0, 0, 1.0))
 		$UI/LabelMoneyChanged.visible = true
 		$UI/AnimationPlayerLabelMoneyChanged.play("FlyIn")
 	elif status == "increased":
+		$MoneyRegisterSfx.play()
 		$UI/LabelMoneyChanged.text = "+" + str(moneyChanged)
 		$UI/LabelMoneyChanged.add_theme_color_override("font_color", Color(0, 1, 0, 1.0))
 		$UI/LabelMoneyChanged.visible = true
@@ -463,3 +475,20 @@ func _on_buttonEndTutorial16_pressed():
 	$UI/ControlTutorial.top_level = false
 	$UI/ControlTutorial.visible = false
 
+func _checkGoals():
+	# Cek target pertama
+	if shop.getMoney() > 20000 and goalsStatus[0] == false:
+		# Jika target terpenuhi, beri pemain uang sebesar 5000, lalu tandai bahwa target telah tercapai
+		$AchievementSfx.play()
+		$UI/PanelGoals/VBoxContainerGoalsList/LabelGoals1.modulate = Color(1, 1, 1, 0.5)
+		shop.setMoney(shop.getMoney() + 5000)
+		_moneyChangedAnimation("increased", 5000)
+		goalsStatus[0] = true
+	
+	# Cek target kedua
+	if shop.getPlace() == 2 and goalsStatus[1] == false:
+		# Jika target terpenuhi, beri pemain stok kopi sebanyak 10 buah, lalu tandai bahwa target telah tercapai
+		$AchievementSfx.play()
+		$UI/PanelGoals/VBoxContainerGoalsList/LabelGoals2.modulate = Color(1, 1, 1, 0.5)
+		shop.setFoodStock(shop.getFoodStock() + 10)
+		goalsStatus[1] = true

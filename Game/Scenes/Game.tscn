@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ybp3bxlv5ojc"]
+[gd_scene load_steps=68 format=3 uid="uid://ybp3bxlv5ojc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2"]
@@ -14,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://cyy6ogb8s3uty" path="res://Assets/Images/Car 3.png" id="8_36d3a"]
 [ext_resource type="AudioStream" uid="uid://cct7k7ka1r4yd" path="res://Assets/Sfx/Money Register Sfx.mp3" id="8_j5hnx"]
 [ext_resource type="Texture2D" uid="uid://trai56hevxs6" path="res://Assets/Images/Coffee Stall.png" id="9_jcj2m"]
+[ext_resource type="Texture2D" uid="uid://xt6v3at1ogi1" path="res://Assets/Images/Barista.png" id="12_jqf2l"]
 [ext_resource type="PackedScene" uid="uid://byrpushu1ynnl" path="res://Scenes/PauseMenu.tscn" id="13_sgn53"]
+[ext_resource type="AudioStream" uid="uid://c1nc1tslcmgjo" path="res://Assets/Sfx/Achievement Sfx.mp3" id="17_vh6u7"]
+[ext_resource type="AudioStream" uid="uid://bf8lry6jlv3mq" path="res://Assets/Sfx/Rain Sfx.mp3" id="18_isao4"]
 
 [sub_resource type="Animation" id="Animation_ipabk"]
 resource_name = "popup"
@@ -401,7 +404,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.9, 8, 9.1, 16),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(656, 408), Vector2(656, 408), Vector2(226, 408), Vector2(226, 408), Vector2(656, 408)]
+"values": [Vector2(528, 408), Vector2(528, 408), Vector2(226, 408), Vector2(226, 408), Vector2(528, 408)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1398,9 +1401,9 @@ libraries = {
 
 [node name="PanelTutorial14" type="Panel" parent="UI/ControlTutorial"]
 layout_mode = 0
-offset_left = 264.0
+offset_left = 272.0
 offset_top = 144.0
-offset_right = 763.0
+offset_right = 771.0
 offset_bottom = 360.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(249, 108)
@@ -1509,10 +1512,10 @@ libraries = {
 
 [node name="PanelTutorial16" type="Panel" parent="UI/ControlTutorial"]
 layout_mode = 0
-offset_left = 400.0
-offset_top = 280.0
-offset_right = 712.0
-offset_bottom = 443.0
+offset_left = 280.0
+offset_top = 240.0
+offset_right = 592.0
+offset_bottom = 403.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(156, 81)
 
@@ -1533,7 +1536,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 20
-text = "Target kita saat ini adalah mengumpulkan uang hingga mencapai Rp?. Selamat bermain!"
+text = "Terakhir, ada hadiah yang bisa kita dapatkan setiap target yang berhasil dicapai. Selamat bermain!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1584,7 +1587,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sprite2DSwan1" type="Sprite2D" parent="UI/ControlAnimationPark/ControlSwan1"]
-position = Vector2(656, 408)
+position = Vector2(528, 408)
 scale = Vector2(0.07, 0.07)
 texture = ExtResource("5_kkdgp")
 
@@ -1664,9 +1667,16 @@ libraries = {
 }
 
 [node name="Sprite2DCoffeeStallCampus" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(936, 384)
 scale = Vector2(0.474537, 0.474537)
 texture = ExtResource("9_jcj2m")
+
+[node name="Sprite2DBaristaCampus" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(756, 399)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("12_jqf2l")
 
 [node name="ButtonStartDay" type="Button" parent="UI"]
 layout_mode = 0
@@ -2047,6 +2057,62 @@ theme_override_font_sizes/font_size = 18
 text = "(dailyFee)"
 vertical_alignment = 1
 
+[node name="PanelGoals" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 192.0
+offset_right = 264.0
+offset_bottom = 443.0
+
+[node name="LabelGoalsTitle" type="Label" parent="UI/PanelGoals"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 20
+text = "Target"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainerGoalsList" type="VBoxContainer" parent="UI/PanelGoals"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelGoals1" type="Label" parent="UI/PanelGoals/VBoxContainerGoalsList"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 18
+text = "- Kumpulkan uang hingga Rp20000"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LabelGoals2" type="Label" parent="UI/PanelGoals/VBoxContainerGoalsList"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 18
+text = "- Berjualan di Kampus"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Shop" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 744.0
@@ -2068,6 +2134,12 @@ stream = ExtResource("7_6c33s")
 
 [node name="MoneyRegisterSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_j5hnx")
+
+[node name="AchievementSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_vh6u7")
+
+[node name="RainSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_isao4")
 
 [connection signal="finished" from="UI/CenterContainerBackground/BackgroundRain" to="." method="_on_BackgroundRain_finished"]
 [connection signal="pressed" from="UI/ControlGameOver/PanelGameOver/ButtonGameOver" to="." method="_on_buttonGameOver_pressed"]
@@ -2107,3 +2179,4 @@ stream = ExtResource("8_j5hnx")
 [connection signal="pressed" from="UI/PanelShopSettings/ButtonFoodStockPurchase" to="." method="_on_buttonFoodStockPurchase_pressed"]
 [connection signal="timeout" from="TimerStartDay" to="." method="_on_TimerStartDay_timeout"]
 [connection signal="timeout" from="TimerTransaction" to="." method="_on_TimerTransaction_timeout"]
+[connection signal="finished" from="RainSfx" to="." method="_on_rainSfx_finished"]
