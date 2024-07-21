@@ -1,7 +1,8 @@
-[gd_scene load_steps=68 format=3 uid="uid://ybp3bxlv5ojc"]
+[gd_scene load_steps=70 format=3 uid="uid://ybp3bxlv5ojc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2"]
+[ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="2_bloi6"]
 [ext_resource type="Texture2D" uid="uid://dlr5y5swqkv10" path="res://Assets/Images/Coffee stall - Park.png" id="2_vymy8"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="3"]
 [ext_resource type="VideoStream" path="res://Assets/Videos/Game background - Rain gloomy.ogv" id="3_nnq1c"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://byrpushu1ynnl" path="res://Scenes/PauseMenu.tscn" id="13_sgn53"]
 [ext_resource type="AudioStream" uid="uid://c1nc1tslcmgjo" path="res://Assets/Sfx/Achievement Sfx.mp3" id="17_vh6u7"]
 [ext_resource type="AudioStream" uid="uid://bf8lry6jlv3mq" path="res://Assets/Sfx/Rain Sfx.mp3" id="18_isao4"]
+[ext_resource type="AudioStream" uid="uid://c8o6ojkt4upyl" path="res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3" id="19_6mkx5"]
 
 [sub_resource type="Animation" id="Animation_ipabk"]
 resource_name = "popup"
@@ -561,6 +563,7 @@ script = ExtResource("1")
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+theme = ExtResource("2_bloi6")
 
 [node name="CenterContainerBackground" type="CenterContainer" parent="UI"]
 layout_mode = 1
@@ -1572,8 +1575,10 @@ offset_left = 96.0
 offset_top = 16.0
 offset_right = 179.0
 offset_bottom = 44.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_bloi6")
 theme_override_fonts/font = ExtResource("3")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "Tutorial"
 
 [node name="ControlAnimationPark" type="Control" parent="UI"]
@@ -1682,7 +1687,7 @@ texture = ExtResource("12_jqf2l")
 layout_mode = 0
 offset_left = 16.0
 offset_top = 128.0
-offset_right = 128.0
+offset_right = 152.0
 offset_bottom = 164.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
@@ -1847,7 +1852,7 @@ offset_right = 110.0
 offset_bottom = 209.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "Tingkatkan"
 
 [node name="LabelPromotionBudgetTitle" type="Label" parent="UI/PanelShopSettings"]
@@ -2028,7 +2033,7 @@ offset_right = 240.0
 offset_bottom = 433.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "Beli"
 
 [node name="LabelDailyFeeTitle" type="Label" parent="UI/PanelShopSettings"]
@@ -2087,9 +2092,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
+offset_left = 16.0
 offset_top = 48.0
-offset_right = -8.0
+offset_right = -16.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2122,9 +2128,10 @@ offset_bottom = 55.0
 script = ExtResource("2")
 
 [node name="TimerStartDay" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 20.0
 
 [node name="TimerTransaction" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="ButtonPopSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_1sqjh")
@@ -2140,6 +2147,11 @@ stream = ExtResource("17_vh6u7")
 
 [node name="RainSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_isao4")
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_6mkx5")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="finished" from="UI/CenterContainerBackground/BackgroundRain" to="." method="_on_BackgroundRain_finished"]
 [connection signal="pressed" from="UI/ControlGameOver/PanelGameOver/ButtonGameOver" to="." method="_on_buttonGameOver_pressed"]
@@ -2180,3 +2192,4 @@ stream = ExtResource("18_isao4")
 [connection signal="timeout" from="TimerStartDay" to="." method="_on_TimerStartDay_timeout"]
 [connection signal="timeout" from="TimerTransaction" to="." method="_on_TimerTransaction_timeout"]
 [connection signal="finished" from="RainSfx" to="." method="_on_rainSfx_finished"]
+[connection signal="finished" from="MainMusic" to="." method="_on_mainMusic_finished"]

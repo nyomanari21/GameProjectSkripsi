@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bigugoydvgcgo"]
+[gd_scene load_steps=7 format=3 uid="uid://bigugoydvgcgo"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b43g1v5exn8wk" path="res://Assets/Images/Main Menu 1.png" id="2_630kb"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="2_jyi43"]
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="4_riocw"]
+[ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="4_tbo3h"]
+[ext_resource type="AudioStream" uid="uid://c8o6ojkt4upyl" path="res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3" id="5_ixhk7"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_tbo3h")
 script = ExtResource("1")
 
 [node name="CenterContainerBackground" type="CenterContainer" parent="."]
@@ -44,26 +47,77 @@ text = "Kopi Simulator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonPlay" type="Button" parent="."]
+[node name="PanelMainMenu" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = 42.5
-offset_right = 47.0
-offset_bottom = 81.5
+offset_left = -92.0
+offset_top = -112.0
+offset_right = 92.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonPlay" type="Button" parent="PanelMainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 36.0
+offset_right = 49.0
+offset_bottom = 75.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_tbo3h")
+theme_override_fonts/font = ExtResource("2_jyi43")
+theme_override_font_sizes/font_size = 20
+text = "Main"
+
+[node name="ButtonExit" type="Button" parent="PanelMainMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -76.0
+offset_right = 49.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Keluar"
+
+[node name="ButtonCredits" type="Button" parent="PanelMainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -20.0
+offset_right = 48.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_jyi43")
-theme_override_font_sizes/font_size = 20
-text = "Mulai"
+text = "Kredit"
 
 [node name="ButtonPopSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_riocw")
 
-[connection signal="pressed" from="ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
-[connection signal="finished" from="ButtonPopSfx" to="." method="_on_button_pop_sfx_finished"]
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ixhk7")
+volume_db = -5.0
+autoplay = true
+
+[connection signal="pressed" from="PanelMainMenu/ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
+[connection signal="pressed" from="PanelMainMenu/ButtonExit" to="." method="_on_buttonExit_pressed"]
+[connection signal="pressed" from="PanelMainMenu/ButtonCredits" to="." method="_on_buttonCredits_pressed"]
+[connection signal="finished" from="MainMusic" to="." method="_on_mainMusic_finished"]

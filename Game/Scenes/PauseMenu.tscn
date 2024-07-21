@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://byrpushu1ynnl"]
+[gd_scene load_steps=6 format=3 uid="uid://byrpushu1ynnl"]
 
+[ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="1_m1oeg"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_qcmi3"]
 [ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="2_f7jbu"]
 
@@ -32,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_m1oeg")
 script = ExtResource("1_qcmi3")
 
 [node name="ButtonPauseMenu" type="Button" parent="."]
@@ -40,8 +42,9 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 77.0
 offset_bottom = 44.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_f7jbu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "Menu"
 
 [node name="PanelPauseMenu" type="PanelContainer" parent="."]
@@ -73,18 +76,22 @@ size_flags_vertical = 4
 
 [node name="ButtonResume" type="Button" parent="PanelPauseMenu/VBoxContainerPauseMenu"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_f7jbu")
 theme_override_font_sizes/font_size = 20
 text = "Lanjut"
 
 [node name="ButtonToMainMenu" type="Button" parent="PanelPauseMenu/VBoxContainerPauseMenu"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_f7jbu")
 theme_override_font_sizes/font_size = 20
 text = "Menu Utama"
 
 [node name="ButtonMuteMusic" type="Button" parent="PanelPauseMenu/VBoxContainerPauseMenu"]
+visible = false
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_f7jbu")
 theme_override_font_sizes/font_size = 20
 text = "Musik:"

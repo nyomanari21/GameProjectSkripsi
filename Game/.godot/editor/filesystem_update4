@@ -1,6 +1,11 @@
 res://default_env.tres
-res://Scenes/Game.tscn
-res://Scripts/Game.gd
 res://Scenes/MainMenu.tscn
+res://Assets/CustomThemes/ButtonDisabled.tres
+res://Assets/CustomThemes/ButtonHover.tres
+res://Assets/CustomThemes/ButtonNormal.tres
+res://Assets/CustomThemes/ButtonPressed.tres
+res://Assets/CustomThemes/Panel.tres
+res://Assets/CustomThemes/PanelContainer.tres
+res://Scenes/Game.tscn
 res://Scenes/PauseMenu.tscn
-res://Scripts/Shop.gd
+res://Scripts/MainMenu.gd

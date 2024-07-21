@@ -1,10 +1,10 @@
+Button
+Panel
 AudioStreamPlayer
 RichTextLabel
 Label
 VBoxContainer
-Panel
 Sprite2D
-Button
 AnimationPlayer
 AnimationTree
 Control

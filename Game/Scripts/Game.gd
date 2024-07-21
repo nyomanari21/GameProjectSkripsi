@@ -5,7 +5,7 @@ extends Control
 @onready var shop = get_node("Shop") # Variabel penyimpan class Shop
 var timerStartDayStart = false # Variabel penyimpan status 'TimerStartDay'
 var timerTransactionStart = false # Variabel penyimpan status 'TimerTransaction'
-var timerTransactionBaseTime = 2 # Variabel penyimpan frekuensi dasar transaksi
+var timerTransactionBaseTime = 4 # Variabel penyimpan frekuensi dasar transaksi
 var timerTransactionNewTime = 0 # Variabel penyimpan frekuensi baru transaksi
 var panelShopSettingsOpened = true # Variabel penyimpan status 'PanelShopSettings' (opened/closed)
 var foodStockIncrease = 0 # Variabel penyimpan jumlah penambahan stok makanan
@@ -128,7 +128,7 @@ func _on_ButtonStartDay_pressed():
 		# Proses pengaturan frekuensi terjadinya transaksi
 		timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.2 * shop.getPlace()) - ((shop.getPromotionBudget() / 1000) * 0.1)
 		timerTransactionNewTime = timerTransactionNewTime + (((shop.getFoodPrice() - shop.getFoodStockPrice()) / 50) * 0.1)
-		
+		print(timerTransactionNewTime)
 		# Jika memasuki musim penghujan, frekuensi terjadinya transaksi dikali 0.8 (dipercepat 20%)
 		if season == "Penghujan":
 			$TimerTransaction.wait_time = timerTransactionNewTime * 0.8 # Atur frekuensi transaksi yang terjadi
@@ -165,6 +165,7 @@ func _on_TimerStartDay_timeout():
 				season = "Kemarau"
 				$UI/CenterContainerBackground/TextureRectBackground.visible = true
 				$UI/CenterContainerBackground/BackgroundRain.stop()
+				$RainSfx.stop()
 		
 		# Cek apakah ada target yang berhasil dicapai oleh pemain
 		_checkGoals()
@@ -393,88 +394,106 @@ func _playTutorial():
 
 # Fungsi button "Tutorial" ketika di klik akan menjalankan tutorial
 func _on_buttonTutorial_pressed():
+	$ButtonPopSfx.play()
 	_playTutorial()
 
 func _on_buttonNextTutorial1_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial1/AnimationPlayerTutorial1.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial2/AnimationPlayerTutorial2.play("popup")
 
 func _on_buttonNextTutorial2_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial2/AnimationPlayerTutorial2.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial3/AnimationPlayerTutorial3.play("popup")
 
 func _on_buttonNextTutorial3_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial3/AnimationPlayerTutorial3.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial4/AnimationPlayerTutorial4.play("popup")
 
 func _on_buttonNextTutorial4_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial4/AnimationPlayerTutorial4.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial5/AnimationPlayerTutorial5.play("popup")
 
 func _on_buttonNextTutorial5_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial5/AnimationPlayerTutorial5.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial6/AnimationPlayerTutorial6.play("popup")
 
 func _on_buttonNextTutorial6_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial6/AnimationPlayerTutorial6.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial7/AnimationPlayerTutorial7.play("popup")
 
 func _on_buttonNextTutorial7_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial7/AnimationPlayerTutorial7.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial8/AnimationPlayerTutorial8.play("popup")
 
 func _on_buttonNextTutorial8_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial8/AnimationPlayerTutorial8.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial9/AnimationPlayerTutorial9.play("popup")
 
 func _on_buttonNextTutorial9_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial9/AnimationPlayerTutorial9.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial10/AnimationPlayerTutorial10.play("popup")
 
 func _on_buttonNextTutorial10_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial10/AnimationPlayerTutorial10.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial11/AnimationPlayerTutorial11.play("popup")
 
 func _on_buttonNextTutorial11_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial11/AnimationPlayerTutorial11.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial12/AnimationPlayerTutorial12.play("popup")
 
 func _on_buttonNextTutorial12_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial12/AnimationPlayerTutorial12.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial13/AnimationPlayerTutorial13.play("popup")
 
 func _on_buttonNextTutorial13_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial13/AnimationPlayerTutorial13.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial14/AnimationPlayerTutorial14.play("popup")
 
 func _on_buttonNextTutorial14_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial14/AnimationPlayerTutorial14.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial15/AnimationPlayerTutorial15.play("popup")
 
 func _on_buttonNextTutorial15_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial15/AnimationPlayerTutorial15.play_backwards("popup")
 	await get_tree().create_timer(0.1).timeout
 	$UI/ControlTutorial/PanelTutorial16/AnimationPlayerTutorial16.play("popup")
 
 func _on_buttonEndTutorial16_pressed():
+	$ButtonPopSfx.play()
 	$UI/ControlTutorial/PanelTutorial16/AnimationPlayerTutorial16.play_backwards("popup")
 	$UI/ControlTutorial.top_level = false
 	$UI/ControlTutorial.visible = false
 
+# Fungsi untuk mengecek target pemain
 func _checkGoals():
 	# Cek target pertama
 	if shop.getMoney() > 20000 and goalsStatus[0] == false:
@@ -492,3 +511,7 @@ func _checkGoals():
 		$UI/PanelGoals/VBoxContainerGoalsList/LabelGoals2.modulate = Color(1, 1, 1, 0.5)
 		shop.setFoodStock(shop.getFoodStock() + 10)
 		goalsStatus[1] = true
+
+# Fungsi untuk loop audio 'MainMusic'
+func _on_mainMusic_finished():
+	$MainMusic.play()
