@@ -2,7 +2,7 @@
 extends Control
 
 
-var money:int = 5000: get = getMoney, set = setMoney # Variabel penyimpan uang toko pemain
+var money:int = 0: get = getMoney, set = setMoney # Variabel penyimpan uang toko pemain
 var foodPrice:int = 0: get = getFoodPrice, set = setFoodPrice # Variabel penyimpan harga makanan
 
 var levelProduct:int = 1: get = getLevelProduct, set = setLevelProduct # Variabel penyimpan level kualitas produk makanan
@@ -15,6 +15,7 @@ var place:int = 1: get = getPlace, set = setPlace # Variabel penyimpan tempat be
 var foodStock:int = 0: get = getFoodStock, set = setFoodStock # Variabel penyimpan stok makanan
 var foodStockPrice:int = 200: get = getFoodStockPrice, set = setFoodStockPrice # Variabel penyimpan modal stok makanan
 
+var discount:int = 0: get = getDiscount, set = setDiscount # Variabel penyimpan besarnya diskon produk
 
 # Setter dan Getter uang toko
 func setMoney(newMoney):
@@ -71,3 +72,22 @@ func setFoodStockPrice(newFoodStockPrice):
 
 func getFoodStockPrice():
 	return foodStockPrice
+
+# Setter dan Getter diskon produk
+func setDiscount(newDiscount):
+	discount = newDiscount
+
+func getDiscount():
+	return discount
+
+# Fungsi untuk reset semua variabel
+func resetAllVariable():
+	money = 0
+	foodPrice = 0
+	levelProduct = 1
+	levelProductUpgradePrice = 1000
+	promotionBudget = 0
+	place = 1
+	foodStock = 0
+	foodStockPrice = 200
+	discount = 0

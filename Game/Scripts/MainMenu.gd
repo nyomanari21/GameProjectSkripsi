@@ -12,12 +12,17 @@ func _on_ButtonPlay_pressed():
 	_playGame()
 
 func _playGame():
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Introduction.tscn")
 
 # Fungsi tombol 'ButtonExit' untuk keluar dari game
 func _on_buttonExit_pressed():
 	$ButtonPopSfx.play()
 	get_tree().quit()
+
+# Fungsi tombol 'ButtonTutorial' untuk menampilkan tutorial cara bermain
+func _on_buttonTutorial_pressed():
+	$MainMusic.play()
+	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
 
 # Fungsi tomboo 'ButtonCredits' untuk menampilkan credits
 func _on_buttonCredits_pressed():

@@ -1,0 +1,529 @@
+[gd_scene load_steps=7 format=3 uid="uid://w5utovh318a7"]
+
+[ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="1_gtsfa"]
+[ext_resource type="Texture2D" uid="uid://b0nuahu8gyvt7" path="res://Assets/Images/Park Base.png" id="2_3l36t"]
+[ext_resource type="Script" path="res://Scripts/MarketingMix.gd" id="2_gl5ts"]
+[ext_resource type="Texture2D" uid="uid://g2qj2ulg8wgg" path="res://Assets/Images/Downtown Base.png" id="4_lmdji"]
+[ext_resource type="Texture2D" uid="uid://b24vkelwgdw8i" path="res://Assets/Images/Mall Base.png" id="5_mj721"]
+[ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="6_bm8h5"]
+
+[node name="MarketingMix" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gtsfa")
+script = ExtResource("2_gl5ts")
+
+[node name="PanelMarketingMix" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlPlace" type="Control" parent="PanelMarketingMix"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -186.0
+offset_right = 448.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelPlaceTitle" type="Label" parent="PanelMarketingMix/ControlPlace"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_right = 110.0
+offset_bottom = 33.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Place (Tempat)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPlaceDescription" type="Label" parent="PanelMarketingMix/ControlPlace"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 76.0
+offset_right = 464.0
+offset_bottom = 136.0
+text = "Pilih tempat untuk berjualan kopi. Semakin tinggi daya belinya, konsumen juga akan mengharapkan kualitas kopi yang semakin tinggi"
+autowrap_mode = 2
+
+[node name="PanelPark" type="Panel" parent="PanelMarketingMix/ControlPlace"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 164.0
+offset_right = 312.0
+offset_bottom = 364.0
+
+[node name="TextureRectPark" type="TextureRect" parent="PanelMarketingMix/ControlPlace/PanelPark"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 1168.0
+offset_bottom = 660.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_3l36t")
+
+[node name="LabelPark" type="Label" parent="PanelMarketingMix/ControlPlace/PanelPark"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 116.0
+offset_right = 181.0
+offset_bottom = 136.0
+text = "Daya beli: +"
+
+[node name="ButtonSelectPark" type="Button" parent="PanelMarketingMix/ControlPlace/PanelPark"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 156.0
+offset_right = 184.0
+offset_bottom = 188.0
+mouse_default_cursor_shape = 2
+text = "Pilih Taman"
+
+[node name="PanelDowntown" type="Panel" parent="PanelMarketingMix/ControlPlace"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 164.0
+offset_right = 584.0
+offset_bottom = 364.0
+
+[node name="TextureRectDowntown" type="TextureRect" parent="PanelMarketingMix/ControlPlace/PanelDowntown"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 1165.0
+offset_bottom = 660.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_lmdji")
+
+[node name="LabelDowntown" type="Label" parent="PanelMarketingMix/ControlPlace/PanelDowntown"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 116.0
+offset_right = 190.0
+offset_bottom = 136.0
+text = "Daya beli: ++"
+
+[node name="ButtonSelectDowntown" type="Button" parent="PanelMarketingMix/ControlPlace/PanelDowntown"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 156.0
+offset_right = 192.0
+offset_bottom = 188.0
+mouse_default_cursor_shape = 2
+text = "Pilih Pusat Kota"
+
+[node name="PanelMall" type="Panel" parent="PanelMarketingMix/ControlPlace"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 162.0
+offset_right = 856.0
+offset_bottom = 362.0
+
+[node name="TextureRectMall" type="TextureRect" parent="PanelMarketingMix/ControlPlace/PanelMall"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 1165.0
+offset_bottom = 660.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_mj721")
+
+[node name="LabelMall" type="Label" parent="PanelMarketingMix/ControlPlace/PanelMall"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 116.0
+offset_right = 186.0
+offset_bottom = 136.0
+text = "Daya beli: +++"
+
+[node name="ButtonSelectMall" type="Button" parent="PanelMarketingMix/ControlPlace/PanelMall"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 156.0
+offset_right = 184.0
+offset_bottom = 188.0
+mouse_default_cursor_shape = 2
+text = "Pilih Mall"
+
+[node name="ControlProduct" type="Control" parent="PanelMarketingMix"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -170.0
+offset_right = 448.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelProductTitle" type="Label" parent="PanelMarketingMix/ControlProduct"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.5
+offset_right = 127.5
+offset_bottom = 33.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Product (Produk)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelProductDescription" type="Label" parent="PanelMarketingMix/ControlProduct"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 88.0
+offset_right = 547.0
+offset_bottom = 128.0
+text = "Tentukan kualitas kopi yang ingin dijual.
+Kualitas kopi menentukan modal dari tiap gelas kopi"
+
+[node name="PanelProduct1" type="Panel" parent="PanelMarketingMix/ControlProduct"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -188.0
+offset_right = -128.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LabelProduct1" type="Label" parent="PanelMarketingMix/ControlProduct/PanelProduct1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.5
+offset_top = 16.0
+offset_right = 75.5
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "Kualitas kopi: Biasa
+Modal: Rp200"
+
+[node name="ButtonProduct1" type="Button" parent="PanelMarketingMix/ControlProduct/PanelProduct1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -48.0
+offset_right = 28.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Pilih"
+
+[node name="PanelProduct2" type="Panel" parent="PanelMarketingMix/ControlProduct"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -188.0
+offset_right = 108.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LabelProduct2" type="Label" parent="PanelMarketingMix/ControlProduct/PanelProduct2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.5
+offset_top = 16.0
+offset_right = 75.5
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "Kualitas kopi: Menengah
+Modal: Rp400"
+
+[node name="ButtonProduct2" type="Button" parent="PanelMarketingMix/ControlProduct/PanelProduct2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -48.0
+offset_right = 28.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Pilih"
+
+[node name="PanelProduct3" type="Panel" parent="PanelMarketingMix/ControlProduct"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -188.0
+offset_right = 312.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LabelProduct3" type="Label" parent="PanelMarketingMix/ControlProduct/PanelProduct3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.5
+offset_top = 16.0
+offset_right = 75.5
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "Kualitas kopi: Tinggi
+Modal: Rp600"
+
+[node name="ButtonProduct3" type="Button" parent="PanelMarketingMix/ControlProduct/PanelProduct3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -48.0
+offset_right = 28.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Pilih"
+
+[node name="ControlPricePromotion" type="Control" parent="PanelMarketingMix"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -260.0
+offset_right = 448.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelPriceTitle" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 30
+text = "Price (Harga)"
+
+[node name="LabelPriceDescription" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 448.0
+offset_bottom = 104.0
+text = "Tentukan harga jual kopi. Jika terlalu mahal dan tidak sebanding dengan kualitas kopi, pelanggan akan merasa tidak puas"
+autowrap_mode = 2
+
+[node name="PanelPrice" type="Panel" parent="PanelMarketingMix/ControlPricePromotion"]
+layout_mode = 0
+offset_top = 108.0
+offset_right = 200.0
+offset_bottom = 204.0
+
+[node name="LabelPrice" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelPrice"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 131.0
+offset_bottom = 36.0
+text = "Harga kopi: Rp"
+
+[node name="ButtonIncPrice" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelPrice"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 70.0
+mouse_default_cursor_shape = 2
+text = "+"
+
+[node name="ButtonDecPrice" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelPrice"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 88.0
+offset_bottom = 70.0
+mouse_default_cursor_shape = 2
+text = "-"
+
+[node name="LabelPromotionTitle" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
+layout_mode = 0
+offset_top = 236.0
+offset_right = 306.0
+offset_bottom = 269.0
+theme_override_font_sizes/font_size = 30
+text = "Promotion (Promosi)"
+vertical_alignment = 1
+
+[node name="LabelPromotionDescription" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
+layout_mode = 0
+offset_top = 284.0
+offset_right = 520.0
+offset_bottom = 344.0
+text = "Tentukan berapa anggaran iklan yang mau dikeluarkan. Kamu juga dapat memberikan diskon pada kopi yang dijual. Keduanya dapat meningkatkan jumlah pelanggan yang akan datang"
+autowrap_mode = 2
+
+[node name="PanelAdvertisement" type="Panel" parent="PanelMarketingMix/ControlPricePromotion"]
+layout_mode = 0
+offset_top = 354.0
+offset_right = 240.0
+offset_bottom = 438.0
+
+[node name="LabelAdvertisement" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 104.0
+offset_bottom = 34.0
+text = "Anggaran Iklan: Rp"
+vertical_alignment = 1
+
+[node name="ButtonAdPlus" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 38.0
+offset_right = 168.0
+offset_bottom = 62.0
+mouse_default_cursor_shape = 2
+text = "+"
+
+[node name="ButtonAdMin" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 38.0
+offset_right = 96.0
+offset_bottom = 62.0
+mouse_default_cursor_shape = 2
+text = "-"
+
+[node name="PanelDiscount" type="Panel" parent="PanelMarketingMix/ControlPricePromotion"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 354.0
+offset_right = 408.0
+offset_bottom = 438.0
+
+[node name="LabelDiscount" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelDiscount"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 104.0
+offset_bottom = 34.0
+text = "Diskon: 0%"
+vertical_alignment = 1
+
+[node name="ButtonDiscountPlus" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelDiscount"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 38.0
+offset_right = 128.0
+offset_bottom = 62.0
+mouse_default_cursor_shape = 2
+text = "+"
+
+[node name="ButtonDiscountMin" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelDiscount"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 38.0
+offset_right = 64.0
+offset_bottom = 62.0
+mouse_default_cursor_shape = 2
+text = "-"
+
+[node name="ButtonNext" type="Button" parent="PanelMarketingMix"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -112.0
+offset_right = 192.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 20
+text = "Selanjutnya"
+
+[node name="ButtonPrev" type="Button" parent="PanelMarketingMix"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -112.0
+offset_right = -64.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 20
+text = "Kembali"
+
+[node name="PopSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bm8h5")
+volume_db = -5.0
+
+[connection signal="pressed" from="PanelMarketingMix/ControlPlace/PanelPark/ButtonSelectPark" to="." method="_on_buttonSelectPark_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPlace/PanelDowntown/ButtonSelectDowntown" to="." method="_on_buttonSelectDowntown_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPlace/PanelMall/ButtonSelectMall" to="." method="_on_buttonSelectMall_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlProduct/PanelProduct1/ButtonProduct1" to="." method="_on_buttonProduct1_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlProduct/PanelProduct2/ButtonProduct2" to="." method="_on_buttonProduct2_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlProduct/PanelProduct3/ButtonProduct3" to="." method="_on_buttonProduct3_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPricePromotion/PanelPrice/ButtonIncPrice" to="." method="_on_buttonIncPrice_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPricePromotion/PanelPrice/ButtonDecPrice" to="." method="_on_buttonDecPrice_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/ButtonAdPlus" to="." method="_on_buttonAdPlus_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/ButtonAdMin" to="." method="_on_buttonAdMin_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPricePromotion/PanelDiscount/ButtonDiscountPlus" to="." method="_on_buttonDiscountPlus_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ControlPricePromotion/PanelDiscount/ButtonDiscountMin" to="." method="_on_buttonDiscountMin_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ButtonNext" to="." method="_on_buttonNext_pressed"]
+[connection signal="pressed" from="PanelMarketingMix/ButtonPrev" to="." method="_on_buttonPrev_pressed"]

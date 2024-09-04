@@ -2,10 +2,9 @@
 extends Control
 
 
-@onready var shop = get_node("Shop") # Variabel penyimpan class Shop
 var timerStartDayStart = false # Variabel penyimpan status 'TimerStartDay'
 var timerTransactionStart = false # Variabel penyimpan status 'TimerTransaction'
-var timerTransactionBaseTime = 4 # Variabel penyimpan frekuensi dasar transaksi
+var timerTransactionBaseTime = 2 # Variabel penyimpan frekuensi dasar transaksi
 var timerTransactionNewTime = 0 # Variabel penyimpan frekuensi baru transaksi
 var panelShopSettingsOpened = true # Variabel penyimpan status 'PanelShopSettings' (opened/closed)
 var foodStockIncrease = 0 # Variabel penyimpan jumlah penambahan stok makanan
@@ -128,7 +127,6 @@ func _on_ButtonStartDay_pressed():
 		# Proses pengaturan frekuensi terjadinya transaksi
 		timerTransactionNewTime = timerTransactionBaseTime - (0.1 * shop.getLevelProduct()) - (0.2 * shop.getPlace()) - ((shop.getPromotionBudget() / 1000) * 0.1)
 		timerTransactionNewTime = timerTransactionNewTime + (((shop.getFoodPrice() - shop.getFoodStockPrice()) / 50) * 0.1)
-		print(timerTransactionNewTime)
 		# Jika memasuki musim penghujan, frekuensi terjadinya transaksi dikali 0.8 (dipercepat 20%)
 		if season == "Penghujan":
 			$TimerTransaction.wait_time = timerTransactionNewTime * 0.8 # Atur frekuensi transaksi yang terjadi
@@ -496,22 +494,41 @@ func _on_buttonEndTutorial16_pressed():
 # Fungsi untuk mengecek target pemain
 func _checkGoals():
 	# Cek target pertama
-	if shop.getMoney() > 20000 and goalsStatus[0] == false:
+	if shop.getMoney() >= 20000 and goalsStatus[0] == false:
+		_getReward(0)
+	
+	# Cek target kedua
+	if shop.getPlace() == 2 and goalsStatus[1] == false:
+		_getReward(1)
+
+# Fungsi untuk memberikan pemain hadiah ketika mencapai target
+func _getReward(goals:int):
+	$UI/ControlReward.visible = true
+	$UI/ControlReward/PanelReward/AnimationPlayerReward.play("popup")
+	$UI/ControlReward.top_level = true
+	$AchievementSfx.play()
+	
+	if(goals == 0):
 		# Jika target terpenuhi, beri pemain uang sebesar 5000, lalu tandai bahwa target telah tercapai
-		$AchievementSfx.play()
+		$UI/ControlReward/PanelReward/LabelReward.text = "Hore target pertama tercapai!\nKamu mendapat hadiah uang sebanyak Rp5000!"
 		$UI/PanelGoals/VBoxContainerGoalsList/LabelGoals1.modulate = Color(1, 1, 1, 0.5)
 		shop.setMoney(shop.getMoney() + 5000)
 		_moneyChangedAnimation("increased", 5000)
 		goalsStatus[0] = true
-	
-	# Cek target kedua
-	if shop.getPlace() == 2 and goalsStatus[1] == false:
+	elif(goals == 1):
 		# Jika target terpenuhi, beri pemain stok kopi sebanyak 10 buah, lalu tandai bahwa target telah tercapai
-		$AchievementSfx.play()
+		$UI/ControlReward/PanelReward/LabelReward.text = "Hore target kedua tercapai!\nKamu mendapat hadiah stok kopi sebanyak 10!"
 		$UI/PanelGoals/VBoxContainerGoalsList/LabelGoals2.modulate = Color(1, 1, 1, 0.5)
 		shop.setFoodStock(shop.getFoodStock() + 10)
 		goalsStatus[1] = true
 
+# Fungsi menutup tampilan Reward
+func _on_buttonReward_pressed():
+	$UI/ControlReward.visible = false
+	$UI/ControlReward/PanelReward/AnimationPlayerReward.play_backwards("popup")
+	$UI/ControlReward.top_level = false
+
 # Fungsi untuk loop audio 'MainMusic'
 func _on_mainMusic_finished():
 	$MainMusic.play()
+

@@ -22,6 +22,7 @@ func _pause():
 
 # Fungsi untuk pause game dan membuka panel "PanelPauseMenu"
 func _on_button_pause_menu_pressed():
+	$PopSfx.play()
 	if !get_tree().paused:
 		_pause()
 	elif get_tree().paused:
@@ -29,9 +30,11 @@ func _on_button_pause_menu_pressed():
 
 # Fungsi untuk melanjutkan game
 func _on_button_resume_pressed():
+	$PopSfx.play()
 	_resume()
 
 # Fungsi untuk kembali ke halaman utama
 func _on_button_to_main_menu_pressed():
+	$PopSfx.play()
 	_resume()
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
