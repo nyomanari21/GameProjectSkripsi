@@ -123,3 +123,14 @@ func calculateNextDailyCustomer():
 	# Jika feedback netral (positif dan negatif sama banyak), jumlah customer selanjutnya sama dengan hari sebelumnya
 	elif difference == 0:
 		setDailyCustomer(getDailyCustomer())
+
+func resetAllVariable():
+	dailyPositiveFeedback = 0
+	totalPositiveFeedback = 0
+	dailyNeutralFeedback = 0
+	totalNeutralFeedback = 0
+	dailyNegativeFeedback = 0
+	totalNegativeFeedback = 0
+	dailyCustomer = 5
+	totalCustomer = 0
+	income = 0

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://byrpushu1ynnl"]
+[gd_scene load_steps=6 format=3 uid="uid://byrpushu1ynnl"]
 
 [ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="1_m1oeg"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_qcmi3"]
-[ext_resource type="FontFile" uid="uid://isqeyxdhl801" path="res://Assets/GROBOLD.ttf" id="2_f7jbu"]
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="4_cb2vs"]
 
 [sub_resource type="Animation" id="Animation_snwtt"]
@@ -44,7 +43,6 @@ offset_top = 16.0
 offset_right = 77.0
 offset_bottom = 44.0
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_f7jbu")
 theme_override_font_sizes/font_size = 18
 text = "Menu"
 
@@ -79,7 +77,6 @@ offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_f7jbu")
 theme_override_font_sizes/font_size = 20
 text = "Lanjut"
 
@@ -90,12 +87,12 @@ offset_top = 144.0
 offset_right = 156.0
 offset_bottom = 186.0
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_f7jbu")
 theme_override_font_sizes/font_size = 20
 text = "Menu Utama"
 
 [node name="PopSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_cb2vs")
+volume_db = -10.0
 
 [connection signal="pressed" from="ButtonPauseMenu" to="." method="_on_button_pause_menu_pressed"]
 [connection signal="pressed" from="PanelPauseMenu/ButtonResume" to="." method="_on_button_resume_pressed"]

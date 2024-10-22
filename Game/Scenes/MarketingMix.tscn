@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://w5utovh318a7"]
+[gd_scene load_steps=8 format=3 uid="uid://w5utovh318a7"]
 
 [ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="1_gtsfa"]
 [ext_resource type="Texture2D" uid="uid://b0nuahu8gyvt7" path="res://Assets/Images/Park Base.png" id="2_3l36t"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://g2qj2ulg8wgg" path="res://Assets/Images/Downtown Base.png" id="4_lmdji"]
 [ext_resource type="Texture2D" uid="uid://b24vkelwgdw8i" path="res://Assets/Images/Mall Base.png" id="5_mj721"]
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="6_bm8h5"]
+[ext_resource type="Texture2D" uid="uid://xt6v3at1ogi1" path="res://Assets/Images/Barista.png" id="6_ut281"]
 
 [node name="MarketingMix" type="Control"]
 layout_mode = 3
@@ -39,27 +40,30 @@ offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LabelPlaceTitle" type="Label" parent="PanelMarketingMix/ControlPlace"]
+[node name="RichTextLabelPlaceTitle" type="RichTextLabel" parent="PanelMarketingMix/ControlPlace"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
-offset_right = 110.0
-offset_bottom = 33.0
+offset_left = -104.0
+offset_right = 104.0
+offset_bottom = 46.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Place (Tempat)"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+bbcode_enabled = true
+text = "[b][i]Place[/i][/b] (Tempat)"
 
 [node name="LabelPlaceDescription" type="Label" parent="PanelMarketingMix/ControlPlace"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 76.0
-offset_right = 464.0
-offset_bottom = 136.0
+offset_right = 544.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 24
 text = "Pilih tempat untuk berjualan kopi. Semakin tinggi daya belinya, konsumen juga akan mengharapkan kualitas kopi yang semakin tinggi"
 autowrap_mode = 2
 
@@ -81,10 +85,11 @@ texture = ExtResource("2_3l36t")
 
 [node name="LabelPark" type="Label" parent="PanelMarketingMix/ControlPlace/PanelPark"]
 layout_mode = 0
-offset_left = 88.0
+offset_left = 90.0
 offset_top = 116.0
-offset_right = 181.0
-offset_bottom = 136.0
+offset_right = 183.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 20
 text = "Daya beli: +"
 
 [node name="ButtonSelectPark" type="Button" parent="PanelMarketingMix/ControlPlace/PanelPark"]
@@ -114,10 +119,11 @@ texture = ExtResource("4_lmdji")
 
 [node name="LabelDowntown" type="Label" parent="PanelMarketingMix/ControlPlace/PanelDowntown"]
 layout_mode = 0
-offset_left = 72.0
+offset_left = 79.0
 offset_top = 116.0
-offset_right = 190.0
-offset_bottom = 136.0
+offset_right = 182.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 20
 text = "Daya beli: ++"
 
 [node name="ButtonSelectDowntown" type="Button" parent="PanelMarketingMix/ControlPlace/PanelDowntown"]
@@ -147,10 +153,11 @@ texture = ExtResource("5_mj721")
 
 [node name="LabelMall" type="Label" parent="PanelMarketingMix/ControlPlace/PanelMall"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 116.0
-offset_right = 186.0
-offset_bottom = 136.0
+offset_left = 75.0
+offset_top = 118.0
+offset_right = 189.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 20
 text = "Daya beli: +++"
 
 [node name="ButtonSelectMall" type="Button" parent="PanelMarketingMix/ControlPlace/PanelMall"]
@@ -177,19 +184,19 @@ offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LabelProductTitle" type="Label" parent="PanelMarketingMix/ControlProduct"]
+[node name="LabelProductTitle" type="RichTextLabel" parent="PanelMarketingMix/ControlProduct"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -127.5
-offset_right = 127.5
-offset_bottom = 33.0
+offset_left = -118.0
+offset_right = 118.0
+offset_bottom = 46.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "Product (Produk)"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+bbcode_enabled = true
+text = "[b][i]Product[/i][/b] (Produk)"
 
 [node name="LabelProductDescription" type="Label" parent="PanelMarketingMix/ControlProduct"]
 layout_mode = 0
@@ -197,6 +204,7 @@ offset_left = 136.0
 offset_top = 88.0
 offset_right = 547.0
 offset_bottom = 128.0
+theme_override_font_sizes/font_size = 24
 text = "Tentukan kualitas kopi yang ingin dijual.
 Kualitas kopi menentukan modal dari tiap gelas kopi"
 
@@ -224,6 +232,7 @@ offset_top = 16.0
 offset_right = 75.5
 offset_bottom = 56.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
 text = "Kualitas kopi: Biasa
 Modal: Rp200"
 
@@ -235,9 +244,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -28.0
-offset_top = -48.0
+offset_top = -42.0
 offset_right = 28.0
-offset_bottom = -16.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
@@ -267,6 +276,7 @@ offset_top = 16.0
 offset_right = 75.5
 offset_bottom = 56.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
 text = "Kualitas kopi: Menengah
 Modal: Rp400"
 
@@ -278,9 +288,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -28.0
-offset_top = -48.0
+offset_top = -42.0
 offset_right = 28.0
-offset_bottom = -16.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
@@ -310,6 +320,7 @@ offset_top = 16.0
 offset_right = 75.5
 offset_bottom = 56.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
 text = "Kualitas kopi: Tinggi
 Modal: Rp600"
 
@@ -321,9 +332,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -28.0
-offset_top = -48.0
+offset_top = -42.0
 offset_right = 28.0
-offset_bottom = -16.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
@@ -344,18 +355,21 @@ offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LabelPriceTitle" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
+[node name="LabelPriceTitle" type="RichTextLabel" parent="PanelMarketingMix/ControlPricePromotion"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 17.0
-theme_override_font_sizes/font_size = 30
-text = "Price (Harga)"
+offset_right = 160.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+bbcode_enabled = true
+text = "[b][i]Price[/i][/b] (Harga)"
 
 [node name="LabelPriceDescription" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
 layout_mode = 0
 offset_top = 44.0
-offset_right = 448.0
+offset_right = 496.0
 offset_bottom = 104.0
+theme_override_font_sizes/font_size = 20
 text = "Tentukan harga jual kopi. Jika terlalu mahal dan tidak sebanding dengan kualitas kopi, pelanggan akan merasa tidak puas"
 autowrap_mode = 2
 
@@ -368,9 +382,10 @@ offset_bottom = 204.0
 [node name="LabelPrice" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelPrice"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = 12.0
 offset_right = 131.0
-offset_bottom = 36.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 18
 text = "Harga kopi: Rp"
 
 [node name="ButtonIncPrice" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelPrice"]
@@ -391,20 +406,22 @@ offset_bottom = 70.0
 mouse_default_cursor_shape = 2
 text = "-"
 
-[node name="LabelPromotionTitle" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
+[node name="LabelPromotionTitle" type="RichTextLabel" parent="PanelMarketingMix/ControlPricePromotion"]
 layout_mode = 0
-offset_top = 236.0
+offset_top = 224.0
 offset_right = 306.0
-offset_bottom = 269.0
-theme_override_font_sizes/font_size = 30
-text = "Promotion (Promosi)"
-vertical_alignment = 1
+offset_bottom = 257.0
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+bbcode_enabled = true
+text = "[b][i]Promotion[/i][/b] (Promosi)"
 
 [node name="LabelPromotionDescription" type="Label" parent="PanelMarketingMix/ControlPricePromotion"]
 layout_mode = 0
-offset_top = 284.0
+offset_top = 264.0
 offset_right = 520.0
-offset_bottom = 344.0
+offset_bottom = 339.0
+theme_override_font_sizes/font_size = 20
 text = "Tentukan berapa anggaran iklan yang mau dikeluarkan. Kamu juga dapat memberikan diskon pada kopi yang dijual. Keduanya dapat meningkatkan jumlah pelanggan yang akan datang"
 autowrap_mode = 2
 
@@ -412,32 +429,33 @@ autowrap_mode = 2
 layout_mode = 0
 offset_top = 354.0
 offset_right = 240.0
-offset_bottom = 438.0
+offset_bottom = 446.0
 
 [node name="LabelAdvertisement" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 14.0
-offset_right = 104.0
-offset_bottom = 34.0
+offset_right = 155.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 18
 text = "Anggaran Iklan: Rp"
 vertical_alignment = 1
 
 [node name="ButtonAdPlus" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 38.0
-offset_right = 168.0
-offset_bottom = 62.0
+offset_left = 136.0
+offset_top = 46.0
+offset_right = 176.0
+offset_bottom = 73.0
 mouse_default_cursor_shape = 2
 text = "+"
 
 [node name="ButtonAdMin" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 38.0
-offset_right = 96.0
-offset_bottom = 62.0
+offset_left = 64.0
+offset_top = 46.0
+offset_right = 104.0
+offset_bottom = 73.0
 mouse_default_cursor_shape = 2
 text = "-"
 
@@ -446,7 +464,7 @@ layout_mode = 0
 offset_left = 256.0
 offset_top = 354.0
 offset_right = 408.0
-offset_bottom = 438.0
+offset_bottom = 446.0
 
 [node name="LabelDiscount" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelDiscount"]
 layout_mode = 0
@@ -454,26 +472,56 @@ offset_left = 16.0
 offset_top = 14.0
 offset_right = 104.0
 offset_bottom = 34.0
+theme_override_font_sizes/font_size = 18
 text = "Diskon: 0%"
 vertical_alignment = 1
 
 [node name="ButtonDiscountPlus" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelDiscount"]
 layout_mode = 0
 offset_left = 88.0
-offset_top = 38.0
+offset_top = 46.0
 offset_right = 128.0
-offset_bottom = 62.0
+offset_bottom = 73.0
 mouse_default_cursor_shape = 2
 text = "+"
 
 [node name="ButtonDiscountMin" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelDiscount"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 38.0
+offset_top = 46.0
 offset_right = 64.0
-offset_bottom = 62.0
+offset_bottom = 73.0
 mouse_default_cursor_shape = 2
 text = "-"
+
+[node name="ControlHint" type="Control" parent="PanelMarketingMix"]
+visible = false
+anchors_preset = 0
+
+[node name="TextureRectHint" type="TextureRect" parent="PanelMarketingMix/ControlHint"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 16.0
+offset_right = 1356.0
+offset_bottom = 664.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("6_ut281")
+
+[node name="PanelHint" type="Panel" parent="PanelMarketingMix/ControlHint"]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 32.0
+offset_right = 1008.0
+offset_bottom = 144.0
+
+[node name="LabelHint" type="Label" parent="PanelMarketingMix/ControlHint/PanelHint"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = 104.0
+text = "Pastikan kopi yang dipilih sesuai dengan daya beli pelanggan ya! Seperti pelanggan di Mall pasti ingin kopi yang berkualitas tinggi. "
+autowrap_mode = 2
 
 [node name="ButtonNext" type="Button" parent="PanelMarketingMix"]
 layout_mode = 1
@@ -511,7 +559,7 @@ text = "Kembali"
 
 [node name="PopSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_bm8h5")
-volume_db = -5.0
+volume_db = -10.0
 
 [connection signal="pressed" from="PanelMarketingMix/ControlPlace/PanelPark/ButtonSelectPark" to="." method="_on_buttonSelectPark_pressed"]
 [connection signal="pressed" from="PanelMarketingMix/ControlPlace/PanelDowntown/ButtonSelectDowntown" to="." method="_on_buttonSelectDowntown_pressed"]

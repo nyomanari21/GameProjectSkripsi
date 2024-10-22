@@ -1,9 +1,10 @@
-Button
-AudioStreamPlayer
-TextureRect
 Label
-Control
 Panel
+TextureRect
+Control
+Button
+RichTextLabel
+AudioStreamPlayer
 Timer
 AnimationPlayer
 ColorRect
@@ -14,7 +15,6 @@ AnimationTree
 Sprite2D
 CenterContainer
 PanelContainer
-RichTextLabel
 VBoxContainer
 CanvasLayer
 VideoStreamPlayer

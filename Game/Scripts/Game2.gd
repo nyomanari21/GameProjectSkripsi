@@ -8,12 +8,19 @@ var customerFeedback:int = 0 # Penyimpan perhitungan feedback dari customer (...
 var customerNumber:int # Penyimpan banyaknya customer yang telah datang
 var totalDay:int = 3 # Total hari yang akan berjalan setiap kali bermain
 var dayNumber:int = 0 # Penanda hari yang sedang berjalan
-var timerCustomerStarted = false
+var timerCustomerStarted = false # Penanda status timer customer
+var customerScale1 # Penyimpan ukuran animasi customer 1
+var customerScale2 # Penyimpan ukuran animasi customer 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if shop.getResetVariable() == true:
+		shop.setResetVariable(false)
+	customerScale1 = $UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale
+	customerScale2 = $UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale / 2
 	transaction.setDailyCustomer(transaction.getDailyCustomer() + (shop.getPromotionBudget() / 500))
 	shop.setFoodPrice(shop.getFoodPrice() - (shop.getFoodPrice() * shop.getDiscount() / 100))
+	$TimerCustomer.wait_time = 2
 	_startDay()
 	_startBackgroundAnimation()
 
@@ -29,13 +36,19 @@ func _on_main_music_finished():
 func _startDay():
 	print("Customer: " + str(transaction.getDailyCustomer()))
 	print("TimerCustomer: " + str($TimerCustomer.wait_time))
+	$UI/ControlCustomerNumber/PanelCustomerNumber/LabelCustomerNumber.text = "Pelanggan Ke 1"
 	customerNumber = 0 # Reset jumlah customer yang telah datang
 	$UI/ControlCustomerCoffee.visible = false
 	_moveCustomer() # Jalankan animasi customer
 
 # Fungsi untuk menjalankan animasi Customer
 func _moveCustomer():
-	$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking")
+	if (customerNumber % 2) == 0:
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale1
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 1")
+	else:
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale2
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 2")
 	$UI/ControlCharacters/ControlCustomer1/AnimationPlayerCustomer1.play("moving")
 
 # Fungsi untuk memunculkan kopi yang diinginkan oleh customer
@@ -89,6 +102,7 @@ func _checkCoffee(customer:int, barista:int):
 
 func _nextCustomer():
 	await get_tree().create_timer(1).timeout
+	$UI/ControlCustomerNumber/PanelCustomerNumber/LabelCustomerNumber.text = "Pelanggan Ke " + str(customerNumber + 1)
 	$UI/ControlCharacters/ControlCustomer1/AnimationPlayerCustomer1.stop()
 	_moveCustomer()
 
@@ -253,6 +267,7 @@ func _dayReport():
 	transaction.resetDailyFeedback()
 	transaction.resetIncome()
 
+# Fungsi untuk menutup panel PanelDayReport
 func _on_button_close_day_finished_pressed():
 	# Jika masih ada hari yang belum dilalui, lanjutkan ke hari berikutnya
 	if dayNumber < totalDay:
@@ -265,6 +280,11 @@ func _on_button_close_day_finished_pressed():
 	# Jika total hari sudah habis, kembali ke halaman utama
 	else:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+# Fungsi 'ButtonResetMarketingMixVariable' untuk mengatur ulang variabel marketing mix
+func _on_buttonResetMarketingMixVariable_pressed():
+	shop.setResetVariable(true)
+	get_tree().change_scene_to_file("res://Scenes/MarketingMix.tscn")
 
 # Fungsi kontrol Background Animation
 func _stopBackgroundAnimation():

@@ -2,21 +2,20 @@ extends Control
 
 var textNumber = 0
 var introText = [
-		"Halo pemain! Selamat datang di Kopi Simulator!\nDi game ini kamu adalah seorang pemuda yang sedang mencoba memulai usaha kopi kecil-kecilan.",
-		"Agar usaha kopimu dapat berkembang, kamu mencoba menerapkan konsep Mareketing Mix. Lalu, apa itu Marketing Mix?",
-		"Marketing mix merupakan sekumpulan variabel pemasaran yang dapat dikontrol oleh perusahaan untuk mencapai tujuannya di dalam pasar yang dituju.
-			\n\nMarketing mix terdiri dari 4 variabel, yaitu:\n-Product (produk)\n-Price (harga)\n-Promotion (promosi)\n-Place (tempat).",
-		"Product (Produk)\n\nProduk adalah segala sesuatu yang dapat ditawarkan ke pasar untuk menarik minat, memperoleh, menggunakan, atau mengonsumsi yang bisa memenuhi suatu keinginan atau kebutuhan.
-			\nFaktor-faktor yang terkandung dalam produk adalah mutu/kualitas, penampilan (features), pilihan yang ada (options), gaya (style), merek (brand names), pengemasan (packaging),
-			ukuran (size), jenis (product lines), macam (product items), jaminan (warranties), dan pelayanan.",
-		"Price (Harga)\n\nHarga adalah satuan moneter atau ukuran lain (termasuk barang dan jasa) yang digunakan sebagai alat tukar
-			untuk mendapatkan hak kepemilikan atau penggunaan suatu barang atau jasa.",
-		"Promotion (Promosi)\n\nPromosi merupakan cara produsen menyampaikan pesan tentang produknya, sehingga konsumen mengenal produk tersebut
-			dan mengetahui manfaatnya untuk menyelesaikan masalah yang mereka hadapi.",
-		"Place (Tempat)\n\nTempat merupakan aktivitas suatu organisasi untuk memudahkan produk didapatkan konsumen sasarannya.
-			Unsur ini mencakup keputusan-keputusan terkait proses perjalanan produk dari organisasi hingga sampai ke tangan konsumen.
+		"Halo pemain! Selamat datang di Kopi Simulator!\n\nDi game ini kamu adalah seorang pemuda yang sedang mencoba memulai usaha kopi kecil-kecilan.",
+		"Agar usaha kopimu dapat berkembang, kamu mencoba menerapkan konsep [i]Mareketing mix[/i]. Lalu, apa itu [i]Marketing mix[/i]?",
+		"[i]Marketing mix[/i] merupakan sekumpulan variabel pemasaran yang dapat dikontrol oleh perusahaan untuk mencapai tujuannya di dalam pasar yang dituju.
+			\n[i]Marketing mix[/i] terdiri dari 4 variabel, yaitu:\n- [b][i]Product[/i][/b] (produk)\n- [b][i]Price[/i][/b] (harga)\n- [b][i]Promotion[/i][/b] (promosi)\n- [b][i]Place[/i][/b] (tempat).",
+		"[b][i]Product[/i][/b] (Produk)\n\nProduk adalah segala sesuatu yang dapat ditawarkan ke pasar untuk menarik minat, memperoleh, menggunakan, atau mengonsumsi yang bisa memenuhi suatu keinginan atau kebutuhan.
+			\nFaktor-faktor yang terkandung dalam produk adalah:\n- Mutu/kualitas\n- Penampilan ([b][i]features[/i][/b])\n- Pilihan yang ada ([b][i]options[/i][/b])\n- Gaya ([b][i]style[/i][/b])\n- Merek ([b][i]brand names[/i][/b])\n- Pengemasan ([b][i]Packaging[/i][/b])\n- Ukuran ([b][i]Size[/i][/b])\n- Jenis ([b][i]product lines[/i][/b])\n- Macam ([b][i]product items[/i][/b])\n- Jaminan ([b][i]warranties[/i][/b])\n- Pelayanan",
+		"[b][i]Price[/i][/b] (Harga)
+			\nHarga adalah satuan moneter atau ukuran lain (termasuk barang dan jasa) yang digunakan sebagai alat tukar untuk mendapatkan hak kepemilikan atau penggunaan suatu barang atau jasa.",
+		"[b][i]Promotion[/i][/b] (Promosi)
+			\nPromosi merupakan cara produsen menyampaikan pesan tentang produknya, sehingga konsumen mengenal produk tersebut dan mengetahui manfaatnya untuk menyelesaikan masalah yang mereka hadapi.",
+		"[b][i]Place[/i][/b] (Tempat)
+			\nTempat merupakan aktivitas suatu organisasi untuk memudahkan produk didapatkan konsumen sasarannya. Unsur ini mencakup keputusan-keputusan terkait proses perjalanan produk dari organisasi hingga sampai ke tangan konsumen.
 			\nMasalah-masalah utama biasanya berkaitan dengan penetapan lokasi penyimpanan yang optimal, sistem distribusi, serta sistem pengiriman dan penyebaran produk.",
-		"Setelah mengetahui apa itu marketing mix, ayo atur keempat variabel marketing mix untuk toko kopimu!"
+		"Setelah mengetahui apa itu [b][i]marketing mix[/i][/b], ayo atur keempat variabel [b][i]marketing mix[/i][/b] untuk toko kopimu!"
 	]
 
 

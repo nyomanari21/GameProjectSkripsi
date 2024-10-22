@@ -17,6 +17,8 @@ var foodStockPrice:int = 200: get = getFoodStockPrice, set = setFoodStockPrice #
 
 var discount:int = 0: get = getDiscount, set = setDiscount # Variabel penyimpan besarnya diskon produk
 
+var resetVariable:bool = false: get = getResetVariable, set = setResetVariable # Variabel penyimpan status reset variabel marketing mix
+
 # Setter dan Getter uang toko
 func setMoney(newMoney):
 	money = newMoney
@@ -79,6 +81,13 @@ func setDiscount(newDiscount):
 
 func getDiscount():
 	return discount
+
+# Setter dan Getter reset variabel
+func setResetVariable(newResetVariable):
+	resetVariable = newResetVariable
+
+func getResetVariable():
+	return resetVariable
 
 # Fungsi untuk reset semua variabel
 func resetAllVariable():

@@ -6,7 +6,14 @@ var variabelEdited = [false, false, false, false]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Cek apakah pemain mengatur ulang variabel marketing mix
+	# Jika pemain mengatur ulang variabel marketing mix, tampilkan petunjuk
 	shop.resetAllVariable()
+	transaction.resetAllVariable()
+	if shop.getResetVariable() == false:
+		$PanelMarketingMix/ControlHint.visible = false
+	else:
+		$PanelMarketingMix/ControlHint.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

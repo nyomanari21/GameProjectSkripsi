@@ -59,7 +59,7 @@ offset_right = 297.5
 offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "Ketika hari mulai, pelanggan akan datang untuk membeli kopi yang kita jual"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -88,13 +88,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -287.5
-offset_top = -123.0
-offset_right = 287.5
-offset_bottom = -8.0
+offset_left = -296.0
+offset_top = -132.0
+offset_right = 296.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "Klik salah satu dari ketiga jenis kopi yang ada di dekat stand kopi sesuai dengan kopi yang muncul di atas kepala pelanggan.
 Hati-hati, gambar kopi yang diinginkan pelanggan akan menghilan dalam beberapa detik setelah muncul."
 horizontal_alignment = 1
@@ -126,12 +126,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -290.0
-offset_top = -128.0
+offset_top = -132.0
 offset_right = 290.0
-offset_bottom = -32.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "Kita punya kesempatan untuk berjualan sebanyak 3 hari.
 Laporan penjualan harian akan muncul ketika hari telah selesai. Hasil penjualan hari ini akan menentukan banyaknya pelanggan yang datang di hari berikutnya."
 horizontal_alignment = 1
@@ -163,12 +163,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -316.0
-offset_top = -124.0
+offset_top = -133.0
 offset_right = 316.0
-offset_bottom = -32.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "Di akhir permainan kita bisa melihat hasil laporan penjualan keseluruhan. Seperti total pelanggan, jumlah setiap feedback pelanggan, modal jualan, pendapatan, modal iklan, dan selisih pendapatan apakah untung atau rugi."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -219,6 +219,7 @@ text = "Kembali"
 
 [node name="PopSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_htv3r")
+volume_db = -10.0
 
 [connection signal="pressed" from="PanelTutorial/ButtonNext" to="." method="_on_button_next_pressed"]
 [connection signal="pressed" from="PanelTutorial/ButtonPrev" to="." method="_on_button_prev_pressed"]

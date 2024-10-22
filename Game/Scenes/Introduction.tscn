@@ -23,16 +23,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LabelIntroduction" type="Label" parent="PanelIntroduction"]
+[node name="LabelIntroduction" type="RichTextLabel" parent="PanelIntroduction"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 96.0
 offset_right = 960.0
 offset_bottom = 416.0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+bbcode_enabled = true
 text = "(Text)"
-horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ButtonNext" type="Button" parent="PanelIntroduction"]
@@ -64,6 +65,7 @@ texture = ExtResource("3_rrsni")
 
 [node name="PopSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_n6s43")
+volume_db = -10.0
 
 [connection signal="pressed" from="PanelIntroduction/ButtonNext" to="." method="_on_buttonNext_pressed"]
 [connection signal="pressed" from="PanelIntroduction/ButtonPrev" to="." method="_on_buttonPrev_pressed"]
