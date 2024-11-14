@@ -11,6 +11,8 @@ var dayNumber:int = 0 # Penanda hari yang sedang berjalan
 var timerCustomerStarted = false # Penanda status timer customer
 var customerScale1 # Penyimpan ukuran animasi customer 1
 var customerScale2 # Penyimpan ukuran animasi customer 2
+var customerAnimation # Penyimpan random number untuk load animasi customer
+var customerFeedbackPercentage # Penyimpan random number untuk feedback customer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,12 +45,26 @@ func _startDay():
 
 # Fungsi untuk menjalankan animasi Customer
 func _moveCustomer():
-	if (customerNumber % 2) == 0:
+	customerAnimation = rng.randi_range(1, 6)
+	
+	if customerAnimation == 1:
 		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale1
 		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 1")
-	else:
+	elif customerAnimation == 2:
 		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale2
 		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 2")
+	elif customerAnimation == 3:
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale1
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 3")
+	elif customerAnimation == 4:
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale1
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 4")
+	elif customerAnimation == 5:
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale1
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 5")
+	elif customerAnimation == 6:
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.scale = customerScale1
+		$UI/ControlCharacters/ControlCustomer1/AnimatedSprite2DCustomer1.play("walking 6")
 	$UI/ControlCharacters/ControlCustomer1/AnimationPlayerCustomer1.play("moving")
 
 # Fungsi untuk memunculkan kopi yang diinginkan oleh customer
@@ -124,44 +140,79 @@ func _customerFeedback():
 	# Cek kepuasan customer dengan harga kopi
 	# Cek lokasi Park (Taman)
 	if shop.getPlace() == 1:
-		if shop.getFoodPrice() <= 300:
+		if shop.getFoodPrice() <= 400:
 			customerFeedback += 1
-		elif shop.getFoodPrice() > 300 and shop.getFoodPrice() <= 400:
+		elif shop.getFoodPrice() > 400 and shop.getFoodPrice() <= 500:
 			customerFeedback += 0
-		elif shop.getFoodPrice() > 400:
+		elif shop.getFoodPrice() > 500:
 			customerFeedback -= 1
 	
 	# Cek lokasi Downtown (Pusat Kota)
 	if shop.getPlace() == 2:
-		if shop.getFoodPrice() <= 500:
+		if shop.getFoodPrice() <= 800:
 			customerFeedback += 1
-		elif shop.getFoodPrice() > 500 and shop.getFoodPrice() <= 600:
+		elif shop.getFoodPrice() > 800 and shop.getFoodPrice() <= 900:
 			customerFeedback += 0
-		elif shop.getFoodPrice() > 600:
+		elif shop.getFoodPrice() > 900:
 			customerFeedback -= 1
 	
 	# Cek lokasi Mall
 	if shop.getPlace() == 3:
-		if shop.getFoodPrice() <= 700:
+		if shop.getFoodPrice() <= 1200:
 			customerFeedback += 1
-		elif shop.getFoodPrice() > 700 and shop.getFoodPrice() <= 800:
+		elif shop.getFoodPrice() > 1200 and shop.getFoodPrice() <= 1300:
 			customerFeedback += 0
-		elif shop.getFoodPrice() > 800:
+		elif shop.getFoodPrice() > 1300:
 			customerFeedback -= 1
 	
 	# Menentukan feedback customer
 	# Jika feedback customer positif
+	#if customerFeedback > 0:
+	#	_saveCustomerFeedback("positive")
+	#	_loadFeedbackIcon("positive")
+	## Jika feedback customer netral
+	#elif customerFeedback == 0:
+	#	_saveCustomerFeedback("neutral")
+	#	_loadFeedbackIcon("neutral")
+	## Jika feedback customer negatif
+	#elif customerFeedback < 0:
+	#	_saveCustomerFeedback("negative")
+	#	_loadFeedbackIcon("negative")
+	
+	customerFeedbackPercentage = rng.randi_range(1, 100)
+	# Jika perhitungan feedback customer bernilai positif
 	if customerFeedback > 0:
-		_saveCustomerFeedback("positive")
-		_loadFeedbackIcon("positive")
-	# Jika feedback customer netral
+		if customerFeedbackPercentage <= 80:
+			_saveCustomerFeedback("positive")
+			_loadFeedbackIcon("positive")
+		elif customerFeedbackPercentage > 80 and customerFeedbackPercentage <= 90:
+			_saveCustomerFeedback("neutral")
+			_loadFeedbackIcon("neutral")
+		else:
+			_saveCustomerFeedback("negative")
+			_loadFeedbackIcon("negative")
+	# Jika perhitungan feedback customer bernilai 0
 	elif customerFeedback == 0:
-		_saveCustomerFeedback("neutral")
-		_loadFeedbackIcon("neutral")
-	# Jika feedback customer negatif
+		if customerFeedbackPercentage <= 40:
+			_saveCustomerFeedback("positive")
+			_loadFeedbackIcon("positive")
+		elif customerFeedbackPercentage > 40 and customerFeedbackPercentage <= 80:
+			_saveCustomerFeedback("neutral")
+			_loadFeedbackIcon("neutral")
+		else:
+			_saveCustomerFeedback("negative")
+			_loadFeedbackIcon("negative")
+	# Jika perhitungan feedback customer bernilai negatif
 	elif customerFeedback < 0:
-		_saveCustomerFeedback("negative")
-		_loadFeedbackIcon("negative")
+		if customerFeedbackPercentage <= 20:
+			_saveCustomerFeedback("positive")
+			_loadFeedbackIcon("positive")
+		elif customerFeedbackPercentage > 20 and customerFeedbackPercentage <= 30:
+			_saveCustomerFeedback("neutral")
+			_loadFeedbackIcon("neutral")
+		else:
+			_saveCustomerFeedback("negative")
+			_loadFeedbackIcon("negative")
 
 # Fungsi untuk menyimpan feedback customer
 func _saveCustomerFeedback(feedback:String):
@@ -241,10 +292,10 @@ func _dayReport():
 		$UI/ControlDayReport/PanelDayReport/LabelPositiveFeedback.text = ": " + str(transaction.getDailyPositiveFeedback()) + " Orang"
 		$UI/ControlDayReport/PanelDayReport/LabelNeutralFeedback.text = ": " + str(transaction.getDailyNeutralFeedback()) + " Orang"
 		$UI/ControlDayReport/PanelDayReport/LabelNegativeFeedback.text = ": " + str(transaction.getDailyNegativeFeedback()) + " Orang"
-		$UI/ControlDayReport/PanelDayReport/LabelCapital.text = "Modal           : Rp" + str(shop.getFoodStockPrice() * transaction.getDailyCustomer())
-		$UI/ControlDayReport/PanelDayReport/LabelEarned.text = "Pendapatan  : Rp" + str(transaction.getIncome())
-		$UI/ControlDayReport/PanelDayReport/LabelAdBudget.text = "Iklan             : Rp" + str(shop.getPromotionBudget())
-		$UI/ControlDayReport/PanelDayReport/LabelDifference.text = "Selisih           : Rp" + str(transaction.getIncome() - (shop.getFoodStockPrice() * transaction.getDailyCustomer()) - shop.getPromotionBudget())
+		$UI/ControlDayReport/PanelDayReport/LabelCapital.text = "Biaya Produksi : " + str(shop.getFoodStockPrice() * transaction.getDailyCustomer()) + "G"
+		$UI/ControlDayReport/PanelDayReport/LabelEarned.text = "Pendapatan     : " + str(transaction.getIncome()) + "G"
+		$UI/ControlDayReport/PanelDayReport/LabelAdBudget.text = "Iklan                : " + str(shop.getPromotionBudget()) + "G"
+		$UI/ControlDayReport/PanelDayReport/LabelDifference.text = "Selisih               : " + str(transaction.getIncome() - (shop.getFoodStockPrice() * transaction.getDailyCustomer()) - shop.getPromotionBudget()) + "G"
 		$UI/ControlDayReport.visible = true
 		$UI/ControlDayReport/AnimationPlayerDayFinished.play("popup")
 	# Jika total hari sudah habis, tampilkan report keseluruhan
@@ -253,10 +304,10 @@ func _dayReport():
 		$UI/ControlDayReport/PanelDayReport/LabelPositiveFeedback.text = ": " + str(transaction.getTotalPositiveFeedback()) + " Orang"
 		$UI/ControlDayReport/PanelDayReport/LabelNeutralFeedback.text = ": " + str(transaction.getTotalNeutralFeedback()) + " Orang"
 		$UI/ControlDayReport/PanelDayReport/LabelNegativeFeedback.text = ": " + str(transaction.getTotalNegativeFeedback()) + " Orang"
-		$UI/ControlDayReport/PanelDayReport/LabelCapital.text = "Modal           : Rp" + str(shop.getFoodStockPrice() * transaction.getTotalCustomer())
-		$UI/ControlDayReport/PanelDayReport/LabelEarned.text = "Pendapatan  : Rp" + str(shop.getMoney())
-		$UI/ControlDayReport/PanelDayReport/LabelAdBudget.text = "Iklan             : Rp" + str(shop.getPromotionBudget() * totalDay)
-		$UI/ControlDayReport/PanelDayReport/LabelDifference.text = "Selisih           : Rp" + str(shop.getMoney() - (shop.getFoodStockPrice() * transaction.getTotalCustomer()))
+		$UI/ControlDayReport/PanelDayReport/LabelCapital.text = "Biaya Produksi : " + str(shop.getFoodStockPrice() * transaction.getTotalCustomer()) + "G"
+		$UI/ControlDayReport/PanelDayReport/LabelEarned.text = "Pendapatan     : " + str(shop.getMoney()) + "G"
+		$UI/ControlDayReport/PanelDayReport/LabelAdBudget.text = "Iklan                : " + str(shop.getPromotionBudget() * totalDay) + "G"
+		$UI/ControlDayReport/PanelDayReport/LabelDifference.text = "Selisih               : " + str(shop.getMoney() - (shop.getFoodStockPrice() * transaction.getTotalCustomer())) + "G"
 		$UI/ControlDayReport/PanelDayReport/LabelReportTitle.text = "Laporan Penjualan Keseluruhan"
 		$UI/ControlDayReport/PanelDayReport/ButtonCloseDayFinished.text = "Halaman Utama"
 		$UI/ControlDayReport.visible = true

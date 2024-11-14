@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://s8cifvpy2bhk"]
+[gd_scene load_steps=66 format=3 uid="uid://s8cifvpy2bhk"]
 
 [ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="1_q61q4"]
 [ext_resource type="Texture2D" uid="uid://b0nuahu8gyvt7" path="res://Assets/Images/Park Base.png" id="2_jcfi7"]
@@ -18,10 +18,22 @@
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="13_j6o3k"]
 [ext_resource type="Texture2D" uid="uid://bxv33ia4xhj0a" path="res://Assets/Images/Smile icon.png" id="13_rcp0h"]
 [ext_resource type="Texture2D" uid="uid://djc5716sems2r" path="res://Assets/Animation/Person Walking 2 - left.png" id="13_y5xac"]
+[ext_resource type="Texture2D" uid="uid://g68is0r8nbxc" path="res://Assets/Animation/Person Walking 3 - Stop.png" id="14_3ibkr"]
 [ext_resource type="Texture2D" uid="uid://omi4g0sh3ix6" path="res://Assets/Images/Neutral icon.png" id="14_go0pu"]
 [ext_resource type="AudioStream" uid="uid://c8o6ojkt4upyl" path="res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3" id="14_lw832"]
 [ext_resource type="AudioStream" uid="uid://cct7k7ka1r4yd" path="res://Assets/Sfx/Money Register Sfx.mp3" id="15_6fxq1"]
 [ext_resource type="Texture2D" uid="uid://dprf6irggean2" path="res://Assets/Images/Sad icon.png" id="15_lu74u"]
+[ext_resource type="Texture2D" uid="uid://b8qf1gdtx2oeu" path="res://Assets/Animation/Person Walking 3 - Left.png" id="15_pr6rr"]
+[ext_resource type="Texture2D" uid="uid://bcvyun52dpro" path="res://Assets/Animation/Person Walking 3 - Right.png" id="16_l6s4k"]
+[ext_resource type="Texture2D" uid="uid://lxtuin2cv86q" path="res://Assets/Animation/Person Walking 4 - Stop.png" id="17_bvwbl"]
+[ext_resource type="Texture2D" uid="uid://c66okdalqwkf5" path="res://Assets/Animation/Person Walking 4 - Right.png" id="18_w7b5f"]
+[ext_resource type="Texture2D" uid="uid://dtr71u7yhdo7g" path="res://Assets/Animation/Person Walking 4 - Left.png" id="19_mmihb"]
+[ext_resource type="Texture2D" uid="uid://b6840u6ny75yq" path="res://Assets/Animation/Person Walking 5 - Stop.png" id="20_nvqb6"]
+[ext_resource type="Texture2D" uid="uid://cs7alw0ipavbl" path="res://Assets/Animation/Person Walking 5 - Right.png" id="21_qdiha"]
+[ext_resource type="Texture2D" uid="uid://cvfntm1kuywsu" path="res://Assets/Animation/Person Walking 5 - Left.png" id="22_t685v"]
+[ext_resource type="Texture2D" uid="uid://bhcf2e6whb75c" path="res://Assets/Animation/Person Walking 6 - Stop.png" id="23_6dbmd"]
+[ext_resource type="Texture2D" uid="uid://c6tlsqhd4mvra" path="res://Assets/Animation/Person Walking 6 - Right.png" id="24_o02pu"]
+[ext_resource type="Texture2D" uid="uid://b0gqvqajyc0uj" path="res://Assets/Animation/Person Walking 6 - Left.png" id="25_dxq5i"]
 
 [sub_resource type="Animation" id="Animation_ofqla"]
 length = 0.001
@@ -72,15 +84,15 @@ _data = {
 "moving": SubResource("Animation_yw0j0")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3nj7v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcp68"]
 atlas = ExtResource("6_7htkq")
 region = Rect2(0, 0, 250, 375)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1csp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii0sl"]
 atlas = ExtResource("7_f4ews")
 region = Rect2(0, 0, 250, 375)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xqdm4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs3cf"]
 atlas = ExtResource("8_cqrty")
 region = Rect2(0, 0, 250, 375)
 
@@ -100,20 +112,68 @@ region = Rect2(0, 0, 563, 750)
 atlas = ExtResource("13_y5xac")
 region = Rect2(0, 0, 563, 750)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyklr"]
+atlas = ExtResource("14_3ibkr")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfu6w"]
+atlas = ExtResource("15_pr6rr")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndsj7"]
+atlas = ExtResource("16_l6s4k")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eravp"]
+atlas = ExtResource("17_bvwbl")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aodai"]
+atlas = ExtResource("18_w7b5f")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17f6s"]
+atlas = ExtResource("19_mmihb")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd3kq"]
+atlas = ExtResource("20_nvqb6")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2gde"]
+atlas = ExtResource("21_qdiha")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3ml6"]
+atlas = ExtResource("22_t685v")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcehk"]
+atlas = ExtResource("23_6dbmd")
+region = Rect2(0, 0, 281, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slfq2"]
+atlas = ExtResource("24_o02pu")
+region = Rect2(0, 0, 281, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kf1e"]
+atlas = ExtResource("25_dxq5i")
+region = Rect2(0, 0, 281, 375)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdjdf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3nj7v")
+"texture": SubResource("AtlasTexture_pcp68")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d1csp")
+"texture": SubResource("AtlasTexture_ii0sl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3nj7v")
+"texture": SubResource("AtlasTexture_pcp68")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xqdm4")
+"texture": SubResource("AtlasTexture_fs3cf")
 }],
 "loop": true,
 "name": &"walking 1",
@@ -134,6 +194,74 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking 2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyklr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfu6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyklr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndsj7")
+}],
+"loop": true,
+"name": &"walking 3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eravp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aodai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eravp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17f6s")
+}],
+"loop": true,
+"name": &"walking 4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd3kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2gde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd3kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3ml6")
+}],
+"loop": true,
+"name": &"walking 5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcehk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slfq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcehk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kf1e")
+}],
+"loop": true,
+"name": &"walking 6",
 "speed": 5.0
 }]
 
@@ -570,7 +698,7 @@ offset_left = 288.0
 offset_top = 80.0
 offset_right = 399.0
 offset_bottom = 101.0
-text = "Modal           : Rpx"
+text = "Biaya Produksi  : xG"
 vertical_alignment = 1
 
 [node name="LabelEarned" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
@@ -579,7 +707,7 @@ offset_left = 288.0
 offset_top = 122.0
 offset_right = 420.0
 offset_bottom = 143.0
-text = "Pendapatan  : Rpx"
+text = "Pendapatan     : xG"
 vertical_alignment = 1
 
 [node name="LabelAdBudget" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
@@ -588,7 +716,7 @@ offset_left = 288.0
 offset_top = 170.0
 offset_right = 415.0
 offset_bottom = 191.0
-text = "Iklan             : Rpx"
+text = "Iklan                : xG"
 vertical_alignment = 1
 
 [node name="LabelDifference" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
@@ -597,7 +725,7 @@ offset_left = 288.0
 offset_top = 218.0
 offset_right = 428.0
 offset_bottom = 239.0
-text = "Selisih           : Rpx"
+text = "Selisih               : xG"
 vertical_alignment = 1
 
 [node name="ButtonCloseDayFinished" type="Button" parent="UI/ControlDayReport/PanelDayReport"]

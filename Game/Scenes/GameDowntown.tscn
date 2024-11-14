@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://iv20anmbvpq4"]
+[gd_scene load_steps=68 format=3 uid="uid://iv20anmbvpq4"]
 
 [ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="1_l8qca"]
 [ext_resource type="Script" path="res://Scripts/Game2.gd" id="2_tb04h"]
@@ -17,12 +17,24 @@
 [ext_resource type="Texture2D" uid="uid://c4diafofiejot" path="res://Assets/Images/Coffee 3.png" id="12_woep8"]
 [ext_resource type="Texture2D" uid="uid://bxv33ia4xhj0a" path="res://Assets/Images/Smile icon.png" id="13_6ctjd"]
 [ext_resource type="Texture2D" uid="uid://0pikuot8ylc6" path="res://Assets/Images/Car 2.png" id="13_62qmj"]
+[ext_resource type="Texture2D" uid="uid://g68is0r8nbxc" path="res://Assets/Animation/Person Walking 3 - Stop.png" id="13_dna1v"]
+[ext_resource type="Texture2D" uid="uid://b8qf1gdtx2oeu" path="res://Assets/Animation/Person Walking 3 - Left.png" id="14_28828"]
 [ext_resource type="Texture2D" uid="uid://b0n8nwirwyv5e" path="res://Assets/Images/Car 1.png" id="14_bgu64"]
 [ext_resource type="Texture2D" uid="uid://omi4g0sh3ix6" path="res://Assets/Images/Neutral icon.png" id="14_qi3mk"]
 [ext_resource type="Texture2D" uid="uid://dprf6irggean2" path="res://Assets/Images/Sad icon.png" id="15_5r5fg"]
+[ext_resource type="Texture2D" uid="uid://bcvyun52dpro" path="res://Assets/Animation/Person Walking 3 - Right.png" id="15_amrdq"]
+[ext_resource type="Texture2D" uid="uid://lxtuin2cv86q" path="res://Assets/Animation/Person Walking 4 - Stop.png" id="16_aoyjx"]
 [ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="16_lgxjy"]
 [ext_resource type="AudioStream" uid="uid://c8o6ojkt4upyl" path="res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3" id="17_mwj1r"]
+[ext_resource type="Texture2D" uid="uid://c66okdalqwkf5" path="res://Assets/Animation/Person Walking 4 - Right.png" id="17_x3fyb"]
 [ext_resource type="AudioStream" uid="uid://cct7k7ka1r4yd" path="res://Assets/Sfx/Money Register Sfx.mp3" id="18_if70n"]
+[ext_resource type="Texture2D" uid="uid://dtr71u7yhdo7g" path="res://Assets/Animation/Person Walking 4 - Left.png" id="18_odj8d"]
+[ext_resource type="Texture2D" uid="uid://b6840u6ny75yq" path="res://Assets/Animation/Person Walking 5 - Stop.png" id="19_fddjv"]
+[ext_resource type="Texture2D" uid="uid://cs7alw0ipavbl" path="res://Assets/Animation/Person Walking 5 - Right.png" id="20_cyb8k"]
+[ext_resource type="Texture2D" uid="uid://cvfntm1kuywsu" path="res://Assets/Animation/Person Walking 5 - Left.png" id="21_wbf6g"]
+[ext_resource type="Texture2D" uid="uid://bhcf2e6whb75c" path="res://Assets/Animation/Person Walking 6 - Stop.png" id="22_ohan1"]
+[ext_resource type="Texture2D" uid="uid://c6tlsqhd4mvra" path="res://Assets/Animation/Person Walking 6 - Right.png" id="23_qbjsi"]
+[ext_resource type="Texture2D" uid="uid://b0gqvqajyc0uj" path="res://Assets/Animation/Person Walking 6 - Left.png" id="24_epsob"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3nj7v"]
 atlas = ExtResource("7_1npjt")
@@ -51,6 +63,54 @@ region = Rect2(0, 0, 563, 750)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvxcu"]
 atlas = ExtResource("12_ffplf")
 region = Rect2(0, 0, 563, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7afmv"]
+atlas = ExtResource("13_dna1v")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6183"]
+atlas = ExtResource("15_amrdq")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgli8"]
+atlas = ExtResource("14_28828")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig6bf"]
+atlas = ExtResource("16_aoyjx")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1l2v"]
+atlas = ExtResource("17_x3fyb")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjmur"]
+atlas = ExtResource("18_odj8d")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp28j"]
+atlas = ExtResource("19_fddjv")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnog7"]
+atlas = ExtResource("20_cyb8k")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsjp8"]
+atlas = ExtResource("21_wbf6g")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rflh"]
+atlas = ExtResource("22_ohan1")
+region = Rect2(0, 0, 281, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipvra"]
+atlas = ExtResource("23_qbjsi")
+region = Rect2(0, 0, 281, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jii8m"]
+atlas = ExtResource("24_epsob")
+region = Rect2(0, 0, 281, 375)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdjdf"]
 animations = [{
@@ -86,6 +146,74 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking 2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7afmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6183")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7afmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgli8")
+}],
+"loop": true,
+"name": &"walking 3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig6bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1l2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig6bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjmur")
+}],
+"loop": true,
+"name": &"walking 4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp28j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnog7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp28j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsjp8")
+}],
+"loop": true,
+"name": &"walking 5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rflh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipvra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rflh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jii8m")
+}],
+"loop": true,
+"name": &"walking 6",
 "speed": 5.0
 }]
 
@@ -580,7 +708,7 @@ offset_left = 288.0
 offset_top = 80.0
 offset_right = 399.0
 offset_bottom = 101.0
-text = "Modal           : Rpx"
+text = "Biaya Produksi  : xG"
 vertical_alignment = 1
 
 [node name="LabelEarned" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
@@ -589,7 +717,7 @@ offset_left = 288.0
 offset_top = 122.0
 offset_right = 420.0
 offset_bottom = 143.0
-text = "Pendapatan  : Rpx"
+text = "Pendapatan      : xG"
 vertical_alignment = 1
 
 [node name="LabelAdBudget" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
@@ -598,7 +726,7 @@ offset_left = 288.0
 offset_top = 170.0
 offset_right = 415.0
 offset_bottom = 191.0
-text = "Iklan             : Rpx"
+text = "Iklan                 : xG"
 vertical_alignment = 1
 
 [node name="LabelDifference" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
@@ -607,7 +735,7 @@ offset_left = 288.0
 offset_top = 218.0
 offset_right = 428.0
 offset_bottom = 239.0
-text = "Selisih           : Rpx"
+text = "Selisih               : xG"
 vertical_alignment = 1
 
 [node name="ButtonCloseDayFinished" type="Button" parent="UI/ControlDayReport/PanelDayReport"]

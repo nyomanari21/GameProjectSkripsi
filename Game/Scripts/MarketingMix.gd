@@ -2,7 +2,8 @@ extends Control
 
 
 var editVariable = 1
-var variabelEdited = [false, false, false, false]
+var variabelEdited = [false, false, false]
+var advertisementNumber = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,10 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Atur tampilan harga kopi yang muncul di layar
-	$PanelMarketingMix/ControlPricePromotion/PanelPrice/LabelPrice.text = "Harga Kopi: Rp" + str(shop.getFoodPrice())
-	
-	# Atur tampilan anggaran iklan yang muncul di layar
-	$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Rp" + str(shop.getPromotionBudget())
+	$PanelMarketingMix/ControlPricePromotion/PanelPrice/LabelPrice.text = "Harga Kopi: " + str(shop.getFoodPrice()) + "G"
 	
 	# Atur tampilan besarnya diskon yang muncul di layar
 	$PanelMarketingMix/ControlPricePromotion/PanelDiscount/LabelDiscount.text = "Diskon: " + str(shop.getDiscount())
@@ -33,18 +31,36 @@ func _process(delta):
 			$PanelMarketingMix/ButtonNext.disabled = true
 		else:
 			$PanelMarketingMix/ButtonNext.disabled = false
+		
+		# Atur petunjuk yang muncul ke layar
+		if $PanelMarketingMix/ControlHint.visible == true:
+			$PanelMarketingMix/ControlHint/PanelHint1.visible = true
+			$PanelMarketingMix/ControlHint/PanelHint2.visible = false
+			$PanelMarketingMix/ControlHint/PanelHint3.visible = false
 	
 	if editVariable == 2:
 		if variabelEdited[1] == false:
 			$PanelMarketingMix/ButtonNext.disabled = true
 		else:
 			$PanelMarketingMix/ButtonNext.disabled = false
+		
+		# Atur petunjuk yang muncul ke layar
+		if $PanelMarketingMix/ControlHint.visible == true:
+			$PanelMarketingMix/ControlHint/PanelHint2.visible = true
+			$PanelMarketingMix/ControlHint/PanelHint1.visible = false
+			$PanelMarketingMix/ControlHint/PanelHint3.visible = false
 	
 	if editVariable == 3:
 		if variabelEdited[2] == false:
 			$PanelMarketingMix/ButtonNext.disabled = true
 		else:
 			$PanelMarketingMix/ButtonNext.disabled = false
+		
+		# Atur petunjuk yang muncul ke layar
+		if $PanelMarketingMix/ControlHint.visible == true:
+			$PanelMarketingMix/ControlHint/PanelHint3.visible = true
+			$PanelMarketingMix/ControlHint/PanelHint1.visible = false
+			$PanelMarketingMix/ControlHint/PanelHint2.visible = false
 
 # Fungsi-fungsi tombol Selanjutnya dan Kembali untuk berpindah halaman
 func _on_buttonNext_pressed():
@@ -174,17 +190,51 @@ func _on_buttonDecPrice_pressed():
 func _on_buttonAdPlus_pressed():
 	$PopSfx.play()
 	# Tambah anggaran iklan
-	shop.setPromotionBudget(shop.getPromotionBudget() + 500)
-	variabelEdited[3] = true
+	#shop.setPromotionBudget(shop.getPromotionBudget() + 500)
+	
+	if advertisementNumber < 5:
+		advertisementNumber += 1
+	
+	if advertisementNumber == 1:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Media Sosial 500G"
+		shop.setPromotionBudget(500)
+	elif advertisementNumber == 2:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Koran 1000G"
+		shop.setPromotionBudget(1000)
+	elif advertisementNumber == 3:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Billboard 1500G"
+		shop.setPromotionBudget(1500)
+	elif advertisementNumber == 4:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Radio 2500G"
+		shop.setPromotionBudget(2500)
+	elif advertisementNumber == 5:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan TV 5000G"
+		shop.setPromotionBudget(5000)
 
 func _on_buttonAdMin_pressed():
 	$PopSfx.play()
 	# Kurangi anggaran iklan
-	if shop.getPromotionBudget() > 0:
-		shop.setPromotionBudget(shop.getPromotionBudget() - 500)
+	#if shop.getPromotionBudget() > 0:
+	#	shop.setPromotionBudget(shop.getPromotionBudget() - 500)
 	
-	if shop.getPromotionBudget() == 0:
-		variabelEdited[3] = false
+	if advertisementNumber > 0:
+		advertisementNumber -= 1
+	
+	if advertisementNumber == 0:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: -"
+		shop.setPromotionBudget(0)
+	elif advertisementNumber == 1:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Media Sosial 500G"
+		shop.setPromotionBudget(500)
+	elif advertisementNumber == 2:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Koran 1000G"
+		shop.setPromotionBudget(1000)
+	elif advertisementNumber == 3:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Billboard 1500G"
+		shop.setPromotionBudget(1500)
+	elif advertisementNumber == 4:
+		$PanelMarketingMix/ControlPricePromotion/PanelAdvertisement/LabelAdvertisement.text = "Anggaran Iklan: Iklan Radio 2500G"
+		shop.setPromotionBudget(2500)
 
 # Fungsi pengatur besarnya diskon
 func _on_buttonDiscountPlus_pressed():

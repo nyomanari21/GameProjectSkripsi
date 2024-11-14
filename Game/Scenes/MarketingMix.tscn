@@ -234,7 +234,7 @@ offset_bottom = 56.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
 text = "Kualitas kopi: Biasa
-Modal: Rp200"
+Modal: 200G"
 
 [node name="ButtonProduct1" type="Button" parent="PanelMarketingMix/ControlProduct/PanelProduct1"]
 layout_mode = 1
@@ -278,7 +278,7 @@ offset_bottom = 56.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
 text = "Kualitas kopi: Menengah
-Modal: Rp400"
+Modal: 400G"
 
 [node name="ButtonProduct2" type="Button" parent="PanelMarketingMix/ControlProduct/PanelProduct2"]
 layout_mode = 1
@@ -322,7 +322,7 @@ offset_bottom = 56.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
 text = "Kualitas kopi: Tinggi
-Modal: Rp600"
+Modal: 600G"
 
 [node name="ButtonProduct3" type="Button" parent="PanelMarketingMix/ControlProduct/PanelProduct3"]
 layout_mode = 1
@@ -386,7 +386,7 @@ offset_top = 12.0
 offset_right = 131.0
 offset_bottom = 35.0
 theme_override_font_sizes/font_size = 18
-text = "Harga kopi: Rp"
+text = "Harga kopi: G"
 
 [node name="ButtonIncPrice" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelPrice"]
 layout_mode = 0
@@ -428,7 +428,7 @@ autowrap_mode = 2
 [node name="PanelAdvertisement" type="Panel" parent="PanelMarketingMix/ControlPricePromotion"]
 layout_mode = 0
 offset_top = 354.0
-offset_right = 240.0
+offset_right = 320.0
 offset_bottom = 446.0
 
 [node name="LabelAdvertisement" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
@@ -438,32 +438,32 @@ offset_top = 14.0
 offset_right = 155.0
 offset_bottom = 37.0
 theme_override_font_sizes/font_size = 18
-text = "Anggaran Iklan: Rp"
+text = "Anggaran Iklan: -"
 vertical_alignment = 1
 
 [node name="ButtonAdPlus" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
 layout_mode = 0
-offset_left = 136.0
+offset_left = 192.0
 offset_top = 46.0
-offset_right = 176.0
+offset_right = 232.0
 offset_bottom = 73.0
 mouse_default_cursor_shape = 2
 text = "+"
 
 [node name="ButtonAdMin" type="Button" parent="PanelMarketingMix/ControlPricePromotion/PanelAdvertisement"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 88.0
 offset_top = 46.0
-offset_right = 104.0
+offset_right = 128.0
 offset_bottom = 73.0
 mouse_default_cursor_shape = 2
 text = "-"
 
 [node name="PanelDiscount" type="Panel" parent="PanelMarketingMix/ControlPricePromotion"]
 layout_mode = 0
-offset_left = 256.0
+offset_left = 400.0
 offset_top = 354.0
-offset_right = 408.0
+offset_right = 552.0
 offset_bottom = 446.0
 
 [node name="LabelDiscount" type="Label" parent="PanelMarketingMix/ControlPricePromotion/PanelDiscount"]
@@ -507,20 +507,54 @@ offset_bottom = 664.0
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("6_ut281")
 
-[node name="PanelHint" type="Panel" parent="PanelMarketingMix/ControlHint"]
+[node name="PanelHint1" type="Panel" parent="PanelMarketingMix/ControlHint"]
 layout_mode = 0
 offset_left = 776.0
 offset_top = 32.0
 offset_right = 1008.0
-offset_bottom = 144.0
+offset_bottom = 172.0
 
-[node name="LabelHint" type="Label" parent="PanelMarketingMix/ControlHint/PanelHint"]
+[node name="LabelHint" type="Label" parent="PanelMarketingMix/ControlHint/PanelHint1"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 224.0
 offset_bottom = 104.0
-text = "Pastikan kopi yang dipilih sesuai dengan daya beli pelanggan ya! Seperti pelanggan di Mall pasti ingin kopi yang berkualitas tinggi. "
+text = "Perhatikan tempat yang dipilih ya! Kalau berjualan di pusat kota, mereka pasti mau membayar kopi yang sedikit lebih mahal tetapi kualitasnya juga ingin lebih tinggi dibandingkan dengan di taman!"
+autowrap_mode = 2
+
+[node name="PanelHint2" type="Panel" parent="PanelMarketingMix/ControlHint"]
+visible = false
+offset_left = 776.0
+offset_top = 32.0
+offset_right = 1008.0
+offset_bottom = 136.0
+
+[node name="LabelHint" type="Label" parent="PanelMarketingMix/ControlHint/PanelHint2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = 104.0
+text = "Pastikan kopi yang dipilih sesuai dengan daya beli pelanggan ya! Seperti pelanggan di Mall pasti ingin kopi yang berkualitas tinggi."
+autowrap_mode = 2
+
+[node name="PanelHint3" type="Panel" parent="PanelMarketingMix/ControlHint"]
+visible = false
+offset_left = 776.0
+offset_top = 32.0
+offset_right = 1008.0
+offset_bottom = 214.0
+
+[node name="LabelHint" type="Label" parent="PanelMarketingMix/ControlHint/PanelHint3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = 104.0
+text = "Kita bisa menjual kopinya sedikit di atas harga modal agar untung dan pelanggan tetap puas ya!
+
+Jika ingin mengeluarkan anggaran untuk iklan dan memberikan diskon, pastikan agar tetap dapat untung ya!"
 autowrap_mode = 2
 
 [node name="ButtonNext" type="Button" parent="PanelMarketingMix"]
