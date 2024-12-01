@@ -6,7 +6,7 @@ var baristaCoffeeNumber:int = 0 # Kopi yang dipilih oleh barista (player)
 var customerCoffeeNumber:int = 0 # Kopi yang diminta oleh customer
 var customerFeedback:int = 0 # Penyimpan perhitungan feedback dari customer (...,-1,0,1,...)
 var customerNumber:int # Penyimpan banyaknya customer yang telah datang
-var totalDay:int = 3 # Total hari yang akan berjalan setiap kali bermain
+var totalDay:int = 5 # Total hari yang akan berjalan setiap kali bermain
 var dayNumber:int = 0 # Penanda hari yang sedang berjalan
 var timerCustomerStarted = false # Penanda status timer customer
 var customerScale1 # Penyimpan ukuran animasi customer 1
@@ -309,7 +309,7 @@ func _dayReport():
 		$UI/ControlDayReport/PanelDayReport/LabelAdBudget.text = "Iklan                : " + str(shop.getPromotionBudget() * totalDay) + "G"
 		$UI/ControlDayReport/PanelDayReport/LabelDifference.text = "Selisih               : " + str(shop.getMoney() - (shop.getFoodStockPrice() * transaction.getTotalCustomer())) + "G"
 		$UI/ControlDayReport/PanelDayReport/LabelReportTitle.text = "Laporan Penjualan Keseluruhan"
-		$UI/ControlDayReport/PanelDayReport/ButtonCloseDayFinished.text = "Halaman Utama"
+		$UI/ControlDayReport/PanelDayReport/ButtonCloseDayFinished.text = "Selanjutnya"
 		$UI/ControlDayReport.visible = true
 		$UI/ControlDayReport/AnimationPlayerDayFinished.play("popup")
 	
@@ -328,9 +328,26 @@ func _on_button_close_day_finished_pressed():
 		$TimerCustomer.wait_time -= 0.2
 		$TimerCustomerCoffee.wait_time -= 0.15
 		_startDay()
-	# Jika total hari sudah habis, kembali ke halaman utama
+	# Jika total hari sudah habis, munculkan ending
 	else:
-		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+		if (shop.getMoney() > (shop.getFoodStockPrice() * transaction.getTotalCustomer())) && (transaction.getTotalPositiveFeedback() > transaction.getTotalNegativeFeedback()):
+			$UI/ControlEnding/PanelEnding/LabelTitleEnding.text = "SUKSES"
+			$UI/ControlEnding/PanelEnding/LabelDescription.text = "Kamu berhasil mendapat keuntungan dan pelanggan menyukai kopimu!"
+		elif (shop.getMoney() < (shop.getFoodStockPrice() * transaction.getTotalCustomer())) && (transaction.getTotalPositiveFeedback() > transaction.getTotalNegativeFeedback()):
+			$UI/ControlEnding/PanelEnding/LabelTitleEnding.text = "BANGKRUT"
+			$UI/ControlEnding/PanelEnding/LabelDescription.text = "Pelanggan menyukai kopimu tetapi kamu kehabisan modal untuk berjualan dan bangkrut!"
+		elif (shop.getMoney() > (shop.getFoodStockPrice() * transaction.getTotalCustomer())) && (transaction.getTotalPositiveFeedback() < transaction.getTotalNegativeFeedback()):
+			$UI/ControlEnding/PanelEnding/LabelTitleEnding.text = "KEHILANGAN PELANGGAN"
+			$UI/ControlEnding/PanelEnding/LabelDescription.text = "Walaupun mendapat keuntungan, tetapi kamu kehilangan pelanggan dan akhirnya usahamu tutup!"
+		else:
+			$UI/ControlEnding/PanelEnding/LabelTitleEnding.text = "BANGKRUT"
+			$UI/ControlEnding/PanelEnding/LabelDescription.text = "Kamu kehabisan modal dan kehilangan pelanggan hingga akhirnya bangkrut!"
+		
+		$UI/ControlDayReport/AnimationPlayerDayFinished.play_backwards("popup")
+		$UI/ControlEnding/AnimationPlayerEnding.play("popup")
+
+func _on_buttonEnding_pressed():
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 # Fungsi 'ButtonResetMarketingMixVariable' untuk mengatur ulang variabel marketing mix
 func _on_buttonResetMarketingMixVariable_pressed():

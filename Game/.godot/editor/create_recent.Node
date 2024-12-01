@@ -1,12 +1,12 @@
+AnimationPlayer
+Button
 Label
 Panel
-TextureRect
 Control
-Button
+TextureRect
 RichTextLabel
 AudioStreamPlayer
 Timer
-AnimationPlayer
 ColorRect
 TextureButton
 AnimatedSprite2D

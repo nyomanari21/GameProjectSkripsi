@@ -1,5 +1,5 @@
 res://default_env.tres
-res://Scenes/GamePark.tscn
+res://Scenes/MarketingMix.tscn
 res://Scripts/Game2.gd
 res://Assets/CustomThemes/ButtonDisabled.tres
 res://Assets/CustomThemes/ButtonHover.tres
@@ -7,12 +7,10 @@ res://Assets/CustomThemes/ButtonNormal.tres
 res://Assets/CustomThemes/ButtonPressed.tres
 res://Assets/CustomThemes/Panel.tres
 res://Assets/CustomThemes/PanelContainer.tres
-res://Scenes/GameDowntown.tscn
+res://Scenes/GamePark.tscn
 res://Scenes/MainMenu.tscn
 res://Scenes/PauseMenu.tscn
 res://Scenes/Introduction.tscn
-res://Scenes/MarketingMix.tscn
 res://Scenes/Tutorial.tscn
+res://Scenes/GameDowntown.tscn
 res://Scenes/GameMall.tscn
-res://Scripts/MarketingMix.gd
-res://Scripts/Transaction.gd
