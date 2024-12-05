@@ -8,7 +8,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	_pressEscape()
+
+func _pressEscape():
+	if Input.is_action_just_pressed("Pause") and !get_tree().paused:
+		_pause()
+	elif Input.is_action_just_pressed("Pause") and get_tree().paused:
+		_resume()
 
 func _resume():
 	get_tree().paused = false

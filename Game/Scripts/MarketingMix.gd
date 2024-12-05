@@ -7,6 +7,11 @@ var advertisementNumber = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Jalankan tutorial untuk pertama kali
+	if ingametutorial.getTutorialMMPlace() == 0:
+		_playTutorialPlace()
+		ingametutorial.setTutorialMMPlace(1)
+	
 	# Cek apakah pemain mengatur ulang variabel marketing mix
 	# Jika pemain mengatur ulang variabel marketing mix, tampilkan petunjuk
 	shop.resetAllVariable()
@@ -72,12 +77,20 @@ func _on_buttonNext_pressed():
 		$PanelMarketingMix/ControlProduct.visible = true
 		
 		$PanelMarketingMix/ButtonPrev.disabled = false
+		
+		if ingametutorial.getTutorialMMProduct() == 0:
+			_playTutorialProduct()
+			ingametutorial.setTutorialMMProduct(1)
 	
 	if editVariable == 3:
 		$PanelMarketingMix/ControlProduct.visible = false
 		$PanelMarketingMix/ControlPricePromotion.visible = true
 		
 		$PanelMarketingMix/ButtonNext.text = "Mulai Main"
+		
+		if ingametutorial.getTutorialMMPrice() == 0:
+			_playTutorialPrice()
+			ingametutorial.setTutorialMMPrice(1)
 	
 	if editVariable == 4:
 		if shop.getPlace() == 1:
@@ -244,3 +257,49 @@ func _on_buttonDiscountPlus_pressed():
 func _on_buttonDiscountMin_pressed():
 	if shop.getDiscount() > 0:
 		shop.setDiscount(shop.getDiscount() - 5)
+
+
+# Fungsi-fungsi pengatur Tutorial
+func _playTutorialPlace():
+	$PanelMarketingMix/ControlTutorial.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPlace.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPlace/PanelTutorialPlace/AnimationPlayerTutorialPlace.play("popup")
+
+func _on_button_close_tutorial_place_pressed():
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPlace/PanelTutorialPlace/AnimationPlayerTutorialPlace.play_backwards("popup")
+	$PanelMarketingMix/ControlTutorial.visible = false
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPlace.visible = false
+
+func _playTutorialProduct():
+	$PanelMarketingMix/ControlTutorial.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialProduct.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialProduct/PanelTutorialProduct/AnimationPlayerTutorialProduct.play("popup")
+
+func _on_button_close_tutorial_product_pressed():
+	$PanelMarketingMix/ControlTutorial/ControlTutorialProduct/PanelTutorialProduct/AnimationPlayerTutorialProduct.play_backwards("popup")
+	$PanelMarketingMix/ControlTutorial.visible = false
+	$PanelMarketingMix/ControlTutorial/ControlTutorialProduct.visible = false
+
+func _playTutorialPrice():
+	$PanelMarketingMix/ControlTutorial.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion/PanelTutorialPrice/AnimationPlayerTutorialPrice.play("popup")
+
+func _on_button_close_tutorial_price_pressed():
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion/PanelTutorialPrice/AnimationPlayerTutorialPrice.play_backwards("popup")
+	$PanelMarketingMix/ControlTutorial.visible = false
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion.visible = false
+	
+	if ingametutorial.getTutorialMMPromotion() == 0:
+			_playTutorialPromotion()
+			ingametutorial.setTutorialMMPromotion(1)
+
+func _playTutorialPromotion():
+	$PanelMarketingMix/ControlTutorial.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion.visible = true
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion/PanelTutorialPromotion/AnimationPlayerTutorialPromotion.play("popup")
+
+func _on_button_close_tutorial_promotion_pressed():
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion/PanelTutorialPromotion/AnimationPlayerTutorialPromotion.play_backwards("popup")
+	$PanelMarketingMix/ControlTutorial.visible = false
+	$PanelMarketingMix/ControlTutorial/ControlTutorialPricePromotion.visible = false
