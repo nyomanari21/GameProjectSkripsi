@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bf8lry6jlv3mq"
+path="res://.godot/imported/Rain Sfx.mp3-ab2dd9ed1b19a900bb6901315b39dbb1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sfx/Rain Sfx.mp3"
+dest_files=["res://.godot/imported/Rain Sfx.mp3-ab2dd9ed1b19a900bb6901315b39dbb1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

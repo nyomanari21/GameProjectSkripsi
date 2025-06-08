@@ -1,0 +1,1527 @@
+[gd_scene load_steps=81 format=3 uid="uid://iebxxwtpk81a"]
+
+[ext_resource type="Theme" uid="uid://cbrysnciqlhs0" path="res://Assets/CustomThemes/MainTheme.tres" id="1_u7n43"]
+[ext_resource type="Script" path="res://Scripts/Game2.gd" id="2_51kd4"]
+[ext_resource type="Texture2D" uid="uid://b24vkelwgdw8i" path="res://Assets/Images/Mall Base.png" id="3_3pg56"]
+[ext_resource type="Texture2D" uid="uid://trai56hevxs6" path="res://Assets/Images/Coffee Stall.png" id="4_jsxcg"]
+[ext_resource type="PackedScene" uid="uid://byrpushu1ynnl" path="res://Scenes/PauseMenu.tscn" id="5_atdi5"]
+[ext_resource type="Texture2D" uid="uid://xt6v3at1ogi1" path="res://Assets/Images/Barista.png" id="6_sbp5y"]
+[ext_resource type="Texture2D" uid="uid://bqioo5ih6vj2v" path="res://Assets/Animation/Person Walking 1 - stop.png" id="7_ct5s1"]
+[ext_resource type="Texture2D" uid="uid://h2ek6qbiy6sj" path="res://Assets/Animation/Person Walking 1 - left.png" id="8_bsmek"]
+[ext_resource type="Texture2D" uid="uid://cx5efjoi6ww5k" path="res://Assets/Animation/Person Walking 1 - right.png" id="9_hvhdf"]
+[ext_resource type="Texture2D" uid="uid://bfo1a12t02eru" path="res://Assets/Animation/Person Walking 2 - stop.png" id="10_lf5h7"]
+[ext_resource type="Texture2D" uid="uid://b6es48pf3qn22" path="res://Assets/Images/Coffee 1.png" id="10_n0au8"]
+[ext_resource type="Texture2D" uid="uid://dtrb250eu3nku" path="res://Assets/Images/Coffee 2.png" id="11_5361w"]
+[ext_resource type="Texture2D" uid="uid://djc5716sems2r" path="res://Assets/Animation/Person Walking 2 - left.png" id="11_rj3lt"]
+[ext_resource type="Texture2D" uid="uid://c4diafofiejot" path="res://Assets/Images/Coffee 3.png" id="12_4467f"]
+[ext_resource type="Texture2D" uid="uid://cmoonpfpoivi0" path="res://Assets/Animation/Person Walking 2 - right.png" id="12_ekrcp"]
+[ext_resource type="Texture2D" uid="uid://bxv33ia4xhj0a" path="res://Assets/Images/Smile icon.png" id="13_6vtoo"]
+[ext_resource type="Texture2D" uid="uid://g68is0r8nbxc" path="res://Assets/Animation/Person Walking 3 - Stop.png" id="13_dnjsm"]
+[ext_resource type="Texture2D" uid="uid://b8qf1gdtx2oeu" path="res://Assets/Animation/Person Walking 3 - Left.png" id="14_ds3f2"]
+[ext_resource type="Texture2D" uid="uid://omi4g0sh3ix6" path="res://Assets/Images/Neutral icon.png" id="14_gv0gc"]
+[ext_resource type="Texture2D" uid="uid://bcvyun52dpro" path="res://Assets/Animation/Person Walking 3 - Right.png" id="15_5cgpa"]
+[ext_resource type="Texture2D" uid="uid://dprf6irggean2" path="res://Assets/Images/Sad icon.png" id="15_a57sh"]
+[ext_resource type="Texture2D" uid="uid://lxtuin2cv86q" path="res://Assets/Animation/Person Walking 4 - Stop.png" id="16_w4eld"]
+[ext_resource type="AudioStream" uid="uid://coceogio7krme" path="res://Assets/Sfx/Pop Sfx.mp3" id="16_wgvs5"]
+[ext_resource type="AudioStream" uid="uid://c8o6ojkt4upyl" path="res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3" id="17_g78oq"]
+[ext_resource type="Texture2D" uid="uid://c66okdalqwkf5" path="res://Assets/Animation/Person Walking 4 - Right.png" id="17_uorpm"]
+[ext_resource type="Texture2D" uid="uid://dtr71u7yhdo7g" path="res://Assets/Animation/Person Walking 4 - Left.png" id="18_dlj0d"]
+[ext_resource type="AudioStream" uid="uid://cct7k7ka1r4yd" path="res://Assets/Sfx/Money Register Sfx.mp3" id="18_w6qf7"]
+[ext_resource type="Texture2D" uid="uid://b6840u6ny75yq" path="res://Assets/Animation/Person Walking 5 - Stop.png" id="19_31m7s"]
+[ext_resource type="Texture2D" uid="uid://cs7alw0ipavbl" path="res://Assets/Animation/Person Walking 5 - Right.png" id="20_s83kn"]
+[ext_resource type="Texture2D" uid="uid://cvfntm1kuywsu" path="res://Assets/Animation/Person Walking 5 - Left.png" id="21_40gp6"]
+[ext_resource type="Texture2D" uid="uid://bhcf2e6whb75c" path="res://Assets/Animation/Person Walking 6 - Stop.png" id="22_qx8jl"]
+[ext_resource type="Texture2D" uid="uid://c6tlsqhd4mvra" path="res://Assets/Animation/Person Walking 6 - Right.png" id="23_1jisl"]
+[ext_resource type="Texture2D" uid="uid://b0gqvqajyc0uj" path="res://Assets/Animation/Person Walking 6 - Left.png" id="24_fbuhq"]
+[ext_resource type="Texture2D" uid="uid://dpcby7782sk8l" path="res://Assets/Images/Pointing Arrow.png" id="28_vsqqg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nj7v"]
+atlas = ExtResource("7_ct5s1")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1csp"]
+atlas = ExtResource("8_bsmek")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqdm4"]
+atlas = ExtResource("9_hvhdf")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uu5w"]
+atlas = ExtResource("10_lf5h7")
+region = Rect2(0, 0, 563, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js3eu"]
+atlas = ExtResource("11_rj3lt")
+region = Rect2(0, 0, 563, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n02uo"]
+atlas = ExtResource("10_lf5h7")
+region = Rect2(0, 0, 563, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfbdo"]
+atlas = ExtResource("12_ekrcp")
+region = Rect2(0, 0, 563, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ko6"]
+atlas = ExtResource("13_dnjsm")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaqp8"]
+atlas = ExtResource("15_5cgpa")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84yh7"]
+atlas = ExtResource("14_ds3f2")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvldu"]
+atlas = ExtResource("16_w4eld")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyep1"]
+atlas = ExtResource("17_uorpm")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo5rx"]
+atlas = ExtResource("18_dlj0d")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oip2"]
+atlas = ExtResource("19_31m7s")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m05od"]
+atlas = ExtResource("20_s83kn")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5an21"]
+atlas = ExtResource("21_40gp6")
+region = Rect2(0, 0, 250, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf8hs"]
+atlas = ExtResource("22_qx8jl")
+region = Rect2(0, 0, 281, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13shn"]
+atlas = ExtResource("23_1jisl")
+region = Rect2(0, 0, 281, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odbq8"]
+atlas = ExtResource("24_fbuhq")
+region = Rect2(0, 0, 281, 375)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdjdf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nj7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1csp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nj7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqdm4")
+}],
+"loop": true,
+"name": &"walking 1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uu5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js3eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n02uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfbdo")
+}],
+"loop": true,
+"name": &"walking 2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1ko6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaqp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1ko6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84yh7")
+}],
+"loop": true,
+"name": &"walking 3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvldu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyep1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvldu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo5rx")
+}],
+"loop": true,
+"name": &"walking 4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oip2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m05od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oip2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5an21")
+}],
+"loop": true,
+"name": &"walking 5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf8hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13shn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf8hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odbq8")
+}],
+"loop": true,
+"name": &"walking 6",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_affwl"]
+resource_name = "moving"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2DCustomer1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-70, 512), Vector2(-70, 512), Vector2(622, 512)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_si8it"]
+_data = {
+"moving": SubResource("Animation_affwl")
+}
+
+[sub_resource type="Animation" id="Animation_km8nd"]
+resource_name = "moving_mall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRectArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1027, 432), Vector2(1047, 432), Vector2(1027, 432)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uht7d"]
+_data = {
+"moving_mall": SubResource("Animation_km8nd")
+}
+
+[sub_resource type="Animation" id="Animation_jyafx"]
+resource_name = "floating"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelMoneyEarned:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(664, 368), Vector2(664, 318)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tsrx"]
+_data = {
+"floating": SubResource("Animation_jyafx")
+}
+
+[sub_resource type="Animation" id="Animation_be7cl"]
+resource_name = "floating"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRectCustomerFeedback:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(604, 352), Vector2(604, 302)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ub0y"]
+_data = {
+"floating": SubResource("Animation_be7cl")
+}
+
+[sub_resource type="Animation" id="Animation_m0cw4"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4ggv"]
+_data = {
+"popup": SubResource("Animation_m0cw4")
+}
+
+[sub_resource type="Animation" id="Animation_bywp3"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryh8w"]
+_data = {
+"popup": SubResource("Animation_bywp3")
+}
+
+[sub_resource type="Animation" id="Animation_4wg2b"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfdue"]
+_data = {
+"popup": SubResource("Animation_4wg2b")
+}
+
+[sub_resource type="Animation" id="Animation_f4317"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xwww"]
+_data = {
+"popup": SubResource("Animation_f4317")
+}
+
+[sub_resource type="Animation" id="Animation_07j2c"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelTutorial4:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_672bt"]
+_data = {
+"popup": SubResource("Animation_07j2c")
+}
+
+[sub_resource type="Animation" id="Animation_2mrpv"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twp4u"]
+_data = {
+"popup": SubResource("Animation_2mrpv")
+}
+
+[sub_resource type="Animation" id="Animation_gj7eo"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fw83x"]
+_data = {
+"popup": SubResource("Animation_gj7eo")
+}
+
+[sub_resource type="Animation" id="Animation_104e2"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmgk6"]
+_data = {
+"popup": SubResource("Animation_104e2")
+}
+
+[sub_resource type="Animation" id="Animation_5wgky"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c8hmd"]
+_data = {
+"popup": SubResource("Animation_5wgky")
+}
+
+[node name="GamePark" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u7n43")
+script = ExtResource("2_51kd4")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainerBackground" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRectBackground" type="TextureRect" parent="UI/CenterContainerBackground"]
+layout_mode = 2
+texture = ExtResource("3_3pg56")
+
+[node name="TextureRectCoffeeStall" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 351.0
+offset_right = 1424.0
+offset_bottom = 999.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_jsxcg")
+
+[node name="ControlCustomerNumber" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelCustomerNumber" type="Panel" parent="UI/ControlCustomerNumber"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="LabelCustomerNumber" type="Label" parent="UI/ControlCustomerNumber/PanelCustomerNumber"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -18.5
+offset_right = 74.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Pelanggan Ke 1"
+vertical_alignment = 1
+
+[node name="ControlDayNumber" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelDayNumber" type="Panel" parent="UI/ControlDayNumber"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = 72.0
+grow_horizontal = 0
+
+[node name="LabelDayNumber" type="Label" parent="UI/ControlDayNumber/PanelDayNumber"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 104.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 24
+text = "Hari Ke 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("5_atdi5")]
+layout_mode = 1
+
+[node name="ControlCharacters" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlBarista" type="Control" parent="UI/ControlCharacters"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2DBarista" type="Sprite2D" parent="UI/ControlCharacters/ControlBarista"]
+position = Vector2(736, 506)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("6_sbp5y")
+
+[node name="ControlCustomer1" type="Control" parent="UI/ControlCharacters"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2DCustomer1" type="AnimatedSprite2D" parent="UI/ControlCharacters/ControlCustomer1"]
+position = Vector2(-70, 512)
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_wdjdf")
+animation = &"walking 1"
+
+[node name="AnimationPlayerCustomer1" type="AnimationPlayer" parent="UI/ControlCharacters/ControlCustomer1"]
+libraries = {
+"": SubResource("AnimationLibrary_si8it")
+}
+
+[node name="ControlBaristaCoffee" type="Control" parent="UI"]
+anchors_preset = 0
+
+[node name="PanelBaristaCoffee" type="Panel" parent="UI/ControlBaristaCoffee"]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 408.0
+offset_right = 1039.0
+offset_bottom = 512.0
+
+[node name="TextureButtonBaristaCoffee1" type="TextureButton" parent="UI/ControlBaristaCoffee/PanelBaristaCoffee"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 502.0
+offset_bottom = 656.0
+scale = Vector2(0.13, 0.13)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_n0au8")
+
+[node name="TextureButtonBaristaCoffee2" type="TextureButton" parent="UI/ControlBaristaCoffee/PanelBaristaCoffee"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 582.0
+offset_bottom = 656.0
+scale = Vector2(0.13, 0.13)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_5361w")
+
+[node name="TextureButtonBaristaCoffee3" type="TextureButton" parent="UI/ControlBaristaCoffee/PanelBaristaCoffee"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 8.0
+offset_right = 662.0
+offset_bottom = 656.0
+scale = Vector2(0.13, 0.13)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_4467f")
+
+[node name="TextureRectArrow" type="TextureRect" parent="UI/ControlBaristaCoffee"]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 432.0
+offset_right = 1627.0
+offset_bottom = 769.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_vsqqg")
+
+[node name="AnimationPlayerArrow" type="AnimationPlayer" parent="UI/ControlBaristaCoffee"]
+libraries = {
+"": SubResource("AnimationLibrary_uht7d")
+}
+
+[node name="ControlCustomerCoffee" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+
+[node name="PanelCustomerCoffee" type="Panel" parent="UI/ControlCustomerCoffee"]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 328.0
+offset_right = 652.0
+offset_bottom = 400.0
+
+[node name="TextureRectCustomerCoffee" type="TextureRect" parent="UI/ControlCustomerCoffee/PanelCustomerCoffee"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 495.0
+offset_bottom = 657.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_n0au8")
+
+[node name="ControlMoneyEarned" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+
+[node name="LabelMoneyEarned" type="Label" parent="UI/ControlMoneyEarned"]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 368.0
+offset_right = 812.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 24
+text = "(MoneyEarned)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayerMoneyEarned" type="AnimationPlayer" parent="UI/ControlMoneyEarned"]
+libraries = {
+"": SubResource("AnimationLibrary_3tsrx")
+}
+
+[node name="ControlCustomerFeedback" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+
+[node name="TextureRectCustomerFeedback" type="TextureRect" parent="UI/ControlCustomerFeedback"]
+layout_mode = 0
+offset_left = 604.0
+offset_top = 352.0
+offset_right = 1116.0
+offset_bottom = 864.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("13_6vtoo")
+
+[node name="AnimationPlayerCustomerFeedback" type="AnimationPlayer" parent="UI/ControlCustomerFeedback"]
+libraries = {
+"": SubResource("AnimationLibrary_4ub0y")
+}
+
+[node name="ControlDayReport" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(576, 324)
+
+[node name="ColorRectDayReport" type="ColorRect" parent="UI/ControlDayReport"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="PanelDayReport" type="Panel" parent="UI/ControlDayReport"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -168.0
+offset_right = 260.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelReportTitle" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.5
+offset_top = 32.0
+offset_right = 125.5
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Laporan Penjualan Hari Ini"
+
+[node name="LabelCustomer" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 80.0
+offset_right = 259.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 16
+text = "Pelanggan : x Orang"
+
+[node name="TextureRectPositiveFeedback" type="TextureRect" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 111.0
+offset_right = 616.0
+offset_bottom = 623.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("13_6vtoo")
+
+[node name="LabelPositiveFeedback" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 122.0
+offset_right = 259.0
+offset_bottom = 143.0
+text = ": x Orang"
+vertical_alignment = 1
+
+[node name="TextureRectNeutralFeedback" type="TextureRect" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 159.0
+offset_right = 616.0
+offset_bottom = 671.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("14_gv0gc")
+
+[node name="LabelNeutralFeedback" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 170.0
+offset_right = 259.0
+offset_bottom = 191.0
+text = ": x Orang"
+vertical_alignment = 1
+
+[node name="TextureRectNegativeFeedback" type="TextureRect" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 207.0
+offset_right = 616.0
+offset_bottom = 719.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("15_a57sh")
+
+[node name="LabelNegativeFeedback" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 218.0
+offset_right = 259.0
+offset_bottom = 239.0
+text = ": x Orang"
+vertical_alignment = 1
+
+[node name="LabelCapital" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 80.0
+offset_right = 399.0
+offset_bottom = 101.0
+text = "Biaya Produksi  : xG"
+vertical_alignment = 1
+
+[node name="LabelEarned" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 122.0
+offset_right = 420.0
+offset_bottom = 143.0
+text = "Pendapatan      : xG"
+vertical_alignment = 1
+
+[node name="LabelAdBudget" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 170.0
+offset_right = 415.0
+offset_bottom = 191.0
+text = "Iklan                 : xG"
+vertical_alignment = 1
+
+[node name="LabelDifference" type="Label" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 218.0
+offset_right = 428.0
+offset_bottom = 239.0
+text = "Selisih                : xG"
+vertical_alignment = 1
+
+[node name="ButtonCloseDayFinished" type="Button" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -68.0
+offset_right = 161.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Hari Berikutnya"
+
+[node name="ButtonResetMarketingMixVariable" type="Button" parent="UI/ControlDayReport/PanelDayReport"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -68.0
+offset_right = -24.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 16
+text = "Atur Ulang Variabel
+Marketing Mix"
+
+[node name="AnimationPlayerDayFinished" type="AnimationPlayer" parent="UI/ControlDayReport"]
+libraries = {
+"": SubResource("AnimationLibrary_h4ggv")
+}
+
+[node name="ControlEnding" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(576, 324)
+
+[node name="ColorRectEnding" type="ColorRect" parent="UI/ControlEnding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="PanelEnding" type="Panel" parent="UI/ControlEnding"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -168.0
+offset_right = 260.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTitleEnding" type="Label" parent="UI/ControlEnding/PanelEnding"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -85.0
+offset_right = 52.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "(TITLE)"
+
+[node name="LabelDescription" type="Label" parent="UI/ControlEnding/PanelEnding"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -28.0
+offset_right = 192.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "(desc)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonEnding" type="Button" parent="UI/ControlEnding/PanelEnding"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.5
+offset_top = -76.0
+offset_right = 84.5
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Ke Halaman Utama"
+
+[node name="AnimationPlayerEnding" type="AnimationPlayer" parent="UI/ControlEnding"]
+libraries = {
+"": SubResource("AnimationLibrary_ryh8w")
+}
+
+[node name="ControlTimerBar" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PanelTimerBar" type="Panel" parent="UI/ControlTimerBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 508.0
+offset_top = 96.0
+offset_right = 644.0
+offset_bottom = 128.0
+grow_horizontal = 2
+
+[node name="Line2DTimerBar" type="Line2D" parent="UI/ControlTimerBar/PanelTimerBar"]
+position = Vector2(18, 16)
+points = PackedVector2Array(0, 0, 100, 0)
+
+[node name="TimerTimerBar" type="Timer" parent="UI/ControlTimerBar/PanelTimerBar/Line2DTimerBar"]
+wait_time = 0.2
+
+[node name="ControlTutorial" type="Control" parent="UI"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRectTutorial" type="ColorRect" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.313726)
+
+[node name="ControlTutorial1" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial1" type="Panel" parent="UI/ControlTutorial/ControlTutorial1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 420.0
+offset_top = 236.0
+offset_right = 732.0
+offset_bottom = 412.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(156, 88)
+
+[node name="LabelTutorial1" type="Label" parent="UI/ControlTutorial/ControlTutorial1/PanelTutorial1"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 24.0
+offset_right = 292.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 24
+text = "Kita akan memulai tutorial untuk memainkan game Kopi Simulator!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial1" type="Button" parent="UI/ControlTutorial/ControlTutorial1/PanelTutorial1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial1" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial1/PanelTutorial1"]
+libraries = {
+"": SubResource("AnimationLibrary_nfdue")
+}
+
+[node name="ControlTutorial2" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial2" type="Panel" parent="UI/ControlTutorial/ControlTutorial2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 472.0
+offset_top = 144.0
+offset_right = 776.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(152, 88)
+
+[node name="LabelTutorial2" type="Label" parent="UI/ControlTutorial/ControlTutorial2/PanelTutorial2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 24
+text = "Ketika pelanggan sampai, kita bisa melihat kopi apa yang dipesannya"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial2" type="Button" parent="UI/ControlTutorial/ControlTutorial2/PanelTutorial2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial2" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial2/PanelTutorial2"]
+libraries = {
+"": SubResource("AnimationLibrary_nfdue")
+}
+
+[node name="ControlTutorial3" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial3" type="Panel" parent="UI/ControlTutorial/ControlTutorial3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 768.0
+offset_top = 200.0
+offset_right = 1072.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(152, 96)
+
+[node name="LabelTutorial3" type="Label" parent="UI/ControlTutorial/ControlTutorial3/PanelTutorial3"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 24
+text = "PIlih kopi yang sesuai dengan yang dipesan dengan klik gambar kopi menggunakan mouse"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial3" type="Button" parent="UI/ControlTutorial/ControlTutorial3/PanelTutorial3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial3" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial3/PanelTutorial3"]
+libraries = {
+"": SubResource("AnimationLibrary_7xwww")
+}
+
+[node name="ControlTutorial4" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial4" type="Panel" parent="UI/ControlTutorial/ControlTutorial4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 768.0
+offset_top = 200.0
+offset_right = 1072.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(152, 96)
+
+[node name="LabelTutorial4" type="Label" parent="UI/ControlTutorial/ControlTutorial4/PanelTutorial4"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 24
+text = "Atau mekekan tombol A (kopi pertama), S (kopi kedua), dan D (kopi ketiga) pada keyboard"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial4" type="Button" parent="UI/ControlTutorial/ControlTutorial4/PanelTutorial4"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial4" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial4/PanelTutorial4"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_672bt")
+}
+
+[node name="ControlTutorial5" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial5" type="Panel" parent="UI/ControlTutorial/ControlTutorial5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 656.0
+offset_top = 56.0
+offset_right = 960.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(152, 96)
+
+[node name="LabelTutorial5" type="Label" parent="UI/ControlTutorial/ControlTutorial5/PanelTutorial5"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 24
+text = "Garis putih di bawah nomor pelanggan menunjukkan batas waktu ketika memilih kopi pelanggan"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial5" type="Button" parent="UI/ControlTutorial/ControlTutorial5/PanelTutorial5"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial5" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial5/PanelTutorial5"]
+libraries = {
+"": SubResource("AnimationLibrary_twp4u")
+}
+
+[node name="ControlTutorial6" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial6" type="Panel" parent="UI/ControlTutorial/ControlTutorial6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = 8.0
+offset_right = 456.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(152, 108)
+
+[node name="LabelTutorial6" type="Label" parent="UI/ControlTutorial/ControlTutorial6/PanelTutorial6"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 24
+text = "Kita juga bisa melihat pelanggan ke berapa yang sekarang sedang berkunjung di atas tengah tampilan game"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial6" type="Button" parent="UI/ControlTutorial/ControlTutorial6/PanelTutorial6"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial6" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial6/PanelTutorial6"]
+libraries = {
+"": SubResource("AnimationLibrary_fw83x")
+}
+
+[node name="ControlTutorial7" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial7" type="Panel" parent="UI/ControlTutorial/ControlTutorial7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 696.0
+offset_top = 8.0
+offset_right = 1000.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(152, 84)
+
+[node name="LabelTutorial7" type="Label" parent="UI/ControlTutorial/ControlTutorial7/PanelTutorial7"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 24
+text = "Dan hari ke berapa sekarang di pojok kanan atas tampilan game"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial7" type="Button" parent="UI/ControlTutorial/ControlTutorial7/PanelTutorial7"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial7" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial7/PanelTutorial7"]
+libraries = {
+"": SubResource("AnimationLibrary_wmgk6")
+}
+
+[node name="ControlTutorial8" type="Control" parent="UI/ControlTutorial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PanelTutorial8" type="Panel" parent="UI/ControlTutorial/ControlTutorial8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 424.0
+offset_top = 239.5
+offset_right = 728.0
+offset_bottom = 408.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(152, 84)
+
+[node name="LabelTutorial8" type="Label" parent="UI/ControlTutorial/ControlTutorial8/PanelTutorial8"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 24
+text = "Sekarang, ayo kita mulai berjualan kopi!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonTutorial8" type="Button" parent="UI/ControlTutorial/ControlTutorial8/PanelTutorial8"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutup"
+
+[node name="AnimationPlayerTutorial8" type="AnimationPlayer" parent="UI/ControlTutorial/ControlTutorial8/PanelTutorial8"]
+libraries = {
+"": SubResource("AnimationLibrary_c8hmd")
+}
+
+[node name="TimerCustomer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="TimerCustomerCoffee" type="Timer" parent="."]
+
+[node name="PopSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_wgvs5")
+volume_db = -10.0
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("17_g78oq")
+volume_db = -10.0
+autoplay = true
+
+[node name="MoneyRegisterSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_w6qf7")
+volume_db = -10.0
+
+[connection signal="animation_finished" from="UI/ControlCharacters/ControlCustomer1/AnimationPlayerCustomer1" to="." method="_on_animation_player_customer_animation_finished"]
+[connection signal="pressed" from="UI/ControlBaristaCoffee/PanelBaristaCoffee/TextureButtonBaristaCoffee1" to="." method="_on_texture_button_barista_coffee_1_pressed"]
+[connection signal="pressed" from="UI/ControlBaristaCoffee/PanelBaristaCoffee/TextureButtonBaristaCoffee2" to="." method="_on_texture_button_barista_coffee_2_pressed"]
+[connection signal="pressed" from="UI/ControlBaristaCoffee/PanelBaristaCoffee/TextureButtonBaristaCoffee3" to="." method="_on_texture_button_barista_coffee_3_pressed"]
+[connection signal="animation_finished" from="UI/ControlBaristaCoffee/AnimationPlayerArrow" to="." method="_on_animationPlayerArrowAnimation_finished"]
+[connection signal="animation_finished" from="UI/ControlMoneyEarned/AnimationPlayerMoneyEarned" to="." method="_on_animation_player_money_earned_animation_finished"]
+[connection signal="animation_finished" from="UI/ControlCustomerFeedback/AnimationPlayerCustomerFeedback" to="." method="_on_animation_player_customer_feedback_animation_finished"]
+[connection signal="pressed" from="UI/ControlDayReport/PanelDayReport/ButtonCloseDayFinished" to="." method="_on_button_close_day_finished_pressed"]
+[connection signal="pressed" from="UI/ControlDayReport/PanelDayReport/ButtonResetMarketingMixVariable" to="." method="_on_buttonResetMarketingMixVariable_pressed"]
+[connection signal="pressed" from="UI/ControlEnding/PanelEnding/ButtonEnding" to="." method="_on_buttonEnding_pressed"]
+[connection signal="timeout" from="UI/ControlTimerBar/PanelTimerBar/Line2DTimerBar/TimerTimerBar" to="." method="_on_timerTimerBar_timeout"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial1/PanelTutorial1/ButtonTutorial1" to="." method="_on_button_tutorial_1_pressed"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial2/PanelTutorial2/ButtonTutorial2" to="." method="_on_button_tutorial_2_pressed"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial3/PanelTutorial3/ButtonTutorial3" to="." method="_on_button_tutorial_3_pressed"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial4/PanelTutorial4/ButtonTutorial4" to="." method="_on_button_tutorial_4_pressed"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial5/PanelTutorial5/ButtonTutorial5" to="." method="_on_button_tutorial_5_pressed"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial6/PanelTutorial6/ButtonTutorial6" to="." method="_on_button_tutorial_6_pressed"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial7/PanelTutorial7/ButtonTutorial7" to="." method="_on_button_tutorial_7_pressed"]
+[connection signal="pressed" from="UI/ControlTutorial/ControlTutorial8/PanelTutorial8/ButtonTutorial8" to="." method="_on_button_tutorial_8_pressed"]
+[connection signal="timeout" from="TimerCustomer" to="." method="_on_timer_customer_timeout"]
+[connection signal="timeout" from="TimerCustomerCoffee" to="." method="_on_timer_customer_coffee_timeout"]
+[connection signal="finished" from="MainMusic" to="." method="_on_main_music_finished"]

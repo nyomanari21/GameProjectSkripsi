@@ -8,4 +8,26 @@ func _ready():
 
 # Fungsi tombol 'ButtonPlay' untuk pindah ke scene utama permainan
 func _on_ButtonPlay_pressed():
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	$ButtonPopSfx.play()
+	_playGame()
+
+func _playGame():
+	get_tree().change_scene_to_file("res://Scenes/Introduction.tscn")
+
+# Fungsi tombol 'ButtonExit' untuk keluar dari game
+func _on_buttonExit_pressed():
+	$ButtonPopSfx.play()
+	get_tree().quit()
+
+# Fungsi tombol 'ButtonTutorial' untuk menampilkan tutorial cara bermain
+func _on_buttonTutorial_pressed():
+	$MainMusic.play()
+	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
+
+# Fungsi tomboo 'ButtonCredits' untuk menampilkan credits
+func _on_buttonCredits_pressed():
+	$ButtonPopSfx.play()
+
+# Fungsi untuk loop audio 'MainMusic'
+func _on_mainMusic_finished():
+	$MainMusic.play()

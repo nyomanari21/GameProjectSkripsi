@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cbrysnciqlhs0"]
+
+[ext_resource type="StyleBox" uid="uid://yc73mxuuy4jo" path="res://Assets/CustomThemes/ButtonDisabled.tres" id="1_20w3n"]
+[ext_resource type="FontFile" uid="uid://c44g2hwi2kb70" path="res://Assets/Fonts/copilme.bold.ttf" id="1_tl2uo"]
+[ext_resource type="StyleBox" uid="uid://d4j4fv85680eg" path="res://Assets/CustomThemes/ButtonHover.tres" id="2_kqlfu"]
+[ext_resource type="StyleBox" uid="uid://b3u0e03jadt0a" path="res://Assets/CustomThemes/ButtonNormal.tres" id="3_icbm1"]
+[ext_resource type="StyleBox" uid="uid://c04orck02xutp" path="res://Assets/CustomThemes/ButtonPressed.tres" id="4_l1xbe"]
+[ext_resource type="StyleBox" uid="uid://t7fhjlqgdxhl" path="res://Assets/CustomThemes/Panel.tres" id="5_d8gp1"]
+[ext_resource type="FontFile" uid="uid://c0cm5mtblguix" path="res://Assets/Fonts/copilme.regular.ttf" id="6_layb7"]
+[ext_resource type="StyleBox" uid="uid://bnfmvcs4xilk1" path="res://Assets/CustomThemes/PanelContainer.tres" id="7_0f04w"]
+[ext_resource type="FontFile" uid="uid://cx4jaqr0lyx2x" path="res://Assets/Fonts/copilme.bold-italic.ttf" id="9_takwg"]
+[ext_resource type="FontFile" uid="uid://bj4q8suxbk5au" path="res://Assets/Fonts/copilme.italic.ttf" id="10_ncm0v"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 0.501961)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_tl2uo")
+Button/styles/disabled = ExtResource("1_20w3n")
+Button/styles/hover = ExtResource("2_kqlfu")
+Button/styles/normal = ExtResource("3_icbm1")
+Button/styles/pressed = ExtResource("4_l1xbe")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 7
+Label/fonts/font = ExtResource("6_layb7")
+Panel/styles/panel = ExtResource("5_d8gp1")
+PanelContainer/styles/panel = ExtResource("7_0f04w")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 7
+RichTextLabel/fonts/bold_font = ExtResource("1_tl2uo")
+RichTextLabel/fonts/bold_italics_font = ExtResource("9_takwg")
+RichTextLabel/fonts/italics_font = ExtResource("10_ncm0v")
+RichTextLabel/fonts/normal_font = ExtResource("6_layb7")

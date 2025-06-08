@@ -1,0 +1,104 @@
+fc8a56933c4b1c8d796fdb8f7a9f9475
+::res://::1733397159
+default_env.tres::Environment::381538730291340146::1733389295::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1733207222::0::1::::<><>::
+icon.png::CompressedTexture2D::5774800867811522115::1710918837::1710994068::1::::<><>::
+::res://Assets/::1726124556
+GROBOLD.ttf::FontFile::599649459974255064::1710918837::1710994068::1::::<><>::
+::res://Assets/Animation/::1731473519
+Person Walking 1 - left.png::CompressedTexture2D::547322483733786441::1721916830::1721916892::1::::<><>::
+Person Walking 1 - right.png::CompressedTexture2D::6449368395366544638::1721916847::1721916892::1::::<><>::
+Person Walking 1 - stop.png::CompressedTexture2D::3526833831366747207::1721916857::1721916892::1::::<><>::
+Person Walking 2 - left.png::CompressedTexture2D::7796970468837381775::1726636090::1726636129::1::::<><>::
+Person Walking 2 - right.png::CompressedTexture2D::5644882829093775037::1726636099::1726636129::1::::<><>::
+Person Walking 2 - stop.png::CompressedTexture2D::2767846240466598766::1726636108::1726636129::1::::<><>::
+Person Walking 3 - Left.png::CompressedTexture2D::4736032904088086204::1731469382::1731469903::1::::<><>::
+Person Walking 3 - Right.png::CompressedTexture2D::75636586996705108::1731469406::1731469903::1::::<><>::
+Person Walking 3 - Stop.png::CompressedTexture2D::487147704174007020::1731469428::1731469903::1::::<><>::
+Person Walking 4 - Left.png::CompressedTexture2D::8529934977431672710::1731469464::1731470056::1::::<><>::
+Person Walking 4 - Right.png::CompressedTexture2D::7013559284470936448::1731469484::1731470056::1::::<><>::
+Person Walking 4 - Stop.png::CompressedTexture2D::820747748601944090::1731469500::1731470056::1::::<><>::
+Person Walking 5 - Left.png::CompressedTexture2D::6257952894472504976::1731469521::1731470185::1::::<><>::
+Person Walking 5 - Right.png::CompressedTexture2D::6102321479251018033::1731469553::1731470185::1::::<><>::
+Person Walking 5 - Stop.png::CompressedTexture2D::4632205838973893016::1731469572::1731470185::1::::<><>::
+Person Walking 6 - Left.png::CompressedTexture2D::4154537855539236933::1731473500::1731473519::1::::<><>::
+Person Walking 6 - Right.png::CompressedTexture2D::6988619580065850726::1731473485::1731473519::1::::<><>::
+Person Walking 6 - Stop.png::CompressedTexture2D::2882223405058060278::1731473469::1731473519::1::::<><>::
+::res://Assets/CustomThemes/::1733381567
+ButtonDisabled.tres::StyleBoxFlat::1690654615565876340::1733381567::0::1::::<><>::
+ButtonHover.tres::StyleBoxFlat::9215088793503246186::1733381567::0::1::::<><>::
+ButtonNormal.tres::StyleBoxFlat::4394522285381321302::1733381567::0::1::::<><>::
+ButtonPressed.tres::StyleBoxFlat::6588309931267497837::1733381567::0::1::::<><>::
+MainTheme.tres::Theme::4879614671238400497::1726126160::0::1::::<><>::uid://yc73mxuuy4jo
+Panel.tres::StyleBoxFlat::1399964693211824141::1733381567::0::1::::<><>::
+PanelContainer.tres::StyleBoxFlat::3309963779544891626::1733381567::0::1::::<><>::
+::res://Assets/Fonts/::1726125224
+copilme.bold-italic.ttf::FontFile::6447599046650412121::1726125194::1726125224::1::::<><>::
+copilme.bold.ttf::FontFile::6868597708198013661::1726125186::1726125224::1::::<><>::
+copilme.italic.ttf::FontFile::3079018611749420748::1726125200::1726125224::1::::<><>::
+copilme.regular.ttf::FontFile::6532474051267355703::1726125005::1726125020::1::::<><>::
+::res://Assets/Images/::1733380459
+Barista.png::CompressedTexture2D::1655487781002023090::1720862435::1720862623::1::::<><>::
+Campus Base.png::CompressedTexture2D::4136135667691726939::1720862342::1720862454::1::::<><>::
+Car 1.png::CompressedTexture2D::4170006730203653396::1718873668::1718873735::1::::<><>::
+Car 2.png::CompressedTexture2D::1786191424145479871::1718873682::1718873735::1::::<><>::
+Car 3.png::CompressedTexture2D::6508826226896295502::1718873695::1718873735::1::::<><>::
+Car 4.png::CompressedTexture2D::614737324214866108::1719226251::1719226260::1::::<><>::
+Coffee 1.png::CompressedTexture2D::4571678798089242757::1721748480::1721748513::1::::<><>::
+Coffee 2.png::CompressedTexture2D::8528055049979332348::1721748494::1721748513::1::::<><>::
+Coffee 3.png::CompressedTexture2D::6814996986575500755::1721748505::1721748513::1::::<><>::
+Coffee stall - Campus.png::CompressedTexture2D::364243779057049978::1720862074::1720862266::1::::<><>::
+Coffee stall - Downtown 2.png::CompressedTexture2D::7855672600868889299::1720862074::1720862266::1::::<><>::
+Coffee stall - Downtown.png::CompressedTexture2D::7471678959819799305::1718350893::1718350914::1::::<><>::
+Coffee Stall - Mall.png::CompressedTexture2D::7231305560725112833::1721869084::1721894459::1::::<><>::
+Coffee stall - Park.png::CompressedTexture2D::7968299726281749745::1720862074::1720862266::1::::<><>::
+Coffee Stall.png::CompressedTexture2D::1368698361206557799::1721915975::1721915998::1::::<><>::
+Downtown Base.png::CompressedTexture2D::477860254752888306::1721721774::1721747028::1::::<><>::
+Main Menu 1.png::CompressedTexture2D::4480111608455352786::1719906894::1719906946::1::::<><>::
+Main menu 5 - Extended.jpg::CompressedTexture2D::3706957112778829153::1714985703::1714985732::1::::<><>::
+Mall Base.png::CompressedTexture2D::4342679559668844602::1721869084::1721894459::1::::<><>::
+Neutral icon.png::CompressedTexture2D::1007954222535058205::1722000812::1722000890::1::::<><>::
+Park Base.png::CompressedTexture2D::4169193425369911610::1721721774::1721747028::1::::<><>::
+Pointing Arrow.png::CompressedTexture2D::8216328768921508597::1733380395::1733380459::1::::<><>::
+Sad icon.png::CompressedTexture2D::8247548518772953685::1722000782::1722000890::1::::<><>::
+Smile icon.png::CompressedTexture2D::4045866519765349822::1722000757::1722000890::1::::<><>::
+Sun cartoon.png::CompressedTexture2D::2777277459792104229::1718091425::1718091777::1::::<><>::
+Swan 1.png::CompressedTexture2D::4160369129985236882::1719200762::1719226013::1::::<><>::
+Swan 2.png::CompressedTexture2D::280131706142242269::1719200762::1719226013::1::::<><>::
+Tutorial 1.png::CompressedTexture2D::2352837238944609771::1725434556::1725434703::1::::<><>::
+Tutorial 2.png::CompressedTexture2D::3938899907143314777::1725434603::1725434703::1::::<><>::
+Tutorial 3.png::CompressedTexture2D::3770065826911688694::1725434636::1725434703::1::::<><>::
+Tutorial 4.png::CompressedTexture2D::7166911112419550014::1725434674::1725434703::1::::<><>::
+::res://Assets/Sfx/::1721127043
+8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3::AudioStreamMP3::7119882212949563079::1721127013::1721127043::1::::<><>::
+Achievement Sfx.mp3::AudioStreamMP3::6624757103657954872::1721030529::1721030604::1::::<><>::
+Money Register Sfx.mp3::AudioStreamMP3::4954404729927674447::1716191312::1716191343::1::::<><>::
+Money Spend Sfx.mp3::AudioStreamMP3::5352344248319019358::1716191250::1716191343::1::::<><>::
+Pop Sfx.mp3::AudioStreamMP3::5759882131090317424::1716190457::1716190496::1::::<><>::
+Rain Sfx.mp3::AudioStreamMP3::2806188922057866960::1721030999::1721032048::1::::<><>::
+::res://Assets/Videos/::1718683057
+Coffee stall - Campus rain.ogv::VideoStreamTheora::-1::1720863439::0::1::::<><>::
+Coffee stall - Downtown rain.ogv::VideoStreamTheora::-1::1720863440::0::1::::<><>::
+Coffee stall - Park rain.ogv::VideoStreamTheora::-1::1720863441::0::1::::<><>::
+Game background - Rain gloomy.ogv::VideoStreamTheora::-1::1715604422::0::1::::<><>::
+::res://Scenes/::1733389295
+Game.tscn::PackedScene::1687557470770571084::1725439696::0::1::::<><>::res://Scripts/Game.gd<>uid://cbrysnciqlhs0
+GameDowntown.tscn::PackedScene::606546706221693425::1733389241::0::1::::<><>::uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>res://Scripts/Game2.gd<>uid://g2qj2ulg8wgg::::res://Assets/Images/Downtown Base.png<>uid://byrpushu1ynnl::::res://Scenes/PauseMenu.tscn<>uid://trai56hevxs6::::res://Assets/Images/Coffee Stall.png<>uid://xt6v3at1ogi1::::res://Assets/Images/Barista.png<>uid://bqioo5ih6vj2v::::res://Assets/Animation/Person Walking 1 - stop.png<>uid://h2ek6qbiy6sj::::res://Assets/Animation/Person Walking 1 - left.png<>uid://cx5efjoi6ww5k::::res://Assets/Animation/Person Walking 1 - right.png<>uid://b6es48pf3qn22::::res://Assets/Images/Coffee 1.png<>uid://bfo1a12t02eru::::res://Assets/Animation/Person Walking 2 - stop.png<>uid://dtrb250eu3nku::::res://Assets/Images/Coffee 2.png<>uid://djc5716sems2r::::res://Assets/Animation/Person Walking 2 - left.png<>uid://cmoonpfpoivi0::::res://Assets/Animation/Person Walking 2 - right.png<>uid://c4diafofiejot::::res://Assets/Images/Coffee 3.png<>uid://bxv33ia4xhj0a::::res://Assets/Images/Smile icon.png<>uid://0pikuot8ylc6::::res://Assets/Images/Car 2.png<>uid://g68is0r8nbxc::::res://Assets/Animation/Person Walking 3 - Stop.png<>uid://b8qf1gdtx2oeu::::res://Assets/Animation/Person Walking 3 - Left.png<>uid://b0n8nwirwyv5e::::res://Assets/Images/Car 1.png<>uid://omi4g0sh3ix6::::res://Assets/Images/Neutral icon.png<>uid://dprf6irggean2::::res://Assets/Images/Sad icon.png<>uid://bcvyun52dpro::::res://Assets/Animation/Person Walking 3 - Right.png<>uid://lxtuin2cv86q::::res://Assets/Animation/Person Walking 4 - Stop.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://c8o6ojkt4upyl::::res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3<>uid://c66okdalqwkf5::::res://Assets/Animation/Person Walking 4 - Right.png<>uid://cct7k7ka1r4yd::::res://Assets/Sfx/Money Register Sfx.mp3<>uid://dtr71u7yhdo7g::::res://Assets/Animation/Person Walking 4 - Left.png<>uid://b6840u6ny75yq::::res://Assets/Animation/Person Walking 5 - Stop.png<>uid://cs7alw0ipavbl::::res://Assets/Animation/Person Walking 5 - Right.png<>uid://cvfntm1kuywsu::::res://Assets/Animation/Person Walking 5 - Left.png<>uid://bhcf2e6whb75c::::res://Assets/Animation/Person Walking 6 - Stop.png<>uid://c6tlsqhd4mvra::::res://Assets/Animation/Person Walking 6 - Right.png<>uid://b0gqvqajyc0uj::::res://Assets/Animation/Person Walking 6 - Left.png<>uid://dpcby7782sk8l::::res://Assets/Images/Pointing Arrow.png
+GameMall.tscn::PackedScene::569871293279577880::1733389242::0::1::::<><>::uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>res://Scripts/Game2.gd<>uid://b24vkelwgdw8i::::res://Assets/Images/Mall Base.png<>uid://trai56hevxs6::::res://Assets/Images/Coffee Stall.png<>uid://byrpushu1ynnl::::res://Scenes/PauseMenu.tscn<>uid://xt6v3at1ogi1::::res://Assets/Images/Barista.png<>uid://bqioo5ih6vj2v::::res://Assets/Animation/Person Walking 1 - stop.png<>uid://h2ek6qbiy6sj::::res://Assets/Animation/Person Walking 1 - left.png<>uid://cx5efjoi6ww5k::::res://Assets/Animation/Person Walking 1 - right.png<>uid://bfo1a12t02eru::::res://Assets/Animation/Person Walking 2 - stop.png<>uid://b6es48pf3qn22::::res://Assets/Images/Coffee 1.png<>uid://dtrb250eu3nku::::res://Assets/Images/Coffee 2.png<>uid://djc5716sems2r::::res://Assets/Animation/Person Walking 2 - left.png<>uid://c4diafofiejot::::res://Assets/Images/Coffee 3.png<>uid://cmoonpfpoivi0::::res://Assets/Animation/Person Walking 2 - right.png<>uid://bxv33ia4xhj0a::::res://Assets/Images/Smile icon.png<>uid://g68is0r8nbxc::::res://Assets/Animation/Person Walking 3 - Stop.png<>uid://b8qf1gdtx2oeu::::res://Assets/Animation/Person Walking 3 - Left.png<>uid://omi4g0sh3ix6::::res://Assets/Images/Neutral icon.png<>uid://bcvyun52dpro::::res://Assets/Animation/Person Walking 3 - Right.png<>uid://dprf6irggean2::::res://Assets/Images/Sad icon.png<>uid://lxtuin2cv86q::::res://Assets/Animation/Person Walking 4 - Stop.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://c8o6ojkt4upyl::::res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3<>uid://c66okdalqwkf5::::res://Assets/Animation/Person Walking 4 - Right.png<>uid://dtr71u7yhdo7g::::res://Assets/Animation/Person Walking 4 - Left.png<>uid://cct7k7ka1r4yd::::res://Assets/Sfx/Money Register Sfx.mp3<>uid://b6840u6ny75yq::::res://Assets/Animation/Person Walking 5 - Stop.png<>uid://cs7alw0ipavbl::::res://Assets/Animation/Person Walking 5 - Right.png<>uid://cvfntm1kuywsu::::res://Assets/Animation/Person Walking 5 - Left.png<>uid://bhcf2e6whb75c::::res://Assets/Animation/Person Walking 6 - Stop.png<>uid://c6tlsqhd4mvra::::res://Assets/Animation/Person Walking 6 - Right.png<>uid://b0gqvqajyc0uj::::res://Assets/Animation/Person Walking 6 - Left.png<>uid://dpcby7782sk8l::::res://Assets/Images/Pointing Arrow.png
+GamePark.tscn::PackedScene::1331659667477637108::1733389241::0::1::::<><>::uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>uid://b0nuahu8gyvt7::::res://Assets/Images/Park Base.png<>res://Scripts/Game2.gd<>uid://byrpushu1ynnl::::res://Scenes/PauseMenu.tscn<>uid://trai56hevxs6::::res://Assets/Images/Coffee Stall.png<>uid://xt6v3at1ogi1::::res://Assets/Images/Barista.png<>uid://bqioo5ih6vj2v::::res://Assets/Animation/Person Walking 1 - stop.png<>uid://b0jkw3r2og58i::::res://Assets/Images/Swan 1.png<>uid://h2ek6qbiy6sj::::res://Assets/Animation/Person Walking 1 - left.png<>uid://cx5efjoi6ww5k::::res://Assets/Animation/Person Walking 1 - right.png<>uid://b6es48pf3qn22::::res://Assets/Images/Coffee 1.png<>uid://bfo1a12t02eru::::res://Assets/Animation/Person Walking 2 - stop.png<>uid://dtrb250eu3nku::::res://Assets/Images/Coffee 2.png<>uid://cmoonpfpoivi0::::res://Assets/Animation/Person Walking 2 - right.png<>uid://c4diafofiejot::::res://Assets/Images/Coffee 3.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://bxv33ia4xhj0a::::res://Assets/Images/Smile icon.png<>uid://djc5716sems2r::::res://Assets/Animation/Person Walking 2 - left.png<>uid://g68is0r8nbxc::::res://Assets/Animation/Person Walking 3 - Stop.png<>uid://omi4g0sh3ix6::::res://Assets/Images/Neutral icon.png<>uid://c8o6ojkt4upyl::::res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3<>uid://cct7k7ka1r4yd::::res://Assets/Sfx/Money Register Sfx.mp3<>uid://dprf6irggean2::::res://Assets/Images/Sad icon.png<>uid://b8qf1gdtx2oeu::::res://Assets/Animation/Person Walking 3 - Left.png<>uid://bcvyun52dpro::::res://Assets/Animation/Person Walking 3 - Right.png<>uid://lxtuin2cv86q::::res://Assets/Animation/Person Walking 4 - Stop.png<>uid://c66okdalqwkf5::::res://Assets/Animation/Person Walking 4 - Right.png<>uid://dtr71u7yhdo7g::::res://Assets/Animation/Person Walking 4 - Left.png<>uid://b6840u6ny75yq::::res://Assets/Animation/Person Walking 5 - Stop.png<>uid://cs7alw0ipavbl::::res://Assets/Animation/Person Walking 5 - Right.png<>uid://cvfntm1kuywsu::::res://Assets/Animation/Person Walking 5 - Left.png<>uid://bhcf2e6whb75c::::res://Assets/Animation/Person Walking 6 - Stop.png<>uid://c6tlsqhd4mvra::::res://Assets/Animation/Person Walking 6 - Right.png<>uid://b0gqvqajyc0uj::::res://Assets/Animation/Person Walking 6 - Left.png<>uid://dpcby7782sk8l::::res://Assets/Images/Pointing Arrow.png
+Introduction.tscn::PackedScene::6501300315317168113::1733389241::0::1::::<><>::uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>res://Scripts/Introduction.gd<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://xt6v3at1ogi1::::res://Assets/Images/Barista.png
+MainMenu.tscn::PackedScene::2961543526507293122::1733389240::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://b43g1v5exn8wk::::res://Assets/Images/Main Menu 1.png<>uid://isqeyxdhl801::::res://Assets/GROBOLD.ttf<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>uid://c8o6ojkt4upyl::::res://Assets/Sfx/8 Bit Spring - Happy Upbeat Chiptune Song By HeatleyBros.mp3
+MarketingMix.tscn::PackedScene::1607334930722348244::1733389295::0::1::::<><>::uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>uid://b0nuahu8gyvt7::::res://Assets/Images/Park Base.png<>res://Scripts/MarketingMix.gd<>uid://g2qj2ulg8wgg::::res://Assets/Images/Downtown Base.png<>uid://b24vkelwgdw8i::::res://Assets/Images/Mall Base.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3<>uid://xt6v3at1ogi1::::res://Assets/Images/Barista.png
+PauseMenu.tscn::PackedScene::4106994780772834841::1733389241::0::1::::<><>::uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>res://Scripts/PauseMenu.gd<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3
+Tutorial.tscn::PackedScene::4324445480956669370::1733389241::0::1::::<><>::uid://cbrysnciqlhs0::::res://Assets/CustomThemes/MainTheme.tres<>res://Scripts/Tutorial.gd<>uid://8ry5dyrg5xp8::::res://Assets/Images/Tutorial 1.png<>uid://bwebdur3qnqk4::::res://Assets/Images/Tutorial 2.png<>uid://btyioy7u4dk4m::::res://Assets/Images/Tutorial 3.png<>uid://dadx8jvtxnlxm::::res://Assets/Images/Tutorial 4.png<>uid://coceogio7krme::::res://Assets/Sfx/Pop Sfx.mp3
+::res://Scripts/::1733389240
+Game2.gd::GDScript::-1::1733382360::0::1::::<>Control<>::
+Game.gd::GDScript::-1::1721730592::0::1::::<>Control<>::
+InGameTutorial.gd::GDScript::-1::1733388888::0::1::::<>Node<>::
+Introduction.gd::GDScript::-1::1726553777::0::1::::<>Control<>::
+MainMenu.gd::GDScript::-1::1725438341::0::1::::<>Control<>::
+MarketingMix.gd::GDScript::-1::1733389240::0::1::::<>Control<>::
+PauseMenu.gd::GDScript::-1::1733379289::0::1::::<>Control<>::
+Shop.gd::GDScript::-1::1727158456::0::1::::<>Control<>::
+Transaction.gd::GDScript::-1::1731479245::0::1::::<>Node<>::
+Tutorial.gd::GDScript::-1::1725436950::0::1::::<>Control<>::
